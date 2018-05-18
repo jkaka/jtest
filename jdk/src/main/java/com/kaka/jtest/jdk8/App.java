@@ -1,11 +1,10 @@
-package com.kaka.jtest.jdk.jdk8;
+package com.kaka.jtest.jdk8;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class App {
 

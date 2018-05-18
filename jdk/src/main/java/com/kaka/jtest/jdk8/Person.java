@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.jdk8;
+package com.kaka.jtest.jdk8;
 
 public class Person {
     private Integer id;

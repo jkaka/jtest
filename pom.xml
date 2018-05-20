@@ -11,6 +11,8 @@
     <modules>
         <module>jdk</module>
         <module>aliyun-log</module>
+        <module>poi</module>
+        <module>mybatis</module>
     </modules>
 
     <build>

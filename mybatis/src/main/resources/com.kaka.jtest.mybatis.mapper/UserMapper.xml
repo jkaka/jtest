@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaka.jtest.mybatis.staged.mapper.UserMapper">
+
+    <select id="listUser" parameterType="hashMap" resultType="com.kaka.jtest.mybatis.staged.entities.User">
+        select * from users where name in
+        <foreach collection="keys" open="(" close=")" separator="," item="string">
+#{string }
+        </foreach>
+    </select>
+</mapper>

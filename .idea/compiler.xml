@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="aliyunlog" />
         <module name="jdk" />
+        <module name="mybatis" />
+        <module name="poi" />
       </profile>
     </annotationProcessing>
   </component>

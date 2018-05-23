@@ -1,1 +1,10 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+.idea/
+jtest.iml
 poi/target/

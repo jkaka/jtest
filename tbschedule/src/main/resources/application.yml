@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  context-path: /zto-schedule
+
+logging:
+  level:
+    root: INFO
+
+job:
+  zkConfig:
+    zkConnectString: 10.43.100.130:2181
+    rootPath: /tb-schedule/test-task
+    zkSessionTimeout: 60000
+    userName: jsk
+    password: jsk
+    isCheckParentPath: true

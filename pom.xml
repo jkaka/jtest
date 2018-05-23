@@ -13,6 +13,9 @@
         <module>aliyun-log</module>
         <module>poi</module>
         <module>mybatis</module>
+        <module>springboot</module>
+        <module>tbschedule</module>
+        <module>redis</module>
     </modules>
 
     <build>

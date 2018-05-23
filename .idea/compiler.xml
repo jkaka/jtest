@@ -10,6 +10,9 @@
         <module name="jdk" />
         <module name="mybatis" />
         <module name="poi" />
+        <module name="redis" />
+        <module name="springboot" />
+        <module name="tbschedule" />
       </profile>
     </annotationProcessing>
   </component>

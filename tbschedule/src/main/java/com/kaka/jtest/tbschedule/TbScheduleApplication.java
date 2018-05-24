@@ -9,16 +9,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@EnableCaching
-@EnableConfigurationProperties
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class})
-//@ImportResource({"classpath*:*.xml"})    
-//@EnableScheduling  
-public class Application {  
+public class TbScheduleApplication {
       
     public static void main(String[] args) {  
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(TbScheduleApplication.class, args);
     }  
-      
-      
+
 } 

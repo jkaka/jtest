@@ -12,28 +12,49 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+/**
+ * @author shuangkaijia
+ */
 @Configuration
 public class RedisConfig {
+    private Properties properties;
+
+    {
+        properties = new Properties();
+        InputStream inputStream = this.getClass().getResourceAsStream("/redis.properties");
+        try {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        JedisConnectionFactory cf = null;
-        cf = new JedisConnectionFactory();
-        cf.setHostName("10.43.100.130");
-        cf.setPort(6379);
-        cf.setDatabase(0);
+        // 1.设置Redis服务器参数
+        JedisConnectionFactory connectionFactory = null;
+        connectionFactory = new JedisConnectionFactory();
+        connectionFactory.setHostName(properties.getProperty("spring.redis.host"));
+        connectionFactory.setPort(Integer.valueOf(properties.getProperty("spring.redis.port")));
+        connectionFactory.setDatabase(Integer.valueOf(properties.getProperty("spring.redis.database")));
         // 若Redis未设置密码，注释下面一行代码
-        // cf.setPassword("123");
-        cf.setTimeout(10);
+//        connectionFactory.setPassword(properties.getProperty("spring.redis.password"));
+        connectionFactory.setTimeout(Integer.valueOf(properties.getProperty("spring.redis.timeout")));
+
+        // 2.设置Redis连接池参数
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-        poolConfig.setMaxWaitMillis(-1);
-        poolConfig.setMaxTotal(10);
-        poolConfig.setMaxIdle(8);
-        poolConfig.setMinIdle(3);
-        poolConfig.setSoftMinEvictableIdleTimeMillis(5000);
-        cf.setPoolConfig(poolConfig);
-        cf.afterPropertiesSet();
-        return cf;
+        poolConfig.setMaxTotal(Integer.valueOf(properties.getProperty("spring.redis.pool.maxActive")));
+        poolConfig.setMaxWaitMillis(Integer.valueOf(properties.getProperty("spring.redis.pool.maxWait")));
+        poolConfig.setMaxIdle(Integer.valueOf(properties.getProperty("spring.redis.pool.maxIdle")));
+        poolConfig.setMinIdle(Integer.valueOf(properties.getProperty("spring.redis.pool.minIdle")));
+        poolConfig.setSoftMinEvictableIdleTimeMillis(Integer.valueOf(properties.getProperty("spring.redis.port")));
+        connectionFactory.setPoolConfig(poolConfig);
+        connectionFactory.afterPropertiesSet();
+        return connectionFactory;
     }
 
     @Bean

@@ -1,12 +1,14 @@
 从项目的角度，一共分为七个模块
-biz:应用业务逻辑实现层，包括：manager、service、mapper、entities 等
-boot: web层，包括：controler和application
-call: 调用外部接口访问层，应用访问外部的接口，在这一层封装
-client:应用对外提供服务接口,提供第三方调用二方包
-    UserService、UserDTO
-openservice:应用对外提供服务接口实现层
-    UserServiceImpl
-common:应用公共调用类(常量类constants、枚举类enums、工具类utils)
+biz：应用业务逻辑实现层，包括：manager、service、mapper、entities 等
+boot：web层，包括：controler、application和beanconfig
+call：调用外部接口访问层，应用访问外部的接口，在这一层封装
+    返回的对象使用BaseResult包装.
+client：应用对外提供服务接口,提供第三方调用二方包
+    UserReadService、UserWriteService、UserDTO(需要实现序列化接口)
+openservice：应用对外提供服务接口实现层
+    UserReadServiceImpl、UserWriteServiceImpl(便于dubbo控制读写权限;里面不写逻辑,直接调用biz)
+common：应用公共调用类(常量类constants、枚举类enums、工具类utils)
+config：配置文件层，包含***Config，真正的配置类写在biz中
 
 调用规范
     boot(controller)调用biz(service/manager)、client(对外提供的接口)

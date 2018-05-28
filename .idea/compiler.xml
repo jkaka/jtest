@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="aliyunlog" />
+        <module name="apollo" />
         <module name="jdk" />
         <module name="mybatis" />
         <module name="poi" />

@@ -16,6 +16,7 @@
         <module>springboot</module>
         <module>tbschedule</module>
         <module>redis</module>
+        <module>apollo</module>
     </modules>
 
     <build>
@@ -35,6 +36,7 @@
             </plugins>
         </pluginManagement>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

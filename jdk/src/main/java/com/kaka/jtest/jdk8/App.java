@@ -21,4 +21,13 @@ public class App {
                     System.out.println(person);
                 });
     }
+
+    @Test
+    public void testLambda1() {
+        sout((s)->System.out.println("" + s));
+    }
+
+    private void sout(TestInterface testInterface){
+        testInterface.test("abc");
+    }
 }

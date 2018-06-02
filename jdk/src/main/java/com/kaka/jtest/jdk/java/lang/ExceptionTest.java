@@ -1,5 +1,6 @@
 package com.kaka.jtest.jdk.java.lang;
 
+import com.kaka.jtest.jdk.java.lang.entities.Person;
 import org.junit.Test;
 
 public class ExceptionTest {
@@ -22,5 +23,10 @@ public class ExceptionTest {
         } finally {
             System.out.println("最外层finally");
         }
+    }
+
+    public void throwTest(){
+
+        // throw new Person();   只能抛出Throwable的子类
     }
 }

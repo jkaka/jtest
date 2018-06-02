@@ -8,6 +8,14 @@
     <artifactId>jtest</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <spring_boot.version>1.5.10.RELEASE</spring_boot.version>
+        <junit.version>4.12</junit.version>
+        <dubbo-version>2.5.7</dubbo-version>
+        <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
+    </properties>
+
     <modules>
         <module>jdk</module>
         <module>aliyun-log</module>
@@ -17,6 +25,10 @@
         <module>tbschedule</module>
         <module>redis</module>
         <module>apollo</module>
+        <module>openUtils</module>
+        <module>dubbo-A</module>
+        <module>dubbo-B</module>
+        <module>dubbo-api</module>
     </modules>
 
     <build>
@@ -37,11 +49,34 @@
         </pluginManagement>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-        </dependency>
-    </dependencies>
+    <!--项目版本管理：让子项目使用properties节点中的版本-->
+    <dependencyManagement>
+        <dependencies>
+            <!--springboot依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring_boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dubbo.springboot</groupId>
+                <artifactId>spring-boot-starter-dubbo</artifactId>
+                <version>${dubbo-spring-boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo-version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
 </project>

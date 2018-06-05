@@ -1,13 +1,13 @@
 package com.kaka.test.springboot.boot.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author shuangkaijia
+ */
 @RestController
 public class HelloController {
 
@@ -17,4 +17,13 @@ public class HelloController {
 
         return "导入成功！";
     }
+
+    @PostMapping("/testExceptionHandler")
+    public String testExceptionHandler(String name){
+        System.out.println(name);
+//        System.out.println( 10 /0);
+        return "testExceptionHandler";
+    }
+
+
 }

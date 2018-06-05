@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 public class DubboController {
-    @Reference(version = "1.0.0", check = false)
+    //    @Reference(version = "1.0.0", check = false)
+    @Reference(version = "1.0.0")
     private UserWriteService userWriteService;
 
     @RequestMapping("/callB")

@@ -20,4 +20,12 @@ public class DateTest {
         Date date = dateFormat.parse("2038-01-01 00:00:00");
         System.out.println(date.getTime());
     }
+
+    /**
+     * date的构造函数
+     */
+    @Test
+    public void constructor(){
+        System.out.println(new Date(1528162080 * 1000L));
+    }
 }

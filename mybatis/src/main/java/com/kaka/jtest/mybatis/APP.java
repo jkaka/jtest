@@ -1,7 +1,6 @@
-package com.kaka.jtest.mybatis.staged;
+package com.kaka.jtest.mybatis;
 
-import com.kaka.jtest.mybatis.staged.entities.User;
-import org.apache.ibatis.annotations.Param;
+import com.kaka.jtest.mybatis.entities.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -10,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class APP {
 
@@ -29,7 +30,7 @@ public class APP {
     }
 
     @After
-    public void after(){
+    public void after() {
         sqlSession.commit();
         // 释放资源
         sqlSession.close();
@@ -38,8 +39,8 @@ public class APP {
 
 
     @Test
-    public void testParams(){
-        String statement = "com.kaka.jtest.mybatis.staged.mapper.UserMapper.listUser";
+    public void testParams() {
+        String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUser";
         Map list11 = new HashMap();
         list11.put("AA", "BB");
         List<User> users = sqlSession.selectList(statement, list11);

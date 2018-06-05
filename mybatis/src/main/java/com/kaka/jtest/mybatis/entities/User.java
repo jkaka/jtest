@@ -1,4 +1,4 @@
-package com.kaka.jtest.mybatis.staged.entities;
+package com.kaka.jtest.mybatis.entities;
 
 public class User {
     private Integer id;

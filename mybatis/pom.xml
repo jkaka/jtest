@@ -12,6 +12,10 @@
     <artifactId>mybatis</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
         <!--mybatis生成器插件-->
         <dependency>
             <groupId>org.mybatis.generator</groupId>

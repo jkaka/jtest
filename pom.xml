@@ -60,6 +60,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--junit测试工具-->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

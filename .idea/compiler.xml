@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="aliyun-log" />
         <module name="aliyunlog" />
         <module name="apollo" />
+        <module name="demo" />
+        <module name="dubbo-A" />
+        <module name="dubbo-api" />
+        <module name="dubbo-B" />
         <module name="dubboA" />
         <module name="dubboapi" />
         <module name="dubboB" />
@@ -17,6 +22,7 @@
         <module name="poi" />
         <module name="redis" />
         <module name="springboot" />
+        <module name="ssm" />
         <module name="tbschedule" />
       </profile>
     </annotationProcessing>

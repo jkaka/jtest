@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!-- 1.配置数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+    </bean>
+    <!-- 2.配置session工厂 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis.cfg.xml"/>
+        <!-- 自动扫描mappers.xml文件;这个配置可以写在mybatis.cfg.xml中 -->
+        <property name="mapperLocations" value="classpath:com/kaka/jtest/ssm/dao/*.xml"/>
+    </bean>
+    <!-- 3.配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 通知 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!--
+                为切入点方法添加事务详情
+                name：方法名，*表示任意方法名称
+                propagation：设置传播行为
+                isolation：设置隔离级别
+                read-only：是否只读
+            -->
+            <tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 4. 配置事务切入点(作用在哪些类的哪些方法上), 再把事务属性和事务切入点关联起来 -->
+    <aop:config>
+        <aop:pointcut  id="txPointcut" expression="execution(* com.kaka.jtest.ssm.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+    <!-- 5.配置扫描注解 -->
+    <context:component-scan base-package="com.kaka.jtest.ssm"/>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类,并生成接口的实现类-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.kaka.jtest.ssm.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+</beans>

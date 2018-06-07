@@ -29,6 +29,8 @@
         <module>dubbo-A</module>
         <module>dubbo-B</module>
         <module>dubbo-api</module>
+        <module>demo</module>
+        <module>ssm</module>
     </modules>
 
     <build>

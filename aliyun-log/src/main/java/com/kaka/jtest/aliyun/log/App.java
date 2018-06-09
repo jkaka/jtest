@@ -1,12 +1,15 @@
 package com.kaka.jtest.aliyun.log;
 
 import com.aliyun.openservices.log.Client;
-import com.aliyun.openservices.log.common.Histogram;
-import com.aliyun.openservices.log.common.LogContent;
-import com.aliyun.openservices.log.common.QueriedLog;
+import com.aliyun.openservices.log.common.*;
+import com.aliyun.openservices.log.exception.LogException;
+import com.aliyun.openservices.log.request.BatchGetLogRequest;
 import com.aliyun.openservices.log.request.GetLogsRequest;
+import com.aliyun.openservices.log.response.BatchGetLogResponse;
+import com.aliyun.openservices.log.response.GetCursorResponse;
 import com.aliyun.openservices.log.response.GetHistogramsResponse;
 import com.aliyun.openservices.log.response.GetLogsResponse;
+import javafx.scene.input.DataFormat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,7 +74,7 @@ public class App {
      * @throws Exception
      */
     @Test
-    public void test() throws Exception {
+    public void GetLogs() throws Exception {
         Integer currentPage = 1;
         Integer pageSize = 20;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -98,6 +101,55 @@ public class App {
                 System.out.println("key=" + logContent.GetKey() + ";value=" + logContent.GetValue());
             }
         }
+    }
+
+    /**
+     * 根据游标查询日志
+     */
+    @Test
+    public void BatchGetLog() throws Exception {
+        logStore = "tsp-admin-ota-info";
+        String cursor = "MTUyNzEwMTYwOTQ0NjE5NjA2Mw==";
+        BatchGetLogRequest batchGetLogRequest = new BatchGetLogRequest(project, logStore, 0, 3, cursor);
+        BatchGetLogResponse logDataRes = client.BatchGetLog(batchGetLogRequest);
+        System.out.println(logDataRes.GetRawSize());
+        // 读取LogGroup的List
+        List<LogGroupData> logGroups = logDataRes.GetLogGroups();
+        for(LogGroupData logGroup: logGroups){
+            FastLogGroup flg = logGroup.GetFastLogGroup();
+            System.out.println(String.format("\tcategory\t:\t%s\n\tsource\t:\t%s\n\ttopic\t:\t%s\n\tmachineUUID\t:\t%s",
+                    flg.getCategory(), flg.getSource(), flg.getTopic(), flg.getMachineUUID()));
+            System.out.println("Tags");
+            for (int tagIdx = 0; tagIdx < flg.getLogTagsCount(); ++tagIdx) {
+                FastLogTag logtag = flg.getLogTags(tagIdx);
+                System.out.println(String.format("\t%s\t:\t%s", logtag.getKey(), logtag.getValue()));
+            }
+            for (int lIdx = 0; lIdx < flg.getLogsCount(); ++lIdx) {
+                FastLog log = flg.getLogs(lIdx);
+                System.out.println("--------\nLog: " + lIdx + ", time: " + log.getTime() + ", GetContentCount: " + log.getContentsCount());
+                for (int cIdx = 0; cIdx < log.getContentsCount(); ++cIdx) {
+                    FastLogContent content = log.getContents(cIdx);
+                    System.out.println(content.getKey() + "\t:\t" + content.getValue());
+                }
+            }
+        }
+        String next_cursor = logDataRes.GetNextCursor();
+        System.out.println(next_cursor);
+    }
+
+    /**
+     * 得到游标
+     * @throws Exception
+     */
+    @Test
+    public void test() throws Exception {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long fromTime = dateFormat.parse("2018-06-07 15:33:01").getTime();
+        // 1528356782
+        System.out.println(fromTime);
+        logStore = "tsp-admin-ota-info";
+        GetCursorResponse cursorResponse = client.GetCursor(project, logStore, 0, fromTime / 1000L);
+        System.out.println(cursorResponse.GetCursor());
     }
 }
 

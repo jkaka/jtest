@@ -1,6 +1,6 @@
-package com.kaka.test.springboot.common.utils;
+package com.kaka.jtest.springboot.common.utils;
 
-import com.kaka.test.springboot.common.model.BaseResult;
+import com.kaka.jtest.springboot.common.model.BaseResult;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.kaka.test.springboot.common.model;
+package com.kaka.jtest.springboot.common.model;
 
 import java.io.Serializable;
 

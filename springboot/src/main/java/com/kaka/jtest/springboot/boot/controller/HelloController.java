@@ -1,4 +1,4 @@
-package com.kaka.test.springboot.boot.controller;
+package com.kaka.jtest.springboot.boot.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

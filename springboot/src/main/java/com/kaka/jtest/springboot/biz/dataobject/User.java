@@ -1,4 +1,4 @@
-package com.kaka.test.springboot.biz.dataobject;
+package com.kaka.jtest.springboot.biz.dataobject;
 
 public class User {
     private Integer id;

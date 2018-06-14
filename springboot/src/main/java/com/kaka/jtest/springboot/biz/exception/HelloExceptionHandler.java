@@ -1,4 +1,4 @@
-package com.kaka.test.springboot.biz.exception;
+package com.kaka.jtest.springboot.biz.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

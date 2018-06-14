@@ -22,6 +22,7 @@
         <module name="poi" />
         <module name="redis" />
         <module name="springboot" />
+        <module name="springmvc" />
         <module name="ssm" />
         <module name="tbschedule" />
       </profile>

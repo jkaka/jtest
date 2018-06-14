@@ -25,4 +25,14 @@ public class StringTest {
         System.out.println(string.substring(1,1));
         System.out.println(string.substring(1,2));
     }
+
+    /**
+     * 测试equals
+     */
+    @Test
+    public void equals(){
+        String str1 = "aBcd";
+        String str2 = "abcd";
+        System.out.println(str1.equalsIgnoreCase(str2));
+    }
 }

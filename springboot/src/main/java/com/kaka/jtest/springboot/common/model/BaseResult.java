@@ -1,6 +1,4 @@
-package com.kaka.test.springboot.common.model;
-
-import com.oracle.jrockit.jfr.DataType;
+package com.kaka.jtest.springboot.common.model;
 
 public class BaseResult<T> extends BaseObject {
     /**

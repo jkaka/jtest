@@ -38,7 +38,7 @@ public class RedisController {
     public String testSelect() {
         long startTime = System.currentTimeMillis();
         try {
-            int sum = redisTemplate.keys("ota*").size();
+            int sum = redisTemplate.keys("A1*").size();
             System.out.println("总数据：" + sum + "条");
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class RedisController {
             }
             startTime = System.currentTimeMillis();
             System.out.println("耗时：" + (startTime - endTime));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -109,7 +109,7 @@ public class RedisController {
         map.put("DD", "11");
         map.put("BB", "99");
         map.put("CC", "33");
-    redisTemplate.opsForHash().putAll(key, map);
+        redisTemplate.opsForHash().putAll(key, map);
         return "insertByHash";
     }
 

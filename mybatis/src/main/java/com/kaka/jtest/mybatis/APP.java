@@ -9,9 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class APP {
 
@@ -45,5 +43,19 @@ public class APP {
         list11.put("AA", "BB");
         List<User> users = sqlSession.selectList(statement, list11);
         System.out.println(users);
+    }
+
+    /**
+     * 测试if语句中的size写法
+     */
+    @Test
+    public void testSize(){
+        List<String> ids = new ArrayList<>();
+        String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUser";
+        Map params = new HashMap();
+        params.put("keys", Arrays.asList("BB"));
+        params.put("idList", ids);
+        List<User> users = sqlSession.selectList(statement, params);
+        System.out.println("users:" + users);
     }
 }

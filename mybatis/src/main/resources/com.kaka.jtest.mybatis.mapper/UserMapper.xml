@@ -7,5 +7,12 @@
         <foreach collection="keys" open="(" close=")" separator="," item="string">
             #{string }
         </foreach>
+        <if test="idList != null &amp;&amp; idList.size != 0">
+            and id in
+            <foreach collection="idList" open="(" close=")" separator="," item="id">
+                #{id }
+            </foreach>
+        </if>
     </select>
+
 </mapper>

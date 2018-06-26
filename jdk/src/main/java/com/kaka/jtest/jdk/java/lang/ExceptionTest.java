@@ -58,7 +58,8 @@ public class ExceptionTest {
         } finally {
             System.out.println("最外层finally...");
             i = 3;
-            Thread.sleep(200);
+            Thread.sleep(2000);
+            return i;
         }
     }
 }

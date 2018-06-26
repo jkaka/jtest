@@ -35,4 +35,15 @@ public class StringTest {
         String str2 = "abcd";
         System.out.println(str1.equalsIgnoreCase(str2));
     }
+
+    /**
+     * 测试replace
+     * 如果没有需要替换的字符串，返回的String对象就是原来的String
+     */
+    @Test
+    public void replace(){
+        String str1 = "aBcd";
+        String str2 = str1.replace("t", "a");
+        System.out.println(str1 == str2);
+    }
 }

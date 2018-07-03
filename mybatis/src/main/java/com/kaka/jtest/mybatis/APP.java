@@ -1,5 +1,7 @@
 package com.kaka.jtest.mybatis;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.kaka.jtest.mybatis.entities.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -57,5 +59,15 @@ public class APP {
         params.put("idList", ids);
         List<User> users = sqlSession.selectList(statement, params);
         System.out.println("users:" + users);
+    }
+
+    @Test
+    public void testPage() {
+        PageHelper.startPage(1,10);
+        String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUserTestPage";
+        List<User> users = sqlSession.selectList(statement);
+        PageInfo<User> p=new PageInfo<>(users);
+        System.out.println(users);
+        System.out.println(p);
     }
 }

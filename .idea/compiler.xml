@@ -25,6 +25,7 @@
         <module name="springmvc" />
         <module name="ssm" />
         <module name="tbschedule" />
+        <module name="tools" />
       </profile>
     </annotationProcessing>
   </component>

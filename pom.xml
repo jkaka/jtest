@@ -16,6 +16,13 @@
         <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
         <gson.version>2.8.0</gson.version>
         <fastjson.version>1.2.35</fastjson.version>
+        <mybatis-spring>1.2.2</mybatis-spring>
+        <druid.version>1.0.31</druid.version>
+        <mysql.version>5.1.21</mysql.version>
+        <mybatis.version>3.4.0</mybatis.version>
+        <mybatis-spring>1.3.0</mybatis-spring>
+        <mybatis-spring-boot>1.1.1</mybatis-spring-boot>
+        <pagehelper-version>5.1.3</pagehelper-version>
     </properties>
 
     <modules>
@@ -34,6 +41,7 @@
         <module>demo</module>
         <module>ssm</module>
         <module>springmvc</module>
+        <module>tools</module>
     </modules>
 
     <build>
@@ -77,6 +85,7 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
             </dependency>
+            <!--dubbo-->
             <dependency>
                 <groupId>io.dubbo.springboot</groupId>
                 <artifactId>spring-boot-starter-dubbo</artifactId>
@@ -92,6 +101,41 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <!-- mybatis核心包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- mybatis/spring包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring}</version>
+            </dependency>
+            <!--mybatis/springboot-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--阿里连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--分页工具-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper-version}</version>
             </dependency>
         </dependencies>
 

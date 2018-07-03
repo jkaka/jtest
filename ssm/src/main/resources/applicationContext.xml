@@ -13,7 +13,7 @@
 
     <context:property-placeholder location="classpath:db.properties"/>
     <!-- 1.配置数据源 -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="username" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
         <property name="driverClassName" value="${jdbc.driverClassName}"></property>
@@ -40,16 +40,19 @@
                 isolation：设置隔离级别
                 read-only：是否只读
             -->
-            <tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
-            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
-            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" read-only="false" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"
+                       rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"
+                       rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"
+                       rollback-for="Exception"/>
             <tx:method name="get*" read-only="true"/>
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
     <!-- 4. 配置事务切入点(作用在哪些类的哪些方法上), 再把事务属性和事务切入点关联起来 -->
     <aop:config>
-        <aop:pointcut  id="txPointcut" expression="execution(* com.kaka.jtest.ssm.service.*.*(..))"/>
+        <aop:pointcut id="txPointcut" expression="execution(* com.kaka.jtest.ssm.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
     <!-- 5.配置扫描注解 -->

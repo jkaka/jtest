@@ -4,6 +4,16 @@
     <!--1.配置连接数据库-->
     <!--引入properties文件-->
     <properties resource="db.properties"/>
+
+    <!-- 3.配置mybatis的分页插件PageHelper -->
+    <plugins>
+        <!--老版本的分页插件，直接使用PageHelper实体类做插件，现在PageHelper已经不是mybatis插件Interceptor的子类了-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -19,4 +29,6 @@
     <mappers>
         <mapper resource="com.kaka.jtest.mybatis.mapper/UserMapper.xml"/>
     </mappers>
+
+
 </configuration>

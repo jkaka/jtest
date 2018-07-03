@@ -15,4 +15,8 @@
         </if>
     </select>
 
+
+    <select id="listUserTestPage" resultType="com.kaka.jtest.mybatis.entities.User">
+        select * from users
+    </select>
 </mapper>

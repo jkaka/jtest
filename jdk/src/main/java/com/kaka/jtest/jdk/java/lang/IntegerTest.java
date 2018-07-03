@@ -18,4 +18,18 @@ public class IntegerTest {
             System.out.println("第" + i + "位：" + new Double(Math.pow(integer, i - 1)).intValue());
         }
     }
+
+    /**
+     * 多个数值连乘时，会把结果先暂存在这个数值类型的一个临时变量中
+     */
+    @Test
+    public void boundary1() {
+        long a = 1L;
+        long time1 = a * 3600 * 24 * 1000 * 25;
+        long time2 = 3600L * 24 * 1000 * 25;
+        long time3 = 3600 * 24 * 1000 * 25;
+        System.out.println(time1);
+        System.out.println(time2);
+        System.out.println(time3);
+    }
 }

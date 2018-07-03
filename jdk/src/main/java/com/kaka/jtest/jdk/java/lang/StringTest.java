@@ -46,4 +46,10 @@ public class StringTest {
         String str2 = str1.replace("t", "a");
         System.out.println(str1 == str2);
     }
+
+    @Test
+    public void contains(){
+        String str1 = "aBcd";
+        System.out.println(str1.contains("B"));
+    }
 }

@@ -1,15 +1,26 @@
 package com.kaka.jtest.springboot.boot.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.kaka.jtest.springboot.biz.dataobject.User;
+import com.kaka.jtest.springboot.biz.mapper.UserDao;
+import com.kaka.jtest.springboot.biz.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author shuangkaijia
  */
 @RestController
 public class HelloController {
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/importFile")
     public String importFile(@RequestParam("file") MultipartFile file) throws Exception{
@@ -20,8 +31,9 @@ public class HelloController {
 
     @PostMapping("/testExceptionHandler")
     public String testExceptionHandler(String name){
-        System.out.println(name);
-//        System.out.println( 10 /0);
+        PageInfo<User> user  = userService.selectList();
+        System.out.println(user);
+        System.out.println(user.getTotal());
         return "testExceptionHandler";
     }
 

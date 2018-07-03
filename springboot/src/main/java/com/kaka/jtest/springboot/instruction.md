@@ -7,9 +7,9 @@ client：应用对外提供服务接口,提供第三方调用二方包
     UserReadService、UserWriteService(便于dubbo控制读写权限;)、UserDTO(需要实现序列化接口)
 openservice：应用对外提供服务接口实现层
     UserReadServiceImpl、UserWriteServiceImpl
-    里面不写逻辑,直接调用biz,结果用baseResult包装；可以写一些校验参数的代码，并存入openservice的日志中
+    里面不写逻辑,直接调用biz,结果用baseResult包装（包含状态码、信息等）；可以写一些校验参数的代码，并存入openservice的日志中
 common：应用公共调用类(常量类constants、枚举类enums、工具类utils)
-config：配置文件层，包含***Config，真正的配置类写在biz中
+config：配置文件层，包含***Config，真正的配置类写在boot/beanconfig中
 
 调用规范
     boot(controller)调用biz(service/manager)、client(对外提供的接口)

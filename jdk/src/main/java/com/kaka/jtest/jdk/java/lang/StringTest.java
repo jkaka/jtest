@@ -47,9 +47,19 @@ public class StringTest {
         System.out.println(str1 == str2);
     }
 
+    /**
+     * contains()
+     * 是否包含某片段，区分大小写
+     */
     @Test
     public void contains(){
         String str1 = "aBcd";
-        System.out.println(str1.contains("B"));
+        System.out.println(str1.contains("b"));
+    }
+
+    @Test
+    public void test(){
+        String str = "aBcd";
+        System.out.println(str.length());
     }
 }

@@ -34,4 +34,12 @@ public class MathTest {
     public void ceil(){
         System.out.println(Math.ceil(61 / 60.0));
     }
+
+    @Test
+    public void test(){
+        long a;
+        double b = 33.10;
+        a = Math.round(b);
+        System.out.println(a);
+    }
 }

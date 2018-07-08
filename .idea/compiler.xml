@@ -19,14 +19,18 @@
         <module name="jdk" />
         <module name="mybatis" />
         <module name="openUtils" />
-        <module name="poi" />
         <module name="redis" />
         <module name="springboot" />
         <module name="springmvc" />
         <module name="ssm" />
         <module name="tbschedule" />
-        <module name="tools" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="plugin" target="1.8" />
+      <module name="poi" target="1.8" />
+      <module name="test2" target="1.8" />
+      <module name="tools" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

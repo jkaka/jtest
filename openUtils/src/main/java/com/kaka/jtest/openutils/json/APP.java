@@ -1,7 +1,7 @@
 package com.kaka.jtest.openutils.json;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kaka.jtest.openutils.json.dataobject.Person;
+import com.kaka.jtest.openutils.dataobject.Person;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +22,5 @@ public class APP {
         System.out.println(jsonStr);
         Map<String,String> map1 = JSONObject.parseObject(jsonStr, Map.class);
         System.out.println(map1);
-
-
     }
 }

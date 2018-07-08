@@ -1,8 +1,9 @@
-package com.kaka.jtest.tools.fastjson.dataobject;
+package com.kaka.jtest.openutils.dataobject;
 
-public class Person {
+public class Student {
     private int id;
     private String name;
+    private int classId;
 
     public int getId() {
         return id;
@@ -20,11 +21,20 @@ public class Person {
         this.name = name;
     }
 
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", classId=" + classId +
                 '}';
     }
 }

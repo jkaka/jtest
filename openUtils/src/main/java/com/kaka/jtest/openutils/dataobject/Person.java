@@ -1,4 +1,4 @@
-package com.kaka.jtest.openutils.json.dataobject;
+package com.kaka.jtest.openutils.dataobject;
 
 /**
  * @author shuangkaijia

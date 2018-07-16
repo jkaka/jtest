@@ -2,6 +2,9 @@ package com.kaka.jtest.jdk.java.lang;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author shuangkaijia
  */
@@ -31,5 +34,18 @@ public class IntegerTest {
         System.out.println(time1);
         System.out.println(time2);
         System.out.println(time3);
+    }
+
+
+    /**
+     * final int value;  value字段不可改变，如果改变就是新的integer对象
+     */
+    @Test
+    public void value() {
+        Map<String, String> map = new HashMap<>();
+        Integer update = 0;
+        map.put("aa", update + "");
+        update = 2999999;
+        System.out.println(map.get("aa"));
     }
 }

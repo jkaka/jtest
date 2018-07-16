@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk8.lambda.study;
+package com.kaka.jtest.jdk.lambda.study;
 
 public interface MyPredicate<T> {
 

@@ -17,6 +17,7 @@
         <module name="dubboapi" />
         <module name="dubboB" />
         <module name="jdk" />
+        <module name="kafka" />
         <module name="mybatis" />
         <module name="openUtils" />
         <module name="redis" />

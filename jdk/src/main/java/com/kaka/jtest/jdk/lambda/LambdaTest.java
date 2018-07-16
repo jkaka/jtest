@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk8.lambda;
+package com.kaka.jtest.jdk.lambda;
 
 import org.junit.Test;
 

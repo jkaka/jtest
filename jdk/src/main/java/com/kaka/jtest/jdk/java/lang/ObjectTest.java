@@ -1,6 +1,6 @@
 package com.kaka.jtest.jdk.java.lang;
 
-import com.kaka.jtest.jdk.java.lang.entities.Person;
+import com.kaka.jtest.jdk.model.Person;
 
 public class ObjectTest {
 

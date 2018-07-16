@@ -10,8 +10,8 @@ spring:
    port: 20881
   registry:
    protocol: zookeeper
-   address: 10.43.100.131:2181
+   address: 10.43.100.169:2181
   monitor:
    protocol: registry
-   address: 10.43.100.131:2181
+   address: 10.43.100.169:2181
   scan: com.kaka.jtest.b.biz.service,com.kaka.jtest.b.boot.controller

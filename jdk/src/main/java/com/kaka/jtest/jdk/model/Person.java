@@ -1,8 +1,11 @@
-package com.kaka.jtest.jdk8;
+package com.kaka.jtest.jdk.model;
 
 public class Person {
     private Integer id;
     private String name;
+
+    public Person() {
+    }
 
     public Person(Integer id, String name) {
         this.id = id;

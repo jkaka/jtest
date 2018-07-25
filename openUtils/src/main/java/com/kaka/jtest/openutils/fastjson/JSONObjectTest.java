@@ -1,15 +1,13 @@
 package com.kaka.jtest.openutils.fastjson;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kaka.jtest.openutils.dataobject.Person;
 import com.kaka.jtest.openutils.dataobject.Student;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author shuangkaijia
@@ -45,17 +43,16 @@ public class JSONObjectTest {
     }
 
     /**
-     * json串转map
+     * json字符串转map
      */
     @Test
-    public void test() {
-        List<Person> personList = new ArrayList<>();
-        personList.add(new Person(1, "AA"));
-        personList.add(new Person(2, "BB"));
+    public void json2map() {
+        List<Person> personList = new ArrayList<>(Arrays.asList(new Person(1, "AA"), new Person(2, "BB")));
         Map<String, String> map = new HashMap<>();
         map.put("insertList", JSONObject.toJSONString(personList));
         String jsonStr = JSONObject.toJSONString(map);
         System.out.println(jsonStr);
+
         Map<String, String> map1 = JSONObject.parseObject(jsonStr, Map.class);
         System.out.println(map1);
     }
@@ -81,5 +78,15 @@ public class JSONObjectTest {
         System.out.println(matCodeJson);
     }
 
+    /**
+     * json字符串转JSONObject对象
+     */
+    @Test
+    public void parseObject() {
+        String json = "{\"dubbo\":\"group001\"}";
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        String str = jsonObject.getString("dubbo");
+        System.out.println(str);
+    }
 
 }

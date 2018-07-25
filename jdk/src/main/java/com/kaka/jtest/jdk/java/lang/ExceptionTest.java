@@ -2,6 +2,9 @@ package com.kaka.jtest.jdk.java.lang;
 
 import org.junit.Test;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 /**
  * @author shuangkaijia
  */
@@ -60,6 +63,70 @@ public class ExceptionTest {
             i = 3;
             Thread.sleep(2000);
             return i;
+        }
+    }
+
+    /**
+     * 输出异常类型名：错误信息
+     */
+    public void defaultToString() {
+        try {
+            int i = 10 / 0;
+            System.out.println(i);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    /**
+     * 仅输出错误信息
+     */
+    @Test
+    public void getMessage() {
+        try {
+            int i = 10 / 0;
+            System.out.println(i);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * 栈轨迹,默认输出到“标准错误流”：System.err
+     */
+    @Test
+    public void printStackTrace() {
+        try {
+            int i = 10 / 0;
+            System.out.println(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 栈轨迹输出到System.out
+     */
+    @Test
+    public void printStackTrace2Out() {
+        try {
+            int i = 10 / 0;
+            System.out.println(i);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
+    @Test
+    public void printStackTrace2String() {
+        try {
+            int i = 10 / 0;
+            System.out.println(i);
+        } catch (Exception e) {
+            StringWriter trace = new StringWriter();
+            e.printStackTrace(new PrintWriter(trace));
+            System.out.println(trace.toString());
         }
     }
 }

@@ -13,9 +13,9 @@
         <module name="dubbo-A" />
         <module name="dubbo-api" />
         <module name="dubbo-B" />
-        <module name="dubboA" />
+        <module name="dubbo_consumer" />
+        <module name="dubbo_provider" />
         <module name="dubboapi" />
-        <module name="dubboB" />
         <module name="jdk" />
         <module name="kafka" />
         <module name="mybatis" />
@@ -28,6 +28,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dubboConsumer" target="1.8" />
+      <module name="dubboProvider" target="1.8" />
       <module name="plugin" target="1.8" />
       <module name="poi" target="1.8" />
       <module name="test2" target="1.8" />

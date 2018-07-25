@@ -3,6 +3,9 @@ package com.kaka.jtest.jdk.java.lang;
 import org.junit.Test;
 
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class StringTest {
 
@@ -67,5 +70,16 @@ public class StringTest {
         String test = null;
         String str = "aBcd";
         System.out.println(test + str);
+    }
+
+    @Test
+    public void test(){
+        List<String> strings = new ArrayList<>(Arrays.asList("aa"));
+        for(String str : strings){
+            str += "1";
+        }
+        for(String str : strings){
+            System.out.println(str);
+        }
     }
 }

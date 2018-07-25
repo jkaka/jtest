@@ -12,6 +12,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/dubbo-A/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-B/pom.xml" />
         <option value="$PROJECT_DIR$/plugin/pom.xml" />
         <option value="$PROJECT_DIR$/poi/pom.xml" />
         <option value="$PROJECT_DIR$/test2/pom.xml" />

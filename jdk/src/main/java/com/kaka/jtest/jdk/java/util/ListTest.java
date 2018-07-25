@@ -21,4 +21,15 @@ public class ListTest {
         List<String> strings = new ArrayList<>();
         System.out.println(strings.remove(1));
     }
+
+    /**
+     * 把list声明为final，依然可以添加item
+     */
+    @Test
+    public void testFinal(){
+        final List<String> strings = new ArrayList<>();
+        System.out.println(strings.size());
+        strings.add("AAa");
+        System.out.println(strings.size());
+    }
 }

@@ -42,6 +42,8 @@
         <module>ssm</module>
         <module>springmvc</module>
         <module>kafka</module>
+        <module>dubbo_provider</module>
+        <module>dubbo_consumer</module>
     </modules>
 
     <build>

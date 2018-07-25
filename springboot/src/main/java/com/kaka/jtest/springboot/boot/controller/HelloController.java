@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author shuangkaijia
@@ -23,19 +24,30 @@ public class HelloController {
     private UserService userService;
 
     @RequestMapping("/importFile")
-    public String importFile(@RequestParam("file") MultipartFile file) throws Exception{
+    public String importFile(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println(file.getOriginalFilename());
-
         return "导入成功！";
     }
 
     @PostMapping("/testExceptionHandler")
-    public String testExceptionHandler(String name){
-        PageInfo<User> user  = userService.selectList();
+    public String testExceptionHandler(String name) {
+        PageInfo<User> user = userService.selectList();
         System.out.println(user);
         System.out.println(user.getTotal());
         return "testExceptionHandler";
     }
 
+    /**
+     * 重复读body体中的内容
+     *
+     * @return
+     */
+    @PostMapping("repetitionReadBody")
+    public String repetitionReadBody(@RequestBody Map<String, Object> map) {
+        for (String key : map.keySet()) {
+            System.out.println(map.get(key));
+        }
+        return "repetitionReadBody";
+    }
 
 }

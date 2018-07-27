@@ -2,7 +2,7 @@ package com.kaka.jtest.consumer.boot.beanconfig;
 
 import com.alibaba.dubbo.config.*;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
-import com.kaka.jtest.consumer.boot.config.DubboConfig;
+import com.kaka.jtest.consumer.config.DubboConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 3.注册配置
+     * 3.注册中心配置
      *
      * @return
      */
@@ -49,7 +49,6 @@ public class DubboBeanConfig {
         // zookeeper协议
         registryConfig.setProtocol(dubboConfig.getRegistryProtocol());
         registryConfig.setAddress(dubboConfig.getRegistryAddress());
-        registryConfig.setGroup("registry-ota");
         return registryConfig;
     }
 

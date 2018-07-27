@@ -14,4 +14,3 @@ spring:
   monitor:
    protocol: registry
    address: 10.43.100.169:2181
-  scan: com.kaka.jtest.provider.biz.service,com.kaka.jtest.a.boot.controller

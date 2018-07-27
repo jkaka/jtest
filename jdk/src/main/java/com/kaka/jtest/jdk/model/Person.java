@@ -5,6 +5,7 @@ public class Person {
     private String name;
 
     public Person() {
+        System.out.println("创建了一个Person...");
     }
 
     public Person(Integer id, String name) {

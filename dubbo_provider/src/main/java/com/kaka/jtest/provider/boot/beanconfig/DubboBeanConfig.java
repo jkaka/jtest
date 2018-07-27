@@ -2,6 +2,7 @@ package com.kaka.jtest.provider.boot.beanconfig;
 
 import com.alibaba.dubbo.config.*;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.kaka.jtest.provider.config.DubboConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author shuangkaijia
  */
 @Configuration
+@DubboComponentScan(basePackages = "com.kaka.jtest.provider.biz.service")
 public class DubboBeanConfig {
     @Autowired
     private DubboConfig dubboConfig;
@@ -19,6 +21,7 @@ public class DubboBeanConfig {
     /**
      * 1.协议配置(有 dubbo、rest、http、hessian、webservice)
      * 在20880端口上使用dubbo协议来export服务
+     *
      * @return
      */
     @Bean
@@ -61,6 +64,7 @@ public class DubboBeanConfig {
     /**
      * 4.监听地址、协议名
      * 统计服务和调用次数，调用时间监控中心。
+     *
      * @return
      */
     @Bean
@@ -75,11 +79,14 @@ public class DubboBeanConfig {
     /**
      * 5.设置dubbo扫描的包
      * 可以扫描到dubbo的注解，如：@Service、@Reference
+     * 第一种：annotationBean
+     * 第二种：在yml中配置spring.dubbo.scan的值
+     * 第三种：使用@DubboComponentScan注解
      *
      * @param
      * @return
      */
-    @Bean
+    //@Bean
     public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
         AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(packageName);

@@ -5,6 +5,7 @@ public class Student {
     private Integer score;
 
     public Student() {
+        System.out.println("创建了一个Student...");
     }
 
     public Student(String name, Integer score) {

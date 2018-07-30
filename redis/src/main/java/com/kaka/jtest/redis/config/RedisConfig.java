@@ -58,7 +58,7 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, String> redisTemplate() {
+    public RedisTemplate redisTemplate() {
         StringRedisTemplate template = new StringRedisTemplate(redisConnectionFactory());
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();

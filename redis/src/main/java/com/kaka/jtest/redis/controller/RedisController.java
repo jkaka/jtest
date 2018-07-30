@@ -1,5 +1,6 @@
 package com.kaka.jtest.redis.controller;
 
+import com.kaka.jtest.redis.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
@@ -18,8 +19,13 @@ import java.util.concurrent.TimeUnit;
 @Controller
 public class RedisController {
     private DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss SSS");
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplateObject;
+
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+
 
     @ResponseBody
     @RequestMapping("/getKey")
@@ -122,7 +128,18 @@ public class RedisController {
     public String expire() {
         Long time = null;
         redisTemplate.opsForValue().set("expire", "AAA", 5, TimeUnit.SECONDS);
-        System.out.println(0 == 0L);
         return "expire";
+    }
+
+    /**
+     * 查看保存Object和String的区别
+     */
+    @ResponseBody
+    @RequestMapping("/setObjectAndString")
+    public String setObjectAndString() {
+        List<User> users = Arrays.asList(new User(1));
+        redisTemplateObject.opsForValue().set("string", "AAA");
+        redisTemplateObject.opsForValue().set("object", users);
+        return "setObjectAndString";
     }
 }

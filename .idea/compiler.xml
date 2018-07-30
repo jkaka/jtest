@@ -10,9 +10,7 @@
         <module name="aliyunlog" />
         <module name="apollo" />
         <module name="demo" />
-        <module name="dubbo-A" />
         <module name="dubbo-api" />
-        <module name="dubbo-B" />
         <module name="dubbo_consumer" />
         <module name="dubbo_provider" />
         <module name="dubboapi" />
@@ -28,6 +26,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dubbo-A" target="1.8" />
+      <module name="dubbo-B" target="1.8" />
       <module name="dubboConsumer" target="1.8" />
       <module name="dubboProvider" target="1.8" />
       <module name="plugin" target="1.8" />

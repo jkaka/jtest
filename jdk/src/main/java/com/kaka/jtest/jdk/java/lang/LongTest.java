@@ -16,4 +16,21 @@ public class LongTest {
         Long num = 1L;
         System.out.println(matCodeIds.contains(num));
     }
+
+    @Test
+    public void compare2integerType() {
+        Integer one = 0;
+        Long one1 = 0L;
+        // 编译报错
+        // System.out.println(one == one1);
+
+    }
+
+    /**
+     * 与普通值比较,返回true
+     */
+    @Test
+    public void compare2common(){
+        System.out.println(0 == 0L);
+    }
 }

@@ -11,10 +11,9 @@ public class UserReadServiceImpl implements UserReadService {
         UserDTO userDTO = null;
         try {
             //-----------
-            return BaseResultUtil.handlerSuccessOne(userDTO);
+            return BaseResultUtil.handlerSuccess(userDTO, null);
         } catch (Exception e) {
-            //logger.info("查询环境配置失败！param：" + JSONObject.toJSONString(ecarxDeviceConfigurationDTO));
-            return BaseResultUtil.handlerFailureOne(userDTO);
+            return BaseResultUtil.handlerFailure(userDTO, e.getMessage());
         }
     }
 }

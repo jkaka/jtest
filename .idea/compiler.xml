@@ -14,6 +14,7 @@
         <module name="dubbo_consumer" />
         <module name="dubbo_provider" />
         <module name="dubboapi" />
+        <module name="jdbc" />
         <module name="jdk" />
         <module name="kafka" />
         <module name="mybatis" />

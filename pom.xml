@@ -35,8 +35,6 @@
         <module>redis</module>
         <module>apollo</module>
         <module>openUtils</module>
-        <module>dubbo-A</module>
-        <module>dubbo-B</module>
         <module>dubbo-api</module>
         <module>demo</module>
         <module>ssm</module>
@@ -44,6 +42,7 @@
         <module>kafka</module>
         <module>dubbo_provider</module>
         <module>dubbo_consumer</module>
+        <module>jdbc</module>
     </modules>
 
     <build>

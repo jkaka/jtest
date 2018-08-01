@@ -21,11 +21,11 @@ public class RedisController {
     private DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss SSS");
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplateObject;
-
-    @Autowired
     private RedisTemplate<String, String> redisTemplate;
-
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplateObject;
+    @Autowired
+    private RedisTemplate<String, List<User>> redisTemplateUsers;
 
     @ResponseBody
     @RequestMapping("/getKey")
@@ -138,8 +138,20 @@ public class RedisController {
     @RequestMapping("/setObjectAndString")
     public String setObjectAndString() {
         List<User> users = Arrays.asList(new User(1));
-        redisTemplateObject.opsForValue().set("string", "AAA");
-        redisTemplateObject.opsForValue().set("object", users);
+        redisTemplate.opsForValue().set("str", "ss");
+//        redisTemplateUsers.opsForValue().set("user", users);
+        redisTemplateObject.opsForValue().set("objStr", "ss");
+//        redisTemplateObject.opsForValue().set("objUser", users);
+
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("123", "hello");
+        properties.put("abc", "5");
+
+        redisTemplate.opsForHash().putAll("hash", properties);
+
+        Map<Object, Object> ans = redisTemplate.opsForHash().entries("hash");
+        System.out.println("ans: " + ans);
+
         return "setObjectAndString";
     }
 }

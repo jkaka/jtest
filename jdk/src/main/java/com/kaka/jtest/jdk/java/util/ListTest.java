@@ -1,8 +1,10 @@
 package com.kaka.jtest.jdk.java.util;
 
+import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListTest {
@@ -31,5 +33,17 @@ public class ListTest {
         System.out.println(strings.size());
         strings.add("AAa");
         System.out.println(strings.size());
+    }
+
+    /**
+     * 泛型转换
+     */
+    @Test
+    public void genericity(){
+        Object list = new ArrayList<Person>(Arrays.asList(new Person(1,"AA")));
+        List<String> one = (List<String>) list;
+        System.out.println(one.size());
+        // 当取出元素的时候，会把list中的对象转换为String
+        System.out.println(one.get(0));
     }
 }

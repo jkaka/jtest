@@ -38,11 +38,11 @@ public class HelloController {
     }
 
     /**
-     * 重复读body体中的内容
+     * 重复读body体中的内容(只能读取一次)
      *
      * @return
      */
-    @PostMapping("repetitionReadBody")
+    @PostMapping("/repetitionReadBody")
     public String repetitionReadBody(@RequestBody Map<String, Object> map) {
         for (String key : map.keySet()) {
             System.out.println(map.get(key));

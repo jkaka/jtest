@@ -12,17 +12,20 @@ import java.io.InputStream;
 
 /**
  * 请求拦截器
+ *
+ * @author shuangkaijia
  */
 @Component
 public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+        System.out.println("2.拦截器拦截请求：" + httpServletRequest.getRequestURI());
         InputStream is = null;
         String contentStr = "";
         try {
             is = httpServletRequest.getInputStream();
-            contentStr = IOUtils.toString(is, "utf-8");
-            System.out.println("uri:" + httpServletRequest.getRequestURI() + ";\n请求体：" + contentStr);
+//            contentStr = IOUtils.toString(is, "utf-8");
+//            System.out.println("请求体：" + contentStr);
         } catch (IOException e) {
             e.printStackTrace();
         }

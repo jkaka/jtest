@@ -23,6 +23,7 @@ public class HelloExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> operateExp(Exception ex, HttpServletRequest request) {
+        System.out.println("全局异常处理器：");
         logger.error("处理" + request.getRequestURI() + "请求系统异常,如下:", ex);
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         Map<String, Object> map = new HashMap<>();

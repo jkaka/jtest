@@ -23,16 +23,15 @@ public class LogUtil {
         logger = LoggerFactory.getLogger(clazz);
     }
 
-
-    public void error(String s) {
-        if (logger.isErrorEnabled()) {
-            logger.error(s);
+    public void debug(String s) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(s);
         }
     }
 
-    public void error(String s, Throwable e) {
-        if (logger.isErrorEnabled()) {
-            logger.error(s, e);
+    public void debug(String s, Throwable e) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(s, e);
         }
     }
 
@@ -62,15 +61,15 @@ public class LogUtil {
         }
     }
 
-    public void debug(String s) {
-        if (logger.isDebugEnabled()) {
-            logger.info(s);
+    public void error(String s) {
+        if (logger.isErrorEnabled()) {
+            logger.error(s);
         }
     }
 
-    public void debug(String s, Throwable e) {
-        if (logger.isDebugEnabled()) {
-            logger.info(s, e);
+    public void error(String s, Throwable e) {
+        if (logger.isErrorEnabled()) {
+            logger.error(s, e);
         }
     }
 }

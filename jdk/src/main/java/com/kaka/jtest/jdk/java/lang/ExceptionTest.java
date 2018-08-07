@@ -89,6 +89,7 @@ public class ExceptionTest {
             System.out.println(i);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println(e.getClass());
         }
     }
 

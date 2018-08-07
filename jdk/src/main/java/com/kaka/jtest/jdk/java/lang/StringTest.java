@@ -82,4 +82,22 @@ public class StringTest {
             System.out.println(str);
         }
     }
+
+    /**
+     * trim去掉前后空格
+     */
+    @Test
+    public void trim(){
+        String str = "    V6.4.2.  A     ";
+        System.out.println(str.trim());
+    }
+
+    /**
+     * \s 可以匹配空格、制表符、换页符等空白字符的其中任意一个
+     */
+    @Test
+    public void replaceAll(){
+        String str = "    V6.4.2.  A     ";
+        System.out.println(str.replaceAll("\\s+$", ""));
+    }
 }

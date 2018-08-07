@@ -1,6 +1,5 @@
 package com.kaka.jtest.openutils.fastjson;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kaka.jtest.openutils.dataobject.Person;
@@ -44,17 +43,24 @@ public class JSONObjectTest {
 
     /**
      * json字符串转map
+     * parseObject(jsonStr); 返回值只能是Map<String, Object>
+     * parseObject(jsonStr, Map.class);
      */
     @Test
     public void json2map() {
         List<Person> personList = new ArrayList<>(Arrays.asList(new Person(1, "AA"), new Person(2, "BB")));
         Map<String, String> map = new HashMap<>();
         map.put("insertList", JSONObject.toJSONString(personList));
+        System.out.println(map);
         String jsonStr = JSONObject.toJSONString(map);
         System.out.println(jsonStr);
 
-        Map<String, String> map1 = JSONObject.parseObject(jsonStr, Map.class);
+        Map<String, Object> map1 = JSONObject.parseObject(jsonStr);
         System.out.println(map1);
+        System.out.println(map1.get("insertList"));
+        Map<String, Object> map2 = JSONObject.parseObject(jsonStr, Map.class);
+        System.out.println(map2);
+        System.out.println(map2.get("insertList"));
     }
 
     /**

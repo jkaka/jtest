@@ -18,17 +18,18 @@ import java.util.Map;
 @Controller
 @RequestMapping("/acceptController")
 public class AcceptController {
+    @ResponseBody
     @RequestMapping(produces = "text/html")
-    public ModelAndView errorHtml(HttpServletRequest request,
+    public String errorHtml(HttpServletRequest request,
                                   HttpServletResponse response) {
         System.out.println("accept=text/html");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("getConnect");
-        return modelAndView;
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("getConnect");
+        return "text/html";
     }
 
-    @RequestMapping
     @ResponseBody
+    @RequestMapping
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
         System.out.println("accept=ResponseBody");
         Map<String, Object> map = new HashMap<>();

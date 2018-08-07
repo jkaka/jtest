@@ -2,6 +2,7 @@ package com.kaka.jtest.springboot.boot.beanconfig;
 
 import com.kaka.jtest.springboot.biz.converter.HelloConverter;
 import com.kaka.jtest.springboot.biz.interceptor.RequestInterceptor;
+import com.kaka.jtest.springboot.biz.interceptor.UriInterceptor;
 import com.kaka.jtest.springboot.biz.security.AuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -25,6 +26,8 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
     private HelloConverter helloConverter;
     @Autowired
     private RequestInterceptor requestInterceptor;
+    @Autowired
+    private UriInterceptor uriInterceptor;
 
     /**
      * 1.过滤器注册
@@ -52,6 +55,7 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(uriInterceptor).addPathPatterns("/**");
     }
 
     /**

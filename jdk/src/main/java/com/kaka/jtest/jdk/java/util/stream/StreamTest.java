@@ -1,16 +1,15 @@
 package com.kaka.jtest.jdk.java.util.stream;
 
-import com.kaka.jtest.jdk.model.Person;
-import com.kaka.jtest.jdk.model.Student;
+import com.kaka.jtest.jdk.java.model.Person;
+import com.kaka.jtest.jdk.java.model.Student;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
@@ -122,6 +121,7 @@ public class StreamTest {
     }
 
     /**
+     * 自定义比较条件,取出最小的对象
      * min返回一个Optional对象，然后使用get方法取出Optional对象中的值
      */
     @Test
@@ -137,8 +137,24 @@ public class StreamTest {
     }
 
     /**
+     * 自定义比较条件,取出最大的对象
+     * min返回一个Optional对象，然后使用get方法取出Optional对象中的值
+     */
+    @Test
+    public void max() {
+        List<Student> students = asList(new Student("张三", 524),
+                new Student("李四", 378),
+                new Student("王五", 451));
+
+        Student lowStudent = students.stream()
+                .max(Comparator.comparing(track -> track.getScore()))
+                .get();
+        System.out.println(lowStudent);
+    }
+
+    /**
      * reduce中：10为初始值；acc是累加器；element是当前元素
-     * reduce的放回类型为BinaryOperator
+     * reduce的返回类型为BinaryOperator
      */
     @Test
     public void reduce() {
@@ -173,4 +189,19 @@ public class StreamTest {
 //        System.out.println("sum:" + intStream.sum());
     }
 
+    /**
+     * 使用foreach修改list中的值
+     */
+    @Test
+    public void foreach() {
+        List<Student> students = asList(new Student("张三", 524),
+                new Student("李四", 378),
+                new Student("王五", 451));
+        students.stream()
+                .forEach(student -> {
+                    student.setName("AA");
+                    System.out.println("******");
+                });
+        System.out.println(students);
+    }
 }

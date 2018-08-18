@@ -49,6 +49,8 @@ public class DubboBeanConfig {
         // zookeeper协议
         registryConfig.setProtocol(dubboConfig.getRegistryProtocol());
         registryConfig.setAddress(dubboConfig.getRegistryAddress());
+        // zk的维度分组：分组后，监听的服务和注册的服务都会在这个分组中；默认值为dubbo
+        registryConfig.setGroup("registry-ota");
         return registryConfig;
     }
 
@@ -104,6 +106,7 @@ public class DubboBeanConfig {
     public ConsumerConfig consumerConfig(ApplicationConfig applicationConfig, RegistryConfig registryConfig) {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
+        consumerConfig.setFilter("consumer_filter");
         return consumerConfig;
     }
 }

@@ -100,4 +100,11 @@ public class StringTest {
         String str = "    V6.4.2.  A     ";
         System.out.println(str.replaceAll("\\s+$", ""));
     }
+
+    @Test
+    public void lastIndexOf(){
+        String fileName = "ab.c.rar";
+        System.out.println(fileName.lastIndexOf("."));
+        System.out.println(fileName.substring(fileName.lastIndexOf(".")));
+    }
 }

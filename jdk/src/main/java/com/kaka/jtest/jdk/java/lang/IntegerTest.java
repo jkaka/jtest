@@ -48,4 +48,10 @@ public class IntegerTest {
         update = 2999999;
         System.out.println(map.get("aa"));
     }
+
+    @Test
+    public void max() {
+        Integer max = 1024 * 1024 * 1024;
+        System.out.println(max);
+    }
 }

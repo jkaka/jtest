@@ -1,0 +1,29 @@
+package com.kaka.jtest.consumer.biz.filter.dubbo;
+
+import com.alibaba.dubbo.rpc.*;
+import com.kaka.jtest.consumer.common.utils.TraceIDUtil;
+import org.slf4j.MDC;
+
+/**
+ * 1.在resources中创建文件
+ * META-INF/dubbo/com.alibaba.dubbo.rpc.Filter
+ * 2.根据需求：consumerConfig.setFilter("consumer_filter");或者providerConfig.setFilter("dubboTraceIdFilter");
+ *
+ * dubbo服务消费者开始调用、提供者被调用时都可以进入到filter
+ * @author jsk
+ * @Date 2018/8/18 13:22
+ */
+public class TraceIdFilter implements Filter {
+    private static final String TRACE_ID = "traceId";
+
+    @Override
+    public Result invoke(Invoker<?> invoker, Invocation inv) throws RpcException {
+        System.out.println("把当前线程中的traceId,通过filter传给dubbo提供者");
+        if (inv.getAttachment(TRACE_ID) != null) {
+            MDC.put(TRACE_ID, TraceIDUtil.getTraceId());
+        } else if (TraceIDUtil.getTraceId() != null) {
+            inv.getAttachments().put(TRACE_ID, TraceIDUtil.getTraceId());
+        }
+        return invoker.invoke(inv);
+    }
+}

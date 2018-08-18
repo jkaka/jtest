@@ -41,6 +41,7 @@ public class DataSourceBeanConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
+        // 注意：xml的文件目录,idea的显示方式是com.kaka.jtest...(有的文件名就是“.”，就不能使用“/”了)
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().
                 getResources("classpath:com/kaka/jtest/springboot/biz/mapper/*.xml"));
         //添加插件

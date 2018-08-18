@@ -8,6 +8,7 @@ import org.junit.Test;
 public class SystemTest {
     /**
      * 获取当前时间的毫秒数
+     *
      * @throws InterruptedException
      */
     @Test
@@ -22,8 +23,14 @@ public class SystemTest {
      * 获取环境变量
      */
     @Test
-    public void getenv(){
-        String path=System.getenv("a");
+    public void getenv() {
+        String path = System.getenv("a");
         System.out.println(path);
+    }
+
+    @Test
+    public void getProperty() {
+        String machineId = System.getProperty("machine_Id");
+        System.out.println(machineId);
     }
 }

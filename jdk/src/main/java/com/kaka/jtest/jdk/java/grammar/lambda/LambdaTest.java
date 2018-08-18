@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.lambda;
+package com.kaka.jtest.jdk.java.grammar.lambda;
 
 import org.junit.Test;
 

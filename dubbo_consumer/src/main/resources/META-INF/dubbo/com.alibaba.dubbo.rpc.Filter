@@ -1,0 +1,1 @@
+consumer_filter=com.kaka.jtest.consumer.biz.filter.dubbo.TraceIdFilter

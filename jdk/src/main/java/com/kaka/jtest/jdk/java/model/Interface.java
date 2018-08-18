@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.model;
+package com.kaka.jtest.jdk.java.model;
 
 public interface Interface {
     void doSomething();

@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.model;
+package com.kaka.jtest.jdk.java.model;
 
 public class Person {
     private Integer id;

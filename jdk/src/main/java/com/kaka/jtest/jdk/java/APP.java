@@ -1,6 +1,6 @@
-package com.kaka.jtest.jdk.staged;
+package com.kaka.jtest.jdk.java;
 
-import com.kaka.jtest.jdk.model.Person;
+import com.kaka.jtest.jdk.java.model.Person;
 import org.junit.Test;
 
 import java.util.List;

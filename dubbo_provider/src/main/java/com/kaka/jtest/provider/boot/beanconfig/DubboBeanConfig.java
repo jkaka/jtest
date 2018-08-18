@@ -110,6 +110,9 @@ public class DubboBeanConfig {
         providerConfig.setProtocol(protocolConfig);
         // 提供者的维度分组：分组后所有提供的服务都会在这个组中。
 //        providerConfig.setGroup("a-provider");
+
+        // 这个名称在com.alibaba.dubbo.rpc.Filter文件中配置
+        providerConfig.setFilter("dubboTraceIdFilter");
         return providerConfig;
     }
 

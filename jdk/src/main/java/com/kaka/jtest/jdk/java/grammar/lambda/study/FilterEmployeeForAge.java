@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.lambda.study;
+package com.kaka.jtest.jdk.java.grammar.lambda.study;
 
 /**
  * 策略类

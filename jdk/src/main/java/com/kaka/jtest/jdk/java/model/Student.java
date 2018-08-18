@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.model;
+package com.kaka.jtest.jdk.java.model;
 
 public class Student {
     private String name;

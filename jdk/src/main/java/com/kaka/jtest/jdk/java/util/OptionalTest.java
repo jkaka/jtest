@@ -50,12 +50,15 @@ public class OptionalTest {
         System.out.println(alsoEmpty.isPresent());
     }
 
+    /**
+     * 使用 orElse 方法则更简洁，当 Optional 对象为空时，该方法提供了一个备选值。
+     * 如果计算备选值在计算上太过繁琐，即可使用 orElseGet 方法。该方法接受一个Supplier 对象，只有在 Optional 对象真正为空时才会调用。
+     * 如果默认值需要计算时,推荐使用orElseGet
+     */
     @Test
     public void orElse() {
         Optional emptyOptional = Optional.empty();
         System.out.println(emptyOptional.orElse("testOrElse"));
-        // 如果计算备选值在计算上太过繁琐，即可使用 orElseGet 方法。该方法接受一个
-        // Supplier 对象，只有在 Optional 对象真正为空时才会调用。
         System.out.println(emptyOptional.orElseGet(() -> {
             System.out.println("当emptyOptional没有值时,才调用！");
             return "testOrElse";

@@ -23,12 +23,6 @@ public class HelloController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/importFile")
-    public String importFile(@RequestParam("file") MultipartFile file) throws Exception {
-        System.out.println(file.getOriginalFilename());
-        return "导入成功！";
-    }
-
     @PostMapping("/testExceptionHandler")
     public String testExceptionHandler(String name) {
         PageInfo<User> user = userService.selectList();

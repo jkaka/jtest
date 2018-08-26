@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UserService {
     PageInfo<User> selectList();
+    Integer selectAge(String userName);
 }

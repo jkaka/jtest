@@ -19,6 +19,7 @@ public class APP {
                     task.setName("offline");
                     System.out.println(task);
                 });
+
     }
 
 }

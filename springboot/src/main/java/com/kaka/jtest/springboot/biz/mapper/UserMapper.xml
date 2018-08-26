@@ -4,4 +4,8 @@
     <select id="selectList" resultType="com.kaka.jtest.springboot.biz.dataobject.User">
         select * from users
     </select>
+
+    <select id="selectAge" parameterType="string" resultType="integer">
+        select age from users where `name` = #{name}
+    </select>
 </mapper>

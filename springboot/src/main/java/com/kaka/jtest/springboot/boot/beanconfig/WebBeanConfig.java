@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -94,15 +95,21 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        //文件最大
-        factory.setMaxFileSize("1024000KB"); //KB,MB
+        // 单个文件最大值 KB,MB
+        factory.setMaxFileSize("1024000KB");
         /// 设置总上传数据总大小
-        factory.setMaxRequestSize("1024000KB");
+        factory.setMaxRequestSize("500MB");
         File file = new File("E:/springboot/upload12");
         if (!file.exists()) {
             file.mkdirs();
         }
         factory.setLocation(file.getAbsolutePath());
         return factory.createMultipartConfig();
+    }
+
+//    @Bean
+    public MultipartResolver multipartResolver(){
+        CustomMultipartResolver customMultipartResolver = new CustomMultipartResolver();
+        return customMultipartResolver;
     }
 }

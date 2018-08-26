@@ -23,4 +23,11 @@ public class UserServiceImpl implements  UserService {
         PageInfo<User> p=new PageInfo<>(userList);
         return p;
     }
+
+    @Override
+    public Integer selectAge(String userName) {
+        return userDao.selectAge(userName);
+    }
+
+
 }

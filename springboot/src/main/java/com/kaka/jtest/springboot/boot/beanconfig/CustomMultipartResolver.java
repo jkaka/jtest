@@ -7,7 +7,6 @@ import org.apache.commons.fileupload.FileUploadBase;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -16,32 +15,32 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
+ * 自定义multipartResolver
+ *
  * @author jsk
  * @Date 2018/8/20 17:13
  */
-//@Component("multipartResolver")
 public class CustomMultipartResolver extends CommonsMultipartResolver {
-    // 注入第二步写的FileUploadProgressListener
     @Autowired
-    private UploadFileListener uploadFileListener;
-
-    public void setUploadFileListener(UploadFileListener uploadFileListener) {
-        this.uploadFileListener = uploadFileListener;
-    }
+    private UploadFileListener uploadProgressListener;
 
     @Override
-    public MultipartParsingResult parseRequest(HttpServletRequest request) throws MultipartException {
+    protected MultipartParsingResult parseRequest(HttpServletRequest request) throws MultipartException {
         String encoding = determineEncoding(request);
         FileUpload fileUpload = prepareFileUpload(encoding);
-        uploadFileListener.setSession(request.getSession());
-        fileUpload.setProgressListener(uploadFileListener);
+        // 文件上传进度监听器设置session用于存储上传进度
+        uploadProgressListener.setSession(request.getSession());
+        // 将文件上传进度监听器加入到 fileUpload 中
+        fileUpload.setProgressListener(uploadProgressListener);
         try {
             List<FileItem> fileItems = ((ServletFileUpload) fileUpload).parseRequest(request);
             return parseFileItems(fileItems, encoding);
         } catch (FileUploadBase.SizeLimitExceededException ex) {
             throw new MaxUploadSizeExceededException(fileUpload.getSizeMax(), ex);
+        } catch (FileUploadBase.FileSizeLimitExceededException ex) {
+            throw new MaxUploadSizeExceededException(fileUpload.getFileSizeMax(), ex);
         } catch (FileUploadException ex) {
-            throw new MultipartException("Could not parse multipart servlet request", ex);
+            throw new MultipartException("Failed to parse multipart servlet request", ex);
         }
     }
 

@@ -92,7 +92,7 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
      *
      * @return
      */
-    @Bean
+    // @Bean 如果使用自定义的multipartResolver   就不能创建这个
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         // 单个文件最大值 KB,MB
@@ -107,8 +107,13 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
         return factory.createMultipartConfig();
     }
 
-//    @Bean
-    public MultipartResolver multipartResolver(){
+    /**
+     * new 出来的对象会放入IOC中,所以对象中有注入的bean也可以正常注入
+     *
+     * @return
+     */
+    @Bean
+    public MultipartResolver multipartResolver() {
         CustomMultipartResolver customMultipartResolver = new CustomMultipartResolver();
         return customMultipartResolver;
     }

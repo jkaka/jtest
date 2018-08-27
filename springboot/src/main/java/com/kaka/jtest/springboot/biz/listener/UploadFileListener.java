@@ -1,6 +1,6 @@
 package com.kaka.jtest.springboot.biz.listener;
 
-import com.sun.javaws.progress.Progress;
+import com.kaka.jtest.springboot.biz.model.ProgressEntity;
 import org.apache.commons.fileupload.ProgressListener;
 import org.springframework.stereotype.Component;
 
@@ -17,16 +17,19 @@ public class UploadFileListener implements ProgressListener {
 
     public void setSession(HttpSession session) {
         this.session = session;
-        //保存上传状态
-        Progress status = new Progress();
+        ProgressEntity status = new ProgressEntity();
         session.setAttribute("status", status);
     }
 
+    /*
+     * pBytesRead 到目前为止读取文件的比特数 pContentLength 文件总大小 pItems 目前正在读取第几个文件
+     */
     @Override
     public void update(long pBytesRead, long pContentLength, int pItems) {
-        System.out.println("-----------------------");
-        System.out.println(pBytesRead);
-        System.out.println(pContentLength);
-        System.out.println(pItems);
+        ProgressEntity status = (ProgressEntity) session.getAttribute("status");
+        status.setpBytesRead(pBytesRead);
+        status.setpContentLength(pContentLength);
+        status.setpItems(pItems);
+        System.out.println("已读取" + pBytesRead);
     }
 }

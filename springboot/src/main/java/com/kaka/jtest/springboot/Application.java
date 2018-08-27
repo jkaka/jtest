@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
 /**
  * @author shuangkaijia
  */
-@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class })
+// 取消Multipart的自动配置
+@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

@@ -14,7 +14,7 @@ public class Base64Test {
      */
     @Test
     public void encodeBase64() {
-        String string = "abckkkkkk";
+        String string = "abc";
         byte[] base64 = Base64.encodeBase64(string.getBytes());
         String baseToken = new String(base64);
         System.out.println(baseToken);

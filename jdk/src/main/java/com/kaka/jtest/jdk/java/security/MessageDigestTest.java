@@ -50,12 +50,13 @@ public class MessageDigestTest {
     public void token() throws Exception {
         // 1.取出body体的字符串
         String appSecret = "upload";
-        String bodyStr = "{\"serviceName\":\"ihulog\",\"key\":\"E599FE7113B145DCFD6F3EA799BED621\",\"fileName\":\"测试一片.pdf\"}";
+        String bodyStr = "{\"fileName\":\"1.zip\",\"key\":\"cd645dce5f4b4129f07f72c7d4037030\",\"serviceName\":\"ihulog\"}";
         String befoteSecret = (bodyStr + appSecret).replaceAll("\\s*", "");
         // 2.md5加密(加密之后把字节转为16进制的字符)
         String md5Str = Md5Util.md5Encode(befoteSecret);
+        System.out.println(md5Str);
         // 3.base64编码
-        String baseToken = new String(new BASE64Encoder().encode(md5Str.getBytes()));
+        String baseToken = new String(new BASE64Encoder().encode(md5Str.toLowerCase().getBytes()));
         System.out.println(baseToken);
     }
 
@@ -65,11 +66,11 @@ public class MessageDigestTest {
     @Test
     public void fileToken() {
         Map<String, String> map = new HashMap<>();
-        map.put("key", "E599FE7113B145DCFD6F3EA799BED624");
-        map.put("fileName", "测试多片.pdf");
-        map.put("chunk", "11");
-        map.put("chunks", "25");
-        map.put("fileSize", "8442350");
+        map.put("key", "892fc6e02ebee25d0f0a4d441f916973");
+        map.put("fileName", "5.zip");
+        map.put("chunk", "1");
+        map.put("chunks", "1");
+        map.put("fileSize", "5618");
 
         Object[] keyArray = map.keySet().toArray();
         //1.把key按自然排序
@@ -87,9 +88,11 @@ public class MessageDigestTest {
         requestUri += signStr;
 
         String appId = "upload";
-        String appSecret = "null";
+        String appSecret = "upload";
         String befoteSecret = (requestUri + appSecret).replaceAll("\\s*", "");
+        System.out.println(befoteSecret);
         String md5Str = Md5Util.md5Encode(befoteSecret);
+        System.out.println(md5Str);
         String baseToken = new String(new BASE64Encoder().encode(md5Str.getBytes()));
         System.out.println(baseToken);
     }

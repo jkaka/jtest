@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.grammar.interface0;
+package com.kaka.jtest.jdk.java8.newInterface;
 
 public interface Carriage {
  

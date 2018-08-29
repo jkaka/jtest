@@ -1,13 +1,12 @@
 package com.kaka.jtest.jdk.java.util.stream;
 
-import com.kaka.jtest.jdk.java.model.Person;
-import com.kaka.jtest.jdk.java.model.Student;
+import com.kaka.jtest.jdk.model.Person;
+import com.kaka.jtest.jdk.model.Student;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

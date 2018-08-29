@@ -1,7 +1,7 @@
 package com.kaka.jtest.jdk.java.lang.reflect;
 
-import com.kaka.jtest.jdk.java.model.Interface;
-import com.kaka.jtest.jdk.java.model.RealObject;
+import com.kaka.jtest.jdk.model.Interface;
+import com.kaka.jtest.jdk.model.RealObject;
 
 import java.lang.reflect.Proxy;
 

@@ -1,10 +1,10 @@
-package com.kaka.jtest.jdk.java.grammar.interface0;
+package com.kaka.jtest.jdk.java8.newInterface;
 
 /**
  * @author jsk
- * @Date 2018/8/13 9:36
+ * @Date 2018/8/13 9:33
  */
-public class ChildImpl implements Child {
+public class ParentImpl implements Parent {
     private String message;
     @Override
     public void message(String body) {

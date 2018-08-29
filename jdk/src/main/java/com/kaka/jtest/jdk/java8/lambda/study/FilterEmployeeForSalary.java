@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.grammar.lambda.study;
+package com.kaka.jtest.jdk.java8.lambda.study;
 
 public class FilterEmployeeForSalary implements MyPredicate<Employee> {
 

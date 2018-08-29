@@ -1,7 +1,7 @@
 package com.kaka.jtest.jdk.java.lang;
 
-import com.kaka.jtest.jdk.java.model.Person;
-import com.kaka.jtest.jdk.java.model.Student;
+import com.kaka.jtest.jdk.model.Person;
+import com.kaka.jtest.jdk.model.Student;
 
 public class ObjectTest {
     private static Student student = new Student();

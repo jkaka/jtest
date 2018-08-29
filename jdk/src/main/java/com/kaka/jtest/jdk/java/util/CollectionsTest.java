@@ -1,6 +1,6 @@
 package com.kaka.jtest.jdk.java.util;
 
-import com.kaka.jtest.jdk.java.model.Person;
+import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
 import java.util.*;

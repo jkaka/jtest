@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.grammar.interface0;
+package com.kaka.jtest.jdk.java8.newInterface;
 
 /**
  * java8的新语法中,可以在接口中定义默认方法和静态方法

@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.model;
+package com.kaka.jtest.jdk.model;
 
 public class RealObject implements Interface {
     @Override

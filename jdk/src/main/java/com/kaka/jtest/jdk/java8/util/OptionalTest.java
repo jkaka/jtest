@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.util;
+package com.kaka.jtest.jdk.java8.util;
 
 import org.junit.Test;
 

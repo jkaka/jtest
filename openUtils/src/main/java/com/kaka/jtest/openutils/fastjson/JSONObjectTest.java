@@ -95,4 +95,10 @@ public class JSONObjectTest {
         System.out.println(str);
     }
 
+    @Test
+    public void toJSONString(){
+        String[] strings = {"aa", "bb"};
+        System.out.println(JSONObject.toJSONString(strings));
+    }
+
 }

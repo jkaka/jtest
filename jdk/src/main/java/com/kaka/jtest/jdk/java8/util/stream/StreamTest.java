@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.util.stream;
+package com.kaka.jtest.jdk.java8.util.stream;
 
 import com.kaka.jtest.jdk.model.Person;
 import com.kaka.jtest.jdk.model.Student;
@@ -7,11 +7,14 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 
@@ -203,4 +206,5 @@ public class StreamTest {
                 });
         System.out.println(students);
     }
+
 }

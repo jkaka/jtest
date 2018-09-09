@@ -1,4 +1,4 @@
-package com.kaka.jtest.jdk.java.util.stream;
+package com.kaka.jtest.jdk.java8.util.stream;
 
 import java.util.IntSummaryStatistics;
 import java.util.stream.Stream;

@@ -8,6 +8,10 @@ public class Student {
         System.out.println("创建了一个Student...");
     }
 
+    public Student(String name){
+        System.out.println("name:" + name);
+        this.name = name;
+    }
     public Student(String name, Integer score) {
         this.name = name;
         this.score = score;

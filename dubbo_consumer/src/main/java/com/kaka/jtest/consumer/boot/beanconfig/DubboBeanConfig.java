@@ -14,7 +14,7 @@ public class DubboBeanConfig {
     private DubboConfig dubboConfig;
 
     /**
-     * 1.协议配置(有 dubbo、rest、http、hessian、webservice)
+     * 1.通信规则配置(有 dubbo、rest、http、hessian、webservice)
      *
      * @return
      */
@@ -97,7 +97,7 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 7.消费配置
+     * 7.消费配置(所有reference的缺省配置)
      * @param applicationConfig
      * @param registryConfig
      * @return

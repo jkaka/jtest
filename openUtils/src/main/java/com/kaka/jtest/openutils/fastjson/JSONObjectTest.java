@@ -47,21 +47,34 @@ public class JSONObjectTest {
      * parseObject(jsonStr, Map.class);
      */
     @Test
-    public void json2map() {
+    public void json2Map() {
         List<Person> personList = new ArrayList<>(Arrays.asList(new Person(1, "AA"), new Person(2, "BB")));
         Map<String, String> map = new HashMap<>();
         map.put("insertList", JSONObject.toJSONString(personList));
-        System.out.println(map);
+        System.out.println("原生toString() : " + map);
         String jsonStr = JSONObject.toJSONString(map);
-        System.out.println(jsonStr);
+        System.out.println("fastJson的toString() : " + jsonStr);
 
         Map<String, Object> map1 = JSONObject.parseObject(jsonStr);
-        System.out.println(map1);
+        System.out.println("未指定class时,toString：" + map1);
         System.out.println(map1.get("insertList"));
+
         Map<String, Object> map2 = JSONObject.parseObject(jsonStr, Map.class);
-        System.out.println(map2);
+        System.out.println("指定class时,toString与java原生的一样：" + map2);
         System.out.println(map2.get("insertList"));
     }
+
+    /**
+     * json字符串转List
+     */
+    @Test
+    public void json2List() {
+        List<String> labelIds = Arrays.asList("AA", "bb");
+        String labelIdsJson = JSONObject.toJSONString(labelIds);
+        labelIds = JSONObject.parseObject(labelIdsJson, List.class);
+        System.out.println(labelIds);
+    }
+
 
     /**
      * 得到jsonObject中key对应的value，如果key不存在时返回null
@@ -96,7 +109,7 @@ public class JSONObjectTest {
     }
 
     @Test
-    public void toJSONString(){
+    public void toJSONString() {
         String[] strings = {"aa", "bb"};
         System.out.println(JSONObject.toJSONString(strings));
     }

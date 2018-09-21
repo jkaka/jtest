@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class DateTest {
 
@@ -15,12 +16,26 @@ public class DateTest {
      * @throws ParseException
      */
     @Test
-    public void getTime() throws ParseException {
+    public void timestamp() throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = dateFormat.parse("2038-01-01 00:00:00");
+        Date date = dateFormat.parse("1970-01-01 08:00:01");
         System.out.println(date.getTime());
     }
 
+    /**
+     * getTime：得到1970-01-01 00:00:00到现在的毫秒数
+     * 中国是东八区,所以开始时间为：1970-01-01 08:00:00
+     * @throws ParseException
+     * @throws InterruptedException
+     */
+    @Test
+    public void getTime() throws ParseException, InterruptedException {
+        Date date = new Date();
+        System.out.println(date.getTime());
+        TimeUnit.MILLISECONDS.sleep(300);
+        System.out.println(System.currentTimeMillis());
+
+    }
     /**
      * date的构造函数
      */

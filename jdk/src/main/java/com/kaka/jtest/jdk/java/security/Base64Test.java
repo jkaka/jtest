@@ -16,6 +16,7 @@ public class Base64Test {
 
     /**
      * BASE加密后产生的字节位数是8的倍数，如果不够位数以=符号填充
+     * jdk的base64根据RFC822规定，一行不能超过76字符，超过则添加回车换行符,推荐使用Apache的commons-codec
      *
      * @throws IOException
      */
@@ -24,6 +25,7 @@ public class Base64Test {
         String key = "abc";
         String result = new BASE64Encoder().encodeBuffer(key.getBytes());
         System.out.println("加密之后：" + result);
+
         byte[] bytes = new BASE64Decoder().decodeBuffer(result);
         System.out.println("解密：" + new String(bytes));
     }

@@ -70,4 +70,11 @@ public class APP {
         System.out.println(users);
         System.out.println(p);
     }
+
+    @Test
+    public void testIf(){
+        String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.testIf";
+        List<User> users = sqlSession.selectList(statement);
+        System.out.println(users);
+    }
 }

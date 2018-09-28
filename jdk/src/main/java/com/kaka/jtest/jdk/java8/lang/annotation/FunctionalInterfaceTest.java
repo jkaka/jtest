@@ -1,7 +1,8 @@
-package com.kaka.jtest.jdk.java.lang.annotation;
+package com.kaka.jtest.jdk.java8.lang.annotation;
 
 /**
  * 函数接口,使用@FunctionalInterface注解标识
+ * 只有一个抽象方法的接口
  *
  * @author shuangkaijia
  */

@@ -19,4 +19,11 @@
     <select id="listUserTestPage" resultType="com.kaka.jtest.mybatis.entities.User">
         select * from users
     </select>
+
+    <select id="testIf" resultType="com.kaka.jtest.mybatis.entities.User">
+        select * from users
+        <if test="name = 'jsk'">
+            where  id = 1
+        </if>
+    </select>
 </mapper>

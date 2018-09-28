@@ -41,10 +41,11 @@
             <version>3.0</version>
         </dependency>
 
+        <!--Apache编码解码器-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
+            <version>1.11</version>
         </dependency>
     </dependencies>
 

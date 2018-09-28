@@ -43,6 +43,7 @@
         <module>dubbo_provider</module>
         <module>dubbo_consumer</module>
         <module>jdbc</module>
+        <module>mybatis-plus</module>
     </modules>
 
     <build>

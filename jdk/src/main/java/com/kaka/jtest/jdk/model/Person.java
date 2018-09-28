@@ -36,4 +36,8 @@ public class Person {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    public Person getPersonByName(String name){
+        return new Person(666, name);
+    }
 }

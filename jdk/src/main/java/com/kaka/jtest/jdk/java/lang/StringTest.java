@@ -42,7 +42,7 @@ public class StringTest {
     }
 
     /**
-     * 测试replace
+     * 测试replace：不支持使用正则
      * 如果没有需要替换的字符串，返回的String对象就是原来的String
      */
     @Test
@@ -93,12 +93,18 @@ public class StringTest {
     }
 
     /**
+     * replaceAll：替换所有，支持使用正则表达式
      * \s 可以匹配空格、制表符、换页符等空白字符的其中任意一个
      */
     @Test
     public void replaceAll(){
+        // 去后空格
         String str = "    V6.4.2.  A     ";
         System.out.println(str.replaceAll("\\s+$", ""));
+
+        // .*：任意字符
+        str = "http://ota-prod.oss-cn-hangzhou.aliyuncs.com/development/ad/a54603c98dd867708c525c1ca8a8358f_0Btm.png";
+        System.out.println(str.replaceAll("http://.*.oss-cn-hangzhou.aliyuncs.com/", ""));
     }
 
     @Test

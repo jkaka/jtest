@@ -6,5 +6,5 @@
 *.ear
 
 .idea/
-jtest.iml
+*.iml
 poi/target/

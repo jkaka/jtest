@@ -113,4 +113,18 @@ public class StringTest {
         System.out.println(fileName.lastIndexOf("."));
         System.out.println(fileName.substring(fileName.lastIndexOf(".")));
     }
+
+    /**
+     * new  就意味着是两个对象
+     */
+    @Test
+    public void newString(){
+        String str1 = "abc";
+        String str2 = "abc";
+        System.out.println(str1 == str2);
+
+        String str3 = new String("abc");
+        String str4 = new String("abc");
+        System.out.println(str3 == str4);
+    }
 }

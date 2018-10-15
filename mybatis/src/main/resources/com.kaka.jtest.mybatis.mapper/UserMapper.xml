@@ -20,9 +20,9 @@
         select * from users
     </select>
 
-    <select id="testIf" resultType="com.kaka.jtest.mybatis.entities.User">
+    <select id="testIf" resultType="com.kaka.jtest.mybatis.entities.User" parameterType="hashMap">
         select * from users
-        <if test="name = 'jsk'">
+        <if test="name == 'jsk'">
             where  id = 1
         </if>
     </select>

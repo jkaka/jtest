@@ -44,6 +44,7 @@
         <module>dubbo_consumer</module>
         <module>jdbc</module>
         <module>mybatis-plus</module>
+        <module>spring</module>
     </modules>
 
     <build>

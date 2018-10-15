@@ -20,7 +20,7 @@ public class MessageDigestTest {
             "e", "f"};
 
     /**
-     * 生成摘要
+     * md5加密
      *
      * @throws Exception
      */
@@ -42,6 +42,22 @@ public class MessageDigestTest {
 //        System.out.println(result);
     }
 
+    /**
+     * sha-256加密
+     * @throws Exception
+     */
+    @Test
+    public void String2SHA256StrJava() throws Exception {
+        String source = "abc";
+        // 1.获得MD5摘要对象
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        // 2.使用指定的字节数组更新摘要信息
+        messageDigest.update(source.getBytes("UTF-8"));
+        // 3.messageDigest.digest()获得16位长度的字节数组
+        for (byte b : messageDigest.digest()) {
+            System.out.print(b + " ");
+        }
+    }
 
     /**
      * 普通验签

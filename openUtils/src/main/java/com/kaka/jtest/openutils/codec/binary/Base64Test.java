@@ -1,6 +1,7 @@
 package com.kaka.jtest.openutils.codec.binary;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
 /**
@@ -23,4 +24,14 @@ public class Base64Test {
         String baseToken = new String(base64);
         System.out.println(baseToken);
     }
+
+    public static void main(String[] args) {
+        Long timestamp = (System.currentTimeMillis() / 1000);
+        System.out.println(timestamp);
+        String secretKey = "FDAA721C1BD44D0D8B171B5F690E6F228E6D28FD16F74DE8AFC7A17A62FECC970086E214A8F94DA9B65C-F2CF0C96D81";
+        String sign = "OTA" + "zhengjie.gao" + secretKey + timestamp;
+        System.out.println(DigestUtils.sha256Hex(sign));
+        System.out.println();
+    }
+
 }

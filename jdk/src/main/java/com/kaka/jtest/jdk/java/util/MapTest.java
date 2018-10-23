@@ -25,4 +25,14 @@ public class MapTest {
             System.out.println(map.get(key));
         }
     }
+
+    /**
+     * key可以为null
+     */
+    @Test
+    public void nullTest() {
+        Map<String, String> map = new HashMap<>(2);
+        map.put(null, "a");
+        System.out.println(map.get(null));
+    }
 }

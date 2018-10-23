@@ -65,14 +65,15 @@ public class MessageDigestTest {
     @Test
     public void token() throws Exception {
         // 1.取出body体的字符串
-        String appSecret = "upload";
-        String bodyStr = "{\"fileName\":\"1.zip\",\"key\":\"cd645dce5f4b4129f07f72c7d4037030\",\"serviceName\":\"ihulog\"}";
+        String appSecret = "geely7QGT";
+        String bodyStr = "{\"approveStatus\": \"approve\",\"approveOpinion\": \"通过\",\"operatorType\": \"geely\",\"operator\": \"zhengjie.gao\",\"time\": \"1539745584157\"}";
+        System.out.println(bodyStr);
         String befoteSecret = (bodyStr + appSecret).replaceAll("\\s*", "");
         // 2.md5加密(加密之后把字节转为16进制的字符)
         String md5Str = Md5Util.md5Encode(befoteSecret);
         System.out.println(md5Str);
-        // 3.base64编码
-        String baseToken = new String(new BASE64Encoder().encode(md5Str.toLowerCase().getBytes()));
+        // 3. md5字符串转大写，然后base64编码
+        String baseToken = new String(new BASE64Encoder().encode(md5Str.toUpperCase().getBytes()));
         System.out.println(baseToken);
     }
 
@@ -112,4 +113,5 @@ public class MessageDigestTest {
         String baseToken = new String(new BASE64Encoder().encode(md5Str.getBytes()));
         System.out.println(baseToken);
     }
+
 }

@@ -5,19 +5,18 @@ import com.kaka.jtest.jdk.model.Student;
 
 public class ObjectTest {
     private static Student student = new Student();
-
     static {
         System.out.println("静态代码块...");
     }
 
     private Person person = new Person();
-
     {
         System.out.println("普通代码块...");
+        person.getId();
     }
 
     public ObjectTest() {
-        System.out.println("object....");
+        System.out.println("object....");person.getId();
     }
 
     static void staticMethod() {
@@ -31,7 +30,9 @@ public class ObjectTest {
      * 3.构造方法
      * 4.静态方法、普通方法在调用的时候才执行。
      *
-     * 注意：代码块中可以引用全局变量,跟声明顺序无关
+     * 代码块和变量域执行顺序，跟声明顺序有关
+     * 除了构造方法,其他方法都是在被调用时执行
+     * 注意：构造方法中可以引用全局变量,跟声明顺序无关。是因为，构造方法执行的时候，变量域一定是已经执行完成了。
      *
      * @param args
      */

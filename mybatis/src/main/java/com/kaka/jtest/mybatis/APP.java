@@ -74,7 +74,7 @@ public class APP {
     @Test
     public void testIf(){
         Map params = new HashMap();
-        params.put("name", "jsk2");
+        params.put("name", "jsk");
 
         String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.testIf";
         List<User> users = sqlSession.selectList(statement, params);

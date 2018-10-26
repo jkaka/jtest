@@ -146,6 +146,14 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3}</version>
             </dependency>
+
+            <!-- Apache beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

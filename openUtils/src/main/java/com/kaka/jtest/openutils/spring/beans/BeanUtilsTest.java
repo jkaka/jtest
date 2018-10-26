@@ -1,8 +1,11 @@
 package com.kaka.jtest.openutils.spring.beans;
 
+import com.kaka.jtest.openutils.dataobject.CommonClass;
 import com.kaka.jtest.openutils.dataobject.Person;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
 
 /**
  * @author jsk
@@ -18,4 +21,5 @@ public class BeanUtilsTest {
         System.out.println("person1:" + person1);
         System.out.println("person2:" + person2);
     }
+
 }

@@ -14,4 +14,13 @@ public class DoubleTest {
         Double uploadedSize = 1010000.0;
         System.out.println(uploadedSize > totalSize);
     }
+
+    /**
+     * double转integer
+     */
+    @Test
+    public void intValue(){
+        Double d = new Double(55.22);
+        System.out.println(d.intValue());
+    }
 }

@@ -107,6 +107,7 @@ public class DubboBeanConfig {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
         consumerConfig.setFilter("consumer_filter");
+        consumerConfig.setCheck(false);
         return consumerConfig;
     }
 }

@@ -8,17 +8,19 @@ import org.junit.Test;
 public class MathTest {
 
     /**
-     * 1.除号的意思为取整，10里面只有1个6
-     * 2.按除号两边精度高的保存结果
+     * 1.按除号两边精度高的保存结果
+     * 2.除号两边为整数时,结果取下整：10里面只有1个6
      */
     @Test
     public void division() {
-        System.out.println(10 / 6);
         long age = System.currentTimeMillis();
         // 返回float型
         System.out.println(age / (24 * 3600000f));
         // 返回长整型型
         System.out.println(age / (24 * 3600000));
+
+        System.out.println(10 / 9);
+        System.out.println(10 / 6.0);
     }
 
     @Test

@@ -41,6 +41,7 @@ public class DateTest {
      */
     @Test
     public void constructor(){
-        System.out.println(new Date(1528162080 * 1000L));
+        System.out.println(new Date(1540957682454L));
+        System.out.println(new Date(1540957683397L));
     }
 }

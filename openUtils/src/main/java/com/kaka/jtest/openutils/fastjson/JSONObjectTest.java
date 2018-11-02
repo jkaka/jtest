@@ -87,7 +87,8 @@ public class JSONObjectTest {
     }
 
     /**
-     * 根据key得到JSONArray，如果key不存在时返回null
+     * 从jsonObject中获取JSONArray
+     * 如果key不存在时,JSONArray的值返回null
      */
     @Test
     public void getJSONArray() {
@@ -95,6 +96,7 @@ public class JSONObjectTest {
         JSONArray matCodeJson = jsonObject.getJSONArray("matCodeList");
         List<String> matCodeList = matCodeJson.toJavaList(String.class);
         System.out.println(matCodeJson);
+        System.out.println(matCodeList);
     }
 
     /**

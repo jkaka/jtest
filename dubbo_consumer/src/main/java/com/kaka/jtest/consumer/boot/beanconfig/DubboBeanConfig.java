@@ -56,9 +56,11 @@ public class DubboBeanConfig {
 
     /**
      * 4.监听地址、协议名
+     *
      * @return
-     * */
-    @Bean public MonitorConfig monitorConfig() {
+     */
+    @Bean
+    public MonitorConfig monitorConfig() {
         MonitorConfig monitorConfig = new MonitorConfig();
         monitorConfig.setProtocol(dubboConfig.getMonitorProtocol());
         monitorConfig.setAddress(dubboConfig.getMonitorAddress());
@@ -81,6 +83,7 @@ public class DubboBeanConfig {
 
     /**
      * 6.提供方配置
+     *
      * @param applicationConfig
      * @param registryConfig
      * @param protocolConfig
@@ -98,6 +101,7 @@ public class DubboBeanConfig {
 
     /**
      * 7.消费配置(所有reference的缺省配置)
+     *
      * @param applicationConfig
      * @param registryConfig
      * @return
@@ -107,6 +111,7 @@ public class DubboBeanConfig {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
         consumerConfig.setFilter("consumer_filter");
+        // 这个不能在application的配置文件中配置
         consumerConfig.setCheck(false);
         return consumerConfig;
     }

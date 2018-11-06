@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements  UserService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
@@ -27,6 +27,26 @@ public class UserServiceImpl implements  UserService {
     @Override
     public Integer selectAge(String userName) {
         return userDao.selectAge(userName);
+    }
+
+    @Override
+    public Integer insertUser(User user) {
+        return userDao.insertUser(user);
+    }
+
+    @Override
+    public Integer updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    @Override
+    public Integer deleteUser(Long id) {
+        return userDao.deleteUser(id);
+    }
+
+    @Override
+    public User selectOne(Long id) {
+        return userDao.selectOne(id);
     }
 
 

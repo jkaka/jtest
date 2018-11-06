@@ -5,7 +5,25 @@
         select * from users
     </select>
 
-    <select id="selectAge" parameterType="string" resultType="integer">
-        select age from users where `name` = #{name}
+    <insert id="insertUser" parameterType="com.kaka.jtest.springboot.biz.dataobject.User">
+        insert into users (`name`, age) values (#{name }, #{age })
+    </insert>
+
+
+    <update id="updateUser" parameterType="com.kaka.jtest.springboot.biz.dataobject.User">
+        update users set `name` = #{name }, age = #{age} where id = #{id }
+    </update>
+
+    <delete id="deleteUser" parameterType="long">
+        delete from users where id = #{id }
+    </delete>
+
+    <select id="selectOne" parameterType="long" resultType="com.kaka.jtest.springboot.biz.dataobject.User">
+        select * from users where id = #{id}
     </select>
+
+    <select id="selectAge" parameterType="string" resultType="java.lang.Integer">
+        select age from users where `name` = #{userName}
+    </select>
+
 </mapper>

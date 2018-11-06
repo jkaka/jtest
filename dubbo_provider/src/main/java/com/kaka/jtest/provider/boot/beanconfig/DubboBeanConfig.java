@@ -82,10 +82,11 @@ public class DubboBeanConfig {
     /**
      * 5.设置dubbo扫描的包
      * 可以扫描到dubbo的注解，如：@Service、@Reference
-     * 第一种：annotationBean
-     * 第二种：在yml中配置spring.dubbo.scan的值
+     * 第一种：使用下面AnnotationBean(不推荐)
+     * 第二种：在yml中配置spring.dubbo.scan的值(不推荐)
      * 第三种：使用@DubboComponentScan注解
      *
+     * 同时使用以上方法，会扫描多次,进而产生多个提供者
      * @param
      * @return
      */

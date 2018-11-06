@@ -11,4 +11,12 @@ public interface UserDao {
     Page<User> selectList();
 
     Integer selectAge(String userName);
+
+    Integer insertUser(User user);
+
+    Integer updateUser(User user);
+
+    Integer deleteUser(Long id);
+
+    User selectOne(Long id);
 }

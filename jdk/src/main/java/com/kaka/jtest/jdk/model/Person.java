@@ -8,6 +8,10 @@ public class Person {
         System.out.println("创建了一个Person...");
     }
 
+    public Person(String name) {
+        this.name = name;
+    }
+
     public Person(Integer id, String name) {
         this.id = id;
         this.name = name;
@@ -39,5 +43,9 @@ public class Person {
 
     public Person getPersonByName(String name){
         return new Person(666, name);
+    }
+
+    public Integer getAgeByName(String name){
+        return 55;
     }
 }

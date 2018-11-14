@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    public Integer deleteUser(Long id) {
+        return userMapper.deleteById(id);
+    }
+
+    @Override
     public User selectOne(Long id) {
         return userMapper.selectOne(id);
     }

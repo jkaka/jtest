@@ -45,6 +45,7 @@
         <module>jdbc</module>
         <module>mybatis-plus</module>
         <module>spring</module>
+        <module>designpattern</module>
     </modules>
 
     <build>

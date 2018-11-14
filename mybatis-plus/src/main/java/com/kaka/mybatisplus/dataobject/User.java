@@ -1,5 +1,6 @@
 package com.kaka.mybatisplus.dataobject;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 /**
@@ -12,4 +13,6 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+    @TableLogic
+    private String status;
 }

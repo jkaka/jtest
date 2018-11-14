@@ -13,4 +13,6 @@ public interface UserService {
     List<User> selectList();
 
     User selectOne(Long id);
+
+    Integer deleteUser(Long id);
 }

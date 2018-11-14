@@ -3,10 +3,7 @@ package com.kaka.mybatisplus.controller;
 import com.kaka.mybatisplus.dataobject.User;
 import com.kaka.mybatisplus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +28,8 @@ public class UserController {
         return userService.selectOne(id);
     }
 
+    @DeleteMapping("/user/{id}")
+    public Integer deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id);
+    }
 }

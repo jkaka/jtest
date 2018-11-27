@@ -2,6 +2,7 @@ package com.kaka.jtest.designpatter.strategy;
 
 /**
  * 英雄实体类
+ *
  * @author jsk
  * @Date 2018/11/10 12:40
  */
@@ -15,7 +16,10 @@ public class Hero {
         this.deathStrategy = deathStrategy;
     }
 
-    public void afterDeath(){
+    /**
+     * 死亡之后的行为
+     */
+    public void afterDeath() {
         deathStrategy.action(name);
     }
 }

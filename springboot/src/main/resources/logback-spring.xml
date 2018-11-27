@@ -2,52 +2,94 @@
 <configuration>
     <contextName>jsk-boot</contextName>
 
-    <!-- ConsoleAppender 控制台输出日志 -->
+    <!--1.控制台输出日志 ConsoleAppender-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder 默认配置为PatternLayoutEncoder -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %-5level %blue([%c]) %green([%L]) -> - [%msg]%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
         </encoder>
     </appender>
+
+    <!--
+        2.滚动输出
+        注意：SizeBasedTriggeringPolicy和TimeBasedRollingPolicy同时使用会产生冲突
+    -->
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--文件路径：可使用ognl-->
             <FileNamePattern>${LOG_PATH}tsp-ota/info.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!--5天-->
             <MaxHistory>5</MaxHistory>
             <MaxFileSize>50MB</MaxFileSize>
             <TotalSizeCap>250MB</TotalSizeCap>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---[%thread]---%-5level---[%c]---[%L]---%X{JSESSIONID}---%msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
         </encoder>
     </appender>
 
+    <!--3.按级别过滤-->
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}tsp-ota/error.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <MaxHistory>5</MaxHistory>
+            <MaxFileSize>50MB</MaxFileSize>
+            <TotalSizeCap>250MB</TotalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---[%thread]---%-5level---[%c]---[%L]---[traceId:%X{traceId}]---%msg%n</pattern>
+        </encoder>
+        <!--
+            返回DENY，日志将立即被抛弃不再经过其他过滤器；
+            返回NEUTRAL，有序列表里的下个过滤器过接着处理日志；
+            返回ACCEPT，日志会被立即处理，不再经过剩余过滤器。
+        -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!--设置过滤级别-->
+            <level>ERROR</level>
+            <!--用于配置符合过滤条件的操作-->
+            <onMatch>ACCEPT</onMatch>
+            <!--用于配置不符合过滤条件的操作-->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--4.按名称输出-->
     <appender name="jskFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--文件路径：默认根目录为当前项目-->
-            <FileNamePattern>jsk_log_boot/info.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>jsk_log_boot/jsk.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <MaxHistory>5</MaxHistory>
             <MaxFileSize>50MB</MaxFileSize>
             <TotalSizeCap>250MB</TotalSizeCap>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---[%thread]---%-5level---[%c]---[%L]---%msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
         </encoder>
     </appender>
 
-    <!--指定名字为jsk的logger，输出到jskFile-->
-    <logger name="jsk" level="INFO" additivity="false">
+    <!--
+        普通logger
+        name:处理该日志名称为jsk、或jsk该包下的类输出的日志
+        level：处理该level以上的日志
+        additivity:是否将此logger的打印信息向root传递,默认为true
+    -->
+    <logger name="jsk" level="INFO" additivity="true">
         <appender-ref ref="jskFile"/>
         <!--同时输出到“标准控制台”-->
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <!--未配置的logger输出到：STDOUT、rollingFile-->
-    <root level="INFO">
+    <!--
+        根节点logger
+        按级别指定输出：info及以上级别的日志输出到：STDOUT、rollingFile对应的appender
+        注意：root节点只能有一个,可以理解为一个name为root的logger
+    -->
+    <root level="info">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="rollingFile"/>
     </root>
-
 </configuration>

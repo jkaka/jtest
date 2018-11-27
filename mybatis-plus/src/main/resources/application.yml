@@ -4,9 +4,3 @@
 #    url: jdbc:mysql://localhost:3306/jsk?characterEncoding=utf-8&useUnicode=true
 #    username: root
 #    password: root
-
-mybatis-plus:
-  global-config:
-    db-config:
-      logic-delete-value: N # 逻辑已删除值(默认为 1)
-      logic-not-delete-value: Y # 逻辑未删除值(默认为 0)

@@ -1,7 +1,7 @@
 package com.kaka.jtest.consumer.biz.filter.dubbo;
 
 import com.alibaba.dubbo.rpc.*;
-import com.kaka.jtest.consumer.common.utils.TraceIDUtil;
+import com.kaka.common.utils.TraceIdUtil;
 import org.slf4j.MDC;
 
 /**
@@ -20,9 +20,11 @@ public class TraceIdFilter implements Filter {
     public Result invoke(Invoker<?> invoker, Invocation inv) throws RpcException {
         System.out.println("把当前线程中的traceId,通过filter传给dubbo提供者");
         if (inv.getAttachment(TRACE_ID) != null) {
-            MDC.put(TRACE_ID, TraceIDUtil.getTraceId());
-        } else if (TraceIDUtil.getTraceId() != null) {
-            inv.getAttachments().put(TRACE_ID, TraceIDUtil.getTraceId());
+            // 服务提供方接收traceId：provider接收consumer中的traceId
+            TraceIdUtil.setTraceId(inv.getAttachment(TRACE_ID));
+            MDC.put(TRACE_ID, TraceIdUtil.getTraceId());
+        } else if (TraceIdUtil.getTraceId() != null) {
+            inv.getAttachments().put(TRACE_ID, TraceIdUtil.getTraceId());
         }
         return invoker.invoke(inv);
     }

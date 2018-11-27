@@ -8,5 +8,5 @@ import com.kaka.mybatisplus.dataobject.User;
  * @Date 2018/9/26 16:45
  */
 public interface UserMapper extends BaseMapper<User> {
-    User selectOne(Long id);
+    User selectOneByName(String name);
 }

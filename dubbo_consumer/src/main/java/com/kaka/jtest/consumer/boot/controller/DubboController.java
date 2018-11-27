@@ -1,7 +1,7 @@
 package com.kaka.jtest.consumer.boot.controller;
 
+import com.kaka.common.utils.TraceIdUtil;
 import com.kaka.jtest.consumer.call.UserCallService;
-import com.kaka.jtest.consumer.common.utils.TraceIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +26,7 @@ public class DubboController {
 
     @RequestMapping("/dubboFilter")
     public String dubboFilter() {
-        TraceIDUtil.setTraceId("测试通过dubboFilter传参！");
+        TraceIdUtil.setTraceId("测试通过dubboFilter传参！");
         System.out.println("测试通过dubboFilter传参！");
         userCallService.selectAll();
         return "dubboFilter";

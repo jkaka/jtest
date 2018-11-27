@@ -6,14 +6,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- *
+ * testsuite：测试集
+ * 1.统一测试
+ * 2.idea中多个类无需都输入VM参数
  * @author jsk
  * @Date 2018/11/6 10:05
  */
-// 1. 更改测试运行方式为 Suite
-@RunWith(Suite.class)
-// 2. 将测试类传入进来
-@Suite.SuiteClasses({TestControllerTest.class,
+@RunWith(Suite.class)// 1. 更改测试运行方式为 Suite
+@Suite.SuiteClasses({TestControllerTest.class,  // 2. 将测试类传入进来
         UserServiceImplTest.class})
 public class TestSuits {
     /**

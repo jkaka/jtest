@@ -3,7 +3,7 @@
 
 <mapper namespace="com.kaka.mybatisplus.mapper.UserMapper" >
 
-    <select id="selectOne" parameterType="long" resultType="com.kaka.mybatisplus.dataobject.User">
-        select * from `user` where id = #{id }
+    <select id="selectOneByName" parameterType="string" resultType="com.kaka.mybatisplus.dataobject.User">
+        select * from `user` where name = #{name }
     </select>
 </mapper>

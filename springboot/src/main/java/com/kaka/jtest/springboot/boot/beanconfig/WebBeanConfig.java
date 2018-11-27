@@ -4,6 +4,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.kaka.jtest.springboot.biz.converter.HelloConverter;
+import com.kaka.jtest.springboot.biz.filter.TraceIdFilter;
 import com.kaka.jtest.springboot.biz.interceptor.RequestInterceptor;
 import com.kaka.jtest.springboot.biz.interceptor.UriInterceptor;
 import com.kaka.jtest.springboot.biz.security.AuthenticationTokenFilter;
@@ -12,6 +13,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -37,7 +39,7 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
     private UriInterceptor uriInterceptor;
 
     /**
-     * 1.过滤器注册
+     * 1.过滤器注册(1)
      *
      * @return
      */
@@ -51,6 +53,18 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
         registration.setName("AuthenticationTokenFilter");
         // 过滤器顺序
         registration.setOrder(2);
+        return registration;
+    }
+
+    @Bean
+    @Order(3)
+    public FilterRegistrationBean traceIdFilterRegistration() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new TraceIdFilter());
+        // 过滤路径
+        registration.addUrlPatterns("/*");
+        // 过滤器名称
+        registration.setName("traceIdFilter");
         return registration;
     }
 

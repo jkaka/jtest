@@ -1,6 +1,6 @@
 package com.kaka.jtest.springboot.boot.controller;
 
-import com.kaka.jtest.springboot.common.utils.LogUtil;
+import com.kaka.common.utils.LogUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,5 +26,19 @@ public class LogController {
     public String otherLog() {
         loggerOther.info("测试jsessionId...");
         return "otherLog";
+    }
+
+    @ResponseBody
+    @RequestMapping("/exceptionLog")
+    public String exceptionLog() {
+        Exception exception = new Exception("一个异常！");
+        // 输出异常堆栈
+        loggerOther.info("*****错误", exception);
+        loggerOther.error("*****错误", exception);
+        // 输出异常的全类名：异常信息
+        loggerOther.error("*****错误" + exception);
+        // 仅输出异常信息
+        loggerOther.error("*****错误" + exception.getMessage());
+        return "exceptionLog";
     }
 }

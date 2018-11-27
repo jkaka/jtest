@@ -1,17 +1,19 @@
 package com.kaka.mybatisplus.beanconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.baomidou.mybatisplus.extension.spring.MybatisMapperRefresh;
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.SqlExplainInterceptor;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 
 /**
  * @author jsk
@@ -46,21 +48,23 @@ public class DataSourceBeanConfig {
     }
 
     /**
-     * 动态加载 mapper.xml
+     * 不使用springboot作为父工程,需要显示创建SqlSessionFactoryBean
      *
-     * @param sqlSessionFactory
      * @return
-     * @throws IOException
+     * @throws Exception
      */
     @Bean
-    public MybatisMapperRefresh mybatisMapperRefresh(SqlSessionFactory sqlSessionFactory) throws IOException {
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] mapperLocations = resolver.getResources("com/kaka/mybatisplus/mapper/*.xml");
-        int delaySeconds = 10;
-        // 刷新时间间隔
-        int sleepSeconds = 5;
-        boolean enabled = true;
-        return new MybatisMapperRefresh(mapperLocations, sqlSessionFactory,
-                delaySeconds, sleepSeconds, enabled);
+    public SqlSessionFactory sqlSessionFactory(GlobalConfig globalConfig, PerformanceInterceptor performanceInterceptor)
+            throws Exception {
+        final MybatisSqlSessionFactoryBean sessionFactory = new MybatisSqlSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPlugins(new Interceptor[]{
+                performanceInterceptor,
+                new PaginationInterceptor(),
+                new OptimisticLockerInterceptor()
+        });
+        sessionFactory.setGlobalConfig(globalConfig);
+        return sessionFactory.getObject();
     }
+
 }

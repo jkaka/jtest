@@ -2,7 +2,6 @@ package com.kaka.jtest.jdk.java.lang;
 
 import org.junit.Test;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,12 +72,12 @@ public class StringTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         List<String> strings = new ArrayList<>(Arrays.asList("aa"));
-        for(String str : strings){
+        for (String str : strings) {
             str += "1";
         }
-        for(String str : strings){
+        for (String str : strings) {
             System.out.println(str);
         }
     }
@@ -87,7 +86,7 @@ public class StringTest {
      * trim去掉前后空格
      */
     @Test
-    public void trim(){
+    public void trim() {
         String str = "    V6.4.2.  A     ";
         System.out.println(str.trim());
     }
@@ -97,7 +96,7 @@ public class StringTest {
      * \s 可以匹配空格、制表符、换页符等空白字符的其中任意一个
      */
     @Test
-    public void replaceAll(){
+    public void replaceAll() {
         // 去后空格
         String str = "    V6.4.2.  A     ";
         System.out.println(str.replaceAll("\\s+$", ""));
@@ -108,7 +107,7 @@ public class StringTest {
     }
 
     @Test
-    public void lastIndexOf(){
+    public void lastIndexOf() {
         String fileName = "ab.c.rar";
         System.out.println(fileName.lastIndexOf("."));
         System.out.println(fileName.substring(fileName.lastIndexOf(".")));
@@ -118,7 +117,7 @@ public class StringTest {
      * new  就意味着是两个对象
      */
     @Test
-    public void newString(){
+    public void newString() {
         String str1 = "abc";
         String str2 = "abc";
         System.out.println(str1 == str2);
@@ -126,5 +125,19 @@ public class StringTest {
         String str3 = new String("abc");
         String str4 = new String("abc");
         System.out.println(str3 == str4);
+    }
+
+    /**
+     * 等号从右向左赋值
+     */
+    @Test
+    public void assignment() {
+        String str1 = "aa";
+        String str2 = "bb";
+        String str3 = "cc";
+        str1 = str2 = str3;
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
     }
 }

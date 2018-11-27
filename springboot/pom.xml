@@ -13,8 +13,19 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.kaka.common</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.10.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.10.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -23,7 +34,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.0</version>
+            <version>3.4.6</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>

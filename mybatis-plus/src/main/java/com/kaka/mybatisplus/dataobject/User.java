@@ -8,17 +8,13 @@ import lombok.Data;
  * @Date 2018/11/8 9:37
  */
 @Data
-@TableName("users")
+@TableName("")
 public class User {
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private String id;
     private String name;
     private Integer age;
-
-    @TableField(fill = FieldFill.INSERT)
     private String email;
-    @TableField(value = "address")
-    private String address1;
     @TableLogic
     private String status;
     private String userAccount;
@@ -26,4 +22,5 @@ public class User {
     private Integer version;
     @TableField(exist = false)
     private String noUse;
+
 }

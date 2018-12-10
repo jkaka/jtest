@@ -3,6 +3,7 @@ package com.kaka.jtest.mybatis;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kaka.jtest.mybatis.entities.User;
+import com.kaka.jtest.mybatis.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -79,5 +80,15 @@ public class APP {
         String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.testIf";
         List<User> users = sqlSession.selectList(statement, params);
         System.out.println(users);
+    }
+
+    @Test
+    public void testSet(){
+        User user = new User();
+        user.setId(1);
+//        user.setName("AAA");
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        System.out.println(userMapper.updateUser(user));
     }
 }

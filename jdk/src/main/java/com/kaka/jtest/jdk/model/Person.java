@@ -13,6 +13,7 @@ public class Person {
     }
 
     public Person(Integer id, String name) {
+        System.out.println("创建了一个：" + name);
         this.id = id;
         this.name = name;
     }

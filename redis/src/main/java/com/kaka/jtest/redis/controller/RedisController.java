@@ -17,13 +17,14 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Controller
+@RequestMapping("/redisController")
 public class RedisController {
     private DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss SSS");
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
     @Autowired
-    private RedisTemplate<String, Object> redisTemplateObject;
+    private RedisTemplate<Object, Object> redisTemplateObject;
     @Autowired
     private RedisTemplate<String, List<User>> redisTemplateUsers;
 
@@ -154,4 +155,19 @@ public class RedisController {
 
         return "setObjectAndString";
     }
+
+    @ResponseBody
+    @RequestMapping("/setNx")
+    public String setNx() {
+        boolean lock = redisTemplateObject.opsForValue().setIfAbsent("jsk", "一个值");
+        System.out.println("setIfAbsent加锁结果：" + lock);
+
+        lock = redisTemplate.execute((RedisCallback<Boolean>) connection ->
+                connection.setNX("jsk".getBytes(), "一个值".getBytes())
+        );
+        System.out.println("setNx加锁结果：" + lock);
+        redisTemplate.delete("jsk");
+        return "setObjectAndString";
+    }
+
 }

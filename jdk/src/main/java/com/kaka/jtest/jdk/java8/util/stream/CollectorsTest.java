@@ -4,10 +4,7 @@ package com.kaka.jtest.jdk.java8.util.stream;
 import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,6 +19,18 @@ import static java.util.stream.Collectors.*;
  * @Date 2018/8/29 17:08
  */
 public class CollectorsTest {
+
+    private List<Person> personList;
+
+    {
+        Person person0 = new Person(4, "AA");
+        Person person1 = new Person(5, "AA");
+        Person person2 = new Person(6, "DD");
+        Person person3 = new Person(7, "BB");
+        Person person4 = new Person(7, "CC");
+        personList = Arrays.asList(person0, person1, person2, person3, person4);
+    }
+
 
     /**
      * 调用 toList 或者 toSet 方法时，不需要指定具体的类型。Stream 类库在背后自动为你
@@ -143,11 +152,11 @@ public class CollectorsTest {
     }
 
     /**
-     *  下游收集器：mapping 在收集器的容器上执行类似 map 的操作
-     *  收集name为AA的person的id列表
+     * 下游收集器：mapping 在收集器的容器上执行类似 map 的操作
+     * 收集name为AA的person的id列表
      */
     @Test
-    public void mappingTest(){
+    public void mappingTest() {
         Person person0 = new Person(4, "AA");
         Person person1 = new Person(5, "AA");
         Person person2 = new Person(6, "DD");
@@ -158,4 +167,59 @@ public class CollectorsTest {
                 mapping(Person::getId, toList())));
         System.out.println(stringListMap.get("AA"));
     }
+
+    /**
+     * key重复会报错
+     * 对象中的属性为K、V
+     */
+    @Test
+    public void toMapFieldTest() {
+        Map<Integer, String> map = personList.stream()
+                .collect(toMap(Person::getId, Person::getName));
+        System.out.println(map);
+    }
+
+    /**
+     * key重复会报错
+     * 属性为key   对象本身为V
+     */
+    @Test
+    public void toMapThisTest() {
+        Map<Integer, Person> map = personList.stream()
+                .collect(toMap(Person::getId, person -> person));
+        System.out.println(map);
+    }
+
+    /**
+     * key重复会报错
+     * 属性为key   对象本身为V(java8内置方法)
+     */
+    @Test
+    public void toMapThisBuiltInTest() {
+        Map<Integer, Person> map = personList.stream()
+                .collect(toMap(Person::getId, Function.identity()));
+        System.out.println(map);
+    }
+
+    /**
+     * 指定key重复策略
+     */
+    @Test
+    public void toMapRepetitionKeyTest() {
+        Map<Integer, Person> map = personList.stream()
+                .collect(toMap(Person::getId, Function.identity(), (key1, key2) -> key1));
+        System.out.println(map);
+    }
+
+    /**
+     * 指定key重复策略
+     */
+    @Test
+    public void toMapCustomMapTest() {
+        Map<Integer, Person> map = personList.stream()
+                .collect(toMap(Person::getId, Function.identity(), (key1, key2) -> key1, LinkedHashMap::new));
+        System.out.println(map);
+    }
+
+
 }

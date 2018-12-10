@@ -4,17 +4,16 @@ import com.kaka.jtest.jdk.model.Person;
 import com.kaka.jtest.jdk.model.Student;
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.TreeSet;
 import java.util.function.BinaryOperator;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 
@@ -205,6 +204,93 @@ public class StreamTest {
                     System.out.println("******");
                 });
         System.out.println(students);
+    }
+
+    /**
+     * forEach性能对比
+     */
+    @Test
+    public void forEachPerformance() {
+        List<Student> students = asList(new Student("张三", 524),
+                new Student("李四", 378),
+                new Student("王五", 451));
+        Instant instant1 = Instant.now();
+
+        forTest(students);
+        Instant instant2 = Instant.now();
+
+        forEachTest(students);
+        Instant instant3 = Instant.now();
+
+        streamForEachTest(students);
+        Instant instant4 = Instant.now();
+
+        System.out.println("原生for循环：" + Duration.between(instant1, instant2).toMillis());
+        System.out.println("原生forEach：" + Duration.between(instant2, instant3).toMillis());
+        System.out.println("stream的forEach：" + Duration.between(instant3, instant4).toMillis());
+
+    }
+
+    private void forTest(List<Student> studentList) {
+        for (int i = 0; i < studentList.size(); i++) {
+            studentList.get(i).setName("CC");
+        }
+
+        System.out.println(studentList);
+    }
+
+    private void forEachTest(List<Student> studentList) {
+        for (Student student : studentList) {
+            student.setName("BB");
+        }
+        System.out.println(studentList);
+    }
+
+    private void streamForEachTest(List<Student> studentList) {
+        studentList.stream()
+                .forEach(student -> {
+                    student.setName("AA");
+                });
+        System.out.println(studentList);
+    }
+
+
+    private Integer num = 1000000;
+
+    /**
+     * map性能
+     * 100w以上  stream才有可能快
+     */
+    @Test
+    public void mapPerformance() {
+        List<Student> students = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            students.add(new Student("张三", num));
+        }
+        Instant instant1 = Instant.now();
+
+        forConverterTest(students);
+        Instant instant2 = Instant.now();
+
+        mapTest(students);
+        Instant instant3 = Instant.now();
+
+        System.out.println("原生for循环：" + Duration.between(instant1, instant2).toMillis());
+        System.out.println("stream的map：" + Duration.between(instant2, instant3).toMillis());
+
+    }
+
+    private void mapTest(List<Student> students) {
+        students.stream()
+                .map(Student::getName)
+                .collect(toList());
+    }
+
+    private void forConverterTest(List<Student> students) {
+        List<String> nameList = new ArrayList<>();
+        for (Student student : students) {
+            nameList.add(student.getName());
+        }
     }
 
 }

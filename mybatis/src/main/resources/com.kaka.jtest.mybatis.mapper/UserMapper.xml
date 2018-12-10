@@ -20,10 +20,18 @@
         select * from users
     </select>
 
-    <select id="testIf" resultType="com.kaka.jtest.mybatis.entities.User" parameterType="hashMap">
+    <select id="testIf" resultType="com.kaka.jtest.mybatis.entities.User" parameterType="java.util.HashMap">
         select * from users
         <if test="name == 'jsk'">
             where  id = 1
         </if>
     </select>
+
+    <update id="updateUser" parameterType="com.kaka.jtest.mybatis.entities.User">
+        update users
+        <set>
+            <if test="name != null">`name` = #{name},</if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

@@ -8,6 +8,7 @@ import com.kaka.mybatisplus.dataobject.User;
 import com.kaka.mybatisplus.service.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -75,7 +76,13 @@ public class UserController {
 
     @PostMapping("/user/selectList")
     public IPage<User> selectList(@RequestBody Map<String, Object> param) {
-        return userService.page(new Page<>(1, 2), new QueryWrapper<User>().allEq(param));
+
+        Wrapper<User> wrapper = new QueryWrapper<User>()
+                .gt("age", 20)
+                ;
+        System.out.println("7777");
+        IPage<User> userIPage = userService.page(new Page<>(1, 2), wrapper);
+        return userIPage;
     }
 
     /**
@@ -84,6 +91,7 @@ public class UserController {
      * @return
      */
     @PutMapping("/user")
+    @Transactional
     public boolean updateUser(@RequestBody User user){
         return userService.updateById(user);
     }

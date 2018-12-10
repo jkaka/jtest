@@ -48,6 +48,7 @@
         <module>mybatis-plus</module>
         <module>spring</module>
         <module>designpattern</module>
+        <module>rocketmq</module>
     </modules>
 
     <build>

@@ -41,7 +41,10 @@ public class DateTest {
      */
     @Test
     public void constructor(){
-        System.out.println(new Date(1540957682454L));
-        System.out.println(new Date(1540957683397L));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(dateFormat.format(new Date(1549011962288L)));
+        System.out.println(dateFormat.format(new Date(1549011962288L)));
+        System.out.println(dateFormat.format(new Date(1549011837397L)));
+        System.out.println(dateFormat.format(new Date(1550653437397L)));
     }
 }

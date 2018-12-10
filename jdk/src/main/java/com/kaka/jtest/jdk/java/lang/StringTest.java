@@ -140,4 +140,11 @@ public class StringTest {
         System.out.println(str2);
         System.out.println(str3);
     }
+
+    @Test
+    public void length(){
+        String string = "https://device-platform-tbox-pki.oss-cn-hangzhou.aliyuncs.com/2700471017035359HC800151.p12" + System.currentTimeMillis();
+        System.out.println(string.length());
+    }
+
 }

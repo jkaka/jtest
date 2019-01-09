@@ -50,7 +50,7 @@ public class DubboBeanConfig {
         registryConfig.setProtocol(dubboConfig.getRegistryProtocol());
         registryConfig.setAddress(dubboConfig.getRegistryAddress());
         // zk的维度分组：分组后，监听的服务和注册的服务都会在这个分组中；默认值为dubbo
-        registryConfig.setGroup("registry-ota");
+//        registryConfig.setGroup("registry-ota");
         return registryConfig;
     }
 
@@ -74,7 +74,7 @@ public class DubboBeanConfig {
      * @param
      * @return
      */
-    @Bean
+//    @Bean
     public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
         AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(packageName);

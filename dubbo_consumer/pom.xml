@@ -19,6 +19,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>scheduler</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.kaka.common</groupId>
             <artifactId>common</artifactId>
         </dependency>

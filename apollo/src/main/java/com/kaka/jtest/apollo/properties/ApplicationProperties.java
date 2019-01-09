@@ -2,11 +2,13 @@ package com.kaka.jtest.apollo.properties;
 
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableApolloConfig(value = "application", order = 1)
+@RefreshScope
 @Component
 public class ApplicationProperties {
     @Value("{timeout}")

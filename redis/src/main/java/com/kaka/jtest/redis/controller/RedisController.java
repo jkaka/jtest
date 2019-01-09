@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,11 +42,11 @@ public class RedisController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("/testSelect")
-    public String testSelect() {
+    @RequestMapping("/testSelect/{pattern}")
+    public String testSelect(@PathVariable String pattern) {
         long startTime = System.currentTimeMillis();
         try {
-            int sum = redisTemplate.keys("A1*").size();
+            int sum = redisTemplate.keys(pattern).size();
             System.out.println("总数据：" + sum + "条");
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,7 +57,8 @@ public class RedisController {
         // 当要创建的匿名内部类包含泛型参数时，lambda表达式的参数需要指明类型，即内部类的具体类型
         int sum = redisTemplate.execute((RedisCallback<Set<Object>>) connection -> {
             Set<Object> binaryKeys = new HashSet<>();
-            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("ota*").count(1000).build());
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(pattern).count(20000).build());
+            connection.close();
             while (cursor.hasNext()) {
                 binaryKeys.add(new String(cursor.next()));
             }

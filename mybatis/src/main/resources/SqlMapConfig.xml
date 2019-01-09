@@ -5,6 +5,11 @@
     <!--引入properties文件-->
     <properties resource="db.properties"/>
 
+    <typeAliases>
+        <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
+        <package name="com.kaka.jtest.mybatis.entities"/>
+    </typeAliases>
+
     <!-- 3.配置mybatis的分页插件PageHelper -->
     <plugins>
         <!--老版本的分页插件，直接使用PageHelper实体类做插件，现在PageHelper已经不是mybatis插件Interceptor的子类了-->
@@ -29,6 +34,5 @@
     <mappers>
         <mapper resource="com.kaka.jtest.mybatis.mapper/UserMapper.xml"/>
     </mappers>
-
 
 </configuration>

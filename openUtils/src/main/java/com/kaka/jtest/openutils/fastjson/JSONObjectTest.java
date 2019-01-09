@@ -110,10 +110,30 @@ public class JSONObjectTest {
         System.out.println(str);
     }
 
+    /**
+     * json可以为null
+     */
+    @Test
+    public void parseObjectNull() {
+        Map<String, Object> featuresMap = (Map<String, Object>)JSONObject.parse(null);
+        System.out.println(featuresMap);
+    }
+
+
+
+    /**
+     *
+     * 对象转json字符串
+     */
     @Test
     public void toJSONString() {
+        // 1.数组转json
         String[] strings = {"aa", "bb"};
         System.out.println(JSONObject.toJSONString(strings));
+
+        // 2.字符串 转json
+        String string = "{\"bizCode\":\"00012\",\"bizId\":\"\",\"triggerType\":\"\",\"triggerCron\":\"\",\"triggerTime\":\"\",\"startTime\":\"\",\"endTime\":\"\",\"responseBody\":\"\",\"executeTopic\":\"\",\"executeTag\":\"\",\"microServiceCode\":\"\"}";
+        System.out.println(JSONObject.toJSONString(string));
     }
 
 }

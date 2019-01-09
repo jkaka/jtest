@@ -16,6 +16,7 @@ import java.util.*;
 public class MultiTaskScheduleTest implements IScheduleTaskDealMulti<HelloTask> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Integer pageIndex = 0;
 
     @Override
     public Comparator<HelloTask> getComparator() {
@@ -36,6 +37,11 @@ public class MultiTaskScheduleTest implements IScheduleTaskDealMulti<HelloTask> 
     @Override
     public List<HelloTask> selectTasks(String taskParameter, String ownSign, int taskQueueNum,
                                        List<TaskItemDefine> taskItemList, int eachFetchDataNum) throws Exception {
+        logger.info(Thread.currentThread().getName() + "自定义参数:" + taskParameter);
+        logger.info(Thread.currentThread().getName() + "ownSign:" + ownSign);
+        logger.info(Thread.currentThread().getName() + "任务项的数量:" + taskQueueNum);
+        logger.info(Thread.currentThread().getName() + "taskItemList:" + taskItemList);
+        logger.info(Thread.currentThread().getName() + "每次获取数据的数量:" + eachFetchDataNum);
         Map<String, Object> param = new HashMap<>();
         // 如果一个队列分配到一个组中，这个循环只执行一次。
         for (TaskItemDefine taskItemDefine : taskItemList) {
@@ -47,19 +53,19 @@ public class MultiTaskScheduleTest implements IScheduleTaskDealMulti<HelloTask> 
             // pageSize = 500
             param.put("pageSize", eachFetchDataNum);
         }
-        logger.info("multiTaskScheduleTest多任务列表..........");
         List<HelloTask> helloTaskList = new ArrayList<HelloTask>();
-        helloTaskList.add(new HelloTask(1, "task1"));
-        helloTaskList.add(new HelloTask(2, "task2"));
-        helloTaskList.add(new HelloTask(3, "task3"));
-        logger.info("helloTaskList:" + helloTaskList);
-        return helloTaskList;
+//        if(++pageIndex != 3){
+            logger.info(Thread.currentThread().getName() + "第" + pageIndex + "次执行此方法");
+            helloTaskList.add(new HelloTask(1, "task1" + Thread.currentThread().getName()));
+            helloTaskList.add(new HelloTask(2, "task2" + Thread.currentThread().getName()));
+            helloTaskList.add(new HelloTask(3, "task3" + Thread.currentThread().getName()));
+//        }
+        return null;
     }
 
     @Override
     public boolean execute(HelloTask[] helloTasks, String ownSign) throws Exception {
-        logger.info("多任务执行：" + new Date());
-        logger.info("helloTasks:" + new ArrayList<HelloTask>(Arrays.asList(helloTasks)));
+        logger.info("线程：" + Thread.currentThread().getName() + "；正在处理helloTasks:" + new ArrayList<>(Arrays.asList(helloTasks)));
         return true;
     }
 }

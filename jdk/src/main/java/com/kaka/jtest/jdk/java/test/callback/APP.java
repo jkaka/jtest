@@ -11,6 +11,7 @@ public class APP {
         System.out.println("开始调用远程服务！");
 
         Agent agent = new Agent();
+
         agent.onCommand(new HashMap<String, Object>() {{
             put("1", "AA");
             put("2", "BB");

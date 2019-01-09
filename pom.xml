@@ -41,7 +41,6 @@
         <module>demo</module>
         <module>ssm</module>
         <module>springmvc</module>
-        <module>kafka</module>
         <module>dubbo_provider</module>
         <module>dubbo_consumer</module>
         <module>jdbc</module>
@@ -49,6 +48,9 @@
         <module>spring</module>
         <module>designpattern</module>
         <module>rocketmq</module>
+        <module>kafka</module>
+        <module>binlog</module>
+        <module>git</module>
     </modules>
 
     <build>
@@ -136,12 +138,14 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
+
             <!--阿里连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+
             <!--分页工具-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
@@ -198,6 +202,20 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+
+            <!--slf4j-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.21</version>
+            </dependency>
+
+            <!--binlog-->
+            <dependency>
+                <groupId>com.github.shyiko</groupId>
+                <artifactId>mysql-binlog-connector-java</artifactId>
+                <version>0.12.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

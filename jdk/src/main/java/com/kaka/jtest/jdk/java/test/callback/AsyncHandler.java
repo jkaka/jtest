@@ -17,7 +17,7 @@ public class AsyncHandler implements Runnable {
     public void run() {
         System.out.println("远程服务开始执行...");
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

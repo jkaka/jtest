@@ -60,7 +60,7 @@
     <appender name="jskFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--文件路径：默认根目录为当前项目-->
-            <FileNamePattern>jsk_log_boot/jsk.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>springboot/jsk_log_boot/jsk.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <MaxHistory>5</MaxHistory>
             <MaxFileSize>50MB</MaxFileSize>
             <TotalSizeCap>250MB</TotalSizeCap>

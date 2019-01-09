@@ -11,4 +11,6 @@ public interface UserMapper {
     Integer updateUser(User user);
 
     User testIf(HashMap<String, Object> hashMap);
+
+    User selectOne(int id);
 }

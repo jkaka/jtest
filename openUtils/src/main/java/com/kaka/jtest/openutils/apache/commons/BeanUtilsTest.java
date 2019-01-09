@@ -29,7 +29,7 @@ public class BeanUtilsTest {
         commonClass.setArray(array);
 
         CommonClass commonClass2 = new CommonClass();
-        BeanUtils.copyProperties(commonClass, commonClass2);
+        BeanUtils.copyProperties(commonClass2, commonClass);
         System.out.println(commonClass2);
     }
 

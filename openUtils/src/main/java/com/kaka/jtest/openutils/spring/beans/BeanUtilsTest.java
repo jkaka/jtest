@@ -1,11 +1,13 @@
 package com.kaka.jtest.openutils.spring.beans;
 
+import com.kaka.jtest.openutils.dataobject.CommonClass;
 import com.kaka.jtest.openutils.dataobject.Person;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * @author jsk
@@ -15,11 +17,19 @@ public class BeanUtilsTest {
 
     @Test
     public void copyProperties() {
-        Person person1 = new Person(1, "AA");
-        Person person2 = new Person(2, "BB");
-        BeanUtils.copyProperties(person1, person2);
-        System.out.println("person1:" + person1);
-        System.out.println("person2:" + person2);
+        Person person = new Person(1, "AA");
+        int[] array = {1, 2, 3};
+
+        CommonClass commonClass = new CommonClass();
+        commonClass.setAge(5);
+        commonClass.setBirthday(new Date());
+        commonClass.setName("AA");
+        commonClass.setPerson(person);
+        commonClass.setArray(array);
+
+        CommonClass commonClass2 = new CommonClass();
+        BeanUtils.copyProperties(commonClass, commonClass2);
+        System.out.println(commonClass2);
     }
 
     private final Integer number = 1;

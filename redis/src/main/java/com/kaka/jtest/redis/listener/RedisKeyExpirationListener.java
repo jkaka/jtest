@@ -8,6 +8,8 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Component;
 
 /**
+ * 2.8.0之后的redis可用
+ *
  * @author jsk
  * @Date 2018/12/10 9:32
  */

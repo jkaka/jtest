@@ -130,4 +130,29 @@ public class ExceptionTest {
             System.out.println(trace.toString());
         }
     }
+
+    @Test
+    public void throwOtherTest(){
+        try {
+            throwException();
+            // 捕捉MyException是不行的
+        } catch (Exception my) {
+            System.out.println(my.getMessage());
+        }
+
+    }
+
+    /**
+     * 方法签名上抛出的是自定义的异常,但是实际抛出的是数学异常
+     *
+     * @throws MyException
+     */
+    private void throwException() throws MyException {
+        int i = 10 / 0;
+    }
+
+}
+
+class MyException extends Exception {
+
 }

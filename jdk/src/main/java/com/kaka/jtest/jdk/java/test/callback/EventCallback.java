@@ -6,6 +6,6 @@ package com.kaka.jtest.jdk.java.test.callback;
  */
 public class EventCallback<T> {
     public void run() {
-        System.out.println("回调函数开始执行！");
+        System.out.println("微服务要执行的业务！");
     }
 }

@@ -91,4 +91,10 @@ public class APP {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         System.out.println(userMapper.updateUser(user));
     }
+
+    @Test
+    public void long2Date(){
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        System.out.println(userMapper.selectOne(2));
+    }
 }

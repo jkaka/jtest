@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
  *
  * @author shuangkaijia
  */
-@Component
+//@Component
 public class HelloConverter extends AbstractHttpMessageConverter<User> {
 
     /**

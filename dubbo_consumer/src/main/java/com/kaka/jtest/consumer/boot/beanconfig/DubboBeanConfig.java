@@ -112,7 +112,7 @@ public class DubboBeanConfig {
         consumerConfig.setApplication(applicationConfig);
         consumerConfig.setFilter("consumer_filter");
         // 这个不能在application的配置文件中配置
-        consumerConfig.setCheck(false);
+//        consumerConfig.setCheck(false);
         return consumerConfig;
     }
 }

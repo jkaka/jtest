@@ -33,4 +33,12 @@ public class LongTest {
     public void compare2common(){
         System.out.println(0 == 0L);
     }
+
+
+    @Test
+    public void equals(){
+        Long a = 10L;
+        Long b =10L;
+        System.out.println(a.equals(b));
+    }
 }

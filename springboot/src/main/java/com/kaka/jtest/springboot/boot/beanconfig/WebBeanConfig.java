@@ -31,8 +31,8 @@ import java.util.List;
 @Configuration
 public class WebBeanConfig extends WebMvcConfigurerAdapter {
 
-    @Autowired
-    private HelloConverter helloConverter;
+//    @Autowired
+//    private HelloConverter helloConverter;
     @Autowired
     private RequestInterceptor requestInterceptor;
     @Autowired
@@ -103,7 +103,7 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
         fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);*/
 
         //5.将convert添加到converters当中.
-        converters.add(helloConverter);
+//        converters.add(helloConverter);
     }
 
     /**

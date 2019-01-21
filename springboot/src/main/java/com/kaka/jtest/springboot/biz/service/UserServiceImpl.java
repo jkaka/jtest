@@ -6,6 +6,7 @@ import com.kaka.jtest.springboot.biz.dataobject.User;
 import com.kaka.jtest.springboot.biz.mapper.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,11 +17,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo<User> selectList() {
-        PageHelper.startPage(2,8);
+        PageHelper.startPage(2, 8);
         List<User> userList = userDao.selectList();
 
         System.out.println(userList.size());
-        PageInfo<User> p=new PageInfo<>(userList);
+        PageInfo<User> p = new PageInfo<>(userList);
         return p;
     }
 
@@ -49,5 +50,15 @@ public class UserServiceImpl implements UserService {
         return userDao.selectOne(id);
     }
 
-
+    @Transactional
+    @Override
+    public void testTx() {
+        User user = new User();
+        user.setId(1);
+        user.setName("CC");
+        userDao.updateUser(user);
+        int i = 10 / 0;
+        user.setId(2);
+        userDao.updateUser(user);
+    }
 }

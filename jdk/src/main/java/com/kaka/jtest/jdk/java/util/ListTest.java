@@ -15,8 +15,9 @@ public class ListTest {
      */
     @Test
     public void removeObject() {
-        List<String> strings = new ArrayList<>();
+        List<String> strings = new ArrayList<>(Arrays.asList("a", "b", "a"));
         System.out.println(strings.remove("a"));
+        System.out.println(strings);
     }
 
     /**

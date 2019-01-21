@@ -20,4 +20,6 @@ public interface UserService {
     Integer deleteUser(Long id);
 
     User selectOne(Long id);
+
+    void testTx();
 }

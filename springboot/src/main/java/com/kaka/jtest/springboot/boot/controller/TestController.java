@@ -36,4 +36,10 @@ public class TestController {
         return userService.deleteUser(id);
     }
 
+    @PutMapping("/user/test_tx")
+    public Integer testTx(){
+        userService.testTx();
+        return 5;
+    }
+
 }

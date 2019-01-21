@@ -23,11 +23,11 @@ public class CollectorsTest {
     private List<Person> personList;
 
     {
-        Person person0 = new Person(4, "AA");
-        Person person1 = new Person(5, "AA");
+        Person person0 = new Person(null, "AA");
+        Person person1 = new Person(5, null);
         Person person2 = new Person(6, "DD");
         Person person3 = new Person(7, "BB");
-        Person person4 = new Person(7, "CC");
+        Person person4 = new Person(8, "CC");
         personList = Arrays.asList(person0, person1, person2, person3, person4);
     }
 
@@ -169,7 +169,7 @@ public class CollectorsTest {
     }
 
     /**
-     * key重复会报错
+     * key重复会报错    v为null也会报错
      * 对象中的属性为K、V
      */
     @Test
@@ -221,5 +221,13 @@ public class CollectorsTest {
         System.out.println(map);
     }
 
-
+    /**
+     * 解决v为null的情况,重载collect方法
+     */
+    @Test
+    public void toMapCustomMapTest2() {
+        Map<Integer, Person> map = personList.stream()
+                .collect(HashMap::new, (m, v) -> m.put(v.getId(), v), HashMap::putAll);
+        System.out.println(map);
+    }
 }

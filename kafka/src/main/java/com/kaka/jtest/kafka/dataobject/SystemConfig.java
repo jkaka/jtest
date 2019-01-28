@@ -1,5 +1,6 @@
 package com.kaka.jtest.kafka.dataobject;
 
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +11,7 @@ import java.util.Properties;
  * @Date 2018/12/10 16:27
  */
 public class SystemConfig {
-    private final Logger logger = LoggerFactory.getLogger(Constants.KAFKA);
+    private final Logger logger = LoggerFactory.getLogger("kafka");
     public static String AUTO_OFFSET_RESET_CONFIG = "auto.offset.reset";
     public static String KAFKA_BOOTSTRAP_SERVERS = "kafka." + ProducerConfig.BOOTSTRAP_SERVERS_CONFIG;
     public static String KAFKA_ACKS = "kafka." + ProducerConfig.ACKS_CONFIG;

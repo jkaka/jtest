@@ -33,15 +33,20 @@ public class MathTest {
      * 取上整，返回double类型
      */
     @Test
-    public void ceil(){
+    public void ceil() {
         System.out.println(Math.ceil(61 / 60.0));
     }
 
     @Test
-    public void test(){
-        long a;
-        double b = 33.10;
-        a = Math.round(b);
+    public void round() {
+        double b = 33.50;
+        long a = Math.round(b);
         System.out.println(a);
+    }
+
+    @Test
+    public void test() {
+        // 左移30位：2的30次方
+        System.out.println(1 << 30);
     }
 }

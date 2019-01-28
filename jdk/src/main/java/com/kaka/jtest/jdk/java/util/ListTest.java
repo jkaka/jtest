@@ -82,6 +82,7 @@ public class ListTest {
     public void addNull() {
         List<String> strings = new ArrayList<>();
         strings.add(null);
+        strings.add(null);
         System.out.println(strings.size());
     }
 }

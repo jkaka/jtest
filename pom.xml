@@ -38,7 +38,6 @@
         <module>apollo</module>
         <module>openUtils</module>
         <module>dubbo-api</module>
-        <module>demo</module>
         <module>ssm</module>
         <module>springmvc</module>
         <module>dubbo_provider</module>
@@ -144,6 +143,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+            <dependency>
+                <groupId>c3p0</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>0.9.1.2</version>
             </dependency>
 
             <!--分页工具-->

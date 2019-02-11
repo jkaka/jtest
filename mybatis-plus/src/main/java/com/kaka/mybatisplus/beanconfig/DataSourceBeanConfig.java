@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
@@ -20,7 +21,6 @@ import javax.sql.DataSource;
  * @Date 2018/11/8 9:28
  */
 @Configuration
-@MapperScan("com.kaka.mybatisplus.mapper")
 public class DataSourceBeanConfig {
 
     /**
@@ -58,6 +58,9 @@ public class DataSourceBeanConfig {
             throws Exception {
         final MybatisSqlSessionFactoryBean sessionFactory = new MybatisSqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
+        // 与mapper接口在同一个目录下的xml,自动扫描    无需以下代码
+        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
+                .getResources("classpath:mapper/mybatisplus/*.xml"));
         sessionFactory.setPlugins(new Interceptor[]{
                 performanceInterceptor,
                 new PaginationInterceptor(),

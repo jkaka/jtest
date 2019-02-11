@@ -95,7 +95,7 @@ public class MybatisPlusBeanConfig {
     }
 
     @Bean
-    public GlobalConfig globalConfiguration(FillMetaHandler fillMetaHandler) {
+    public GlobalConfig globalConfig(FillMetaHandler fillMetaHandler) {
         GlobalConfig.DbConfig dbConfig = new GlobalConfig.DbConfig();
         dbConfig.setLogicDeleteValue("N");
         dbConfig.setLogicNotDeleteValue("Y");

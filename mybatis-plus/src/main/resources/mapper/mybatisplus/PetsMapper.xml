@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaka.mybatisplus.mapper.PetsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kaka.mybatisplus.dataobject.Pets">
+    <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="owner_id" property="ownerId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        name, owner_id
+    </sql>
+
+    <select id="selectOneByName" resultType="com.kaka.mybatisplus.dataobject.Pets">
+        select * from `pets` where `name` = #{name }
+    </select>
+
+</mapper>

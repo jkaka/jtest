@@ -1,6 +1,8 @@
 package com.kaka.mybatisplus.beanconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
@@ -10,11 +12,17 @@ import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author jsk
@@ -38,12 +46,14 @@ public class DataSourceBeanConfig {
      * @return
      */
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/jsk?characterEncoding=utf-8&useUnicode=true");
         dataSource.setPassword("root");
         dataSource.setUsername("root");
+//        配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        dataSource.setFilters("stat,wall,log4j");
         return dataSource;
     }
 
@@ -68,6 +78,41 @@ public class DataSourceBeanConfig {
         });
         sessionFactory.setGlobalConfig(globalConfig);
         return sessionFactory.getObject();
+    }
+
+
+
+    //配置Druid的监控
+    //1、配置一个管理后台的Servlet
+    @Bean
+    public ServletRegistrationBean statViewServlet(){
+        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+        Map<String,String> initParams = new HashMap<>();
+
+        initParams.put("loginUsername","admin");
+        initParams.put("loginPassword","123456");
+        initParams.put("allow","");//默认就是允许所有访问
+        initParams.put("deny","192.168.15.21");
+
+        bean.setInitParameters(initParams);
+        return bean;
+    }
+
+
+    //2、配置一个web监控的filter
+    @Bean
+    public FilterRegistrationBean webStatFilter(){
+        FilterRegistrationBean bean = new FilterRegistrationBean();
+        bean.setFilter(new WebStatFilter());
+
+        Map<String,String> initParams = new HashMap<>();
+        initParams.put("exclusions","*.js,*.css,/druid/*");
+
+        bean.setInitParameters(initParams);
+
+        bean.setUrlPatterns(Arrays.asList("/*"));
+
+        return  bean;
     }
 
 }

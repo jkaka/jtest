@@ -22,4 +22,6 @@ public interface UserService {
     User selectOne(Long id);
 
     void testTx();
+
+    void nestMethod();
 }

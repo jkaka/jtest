@@ -57,6 +57,24 @@ public class UserServiceImpl implements UserService {
         user.setId(1);
         user.setName("CC");
         userDao.updateUser(user);
+//        int i = 10 / 0;
+        user.setId(2);
+        userDao.updateUser(user);
+    }
+
+    @Override
+    public void nestMethod() {
+        System.out.println("第一个方法...");
+        oneMethod();
+    }
+
+    @Transactional
+    public void oneMethod(){
+        System.out.println("第二个方法(加上了事务注解)...");
+        User user = new User();
+        user.setId(1);
+        user.setName("CC");
+        userDao.updateUser(user);
         int i = 10 / 0;
         user.setId(2);
         userDao.updateUser(user);

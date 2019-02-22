@@ -20,7 +20,7 @@ public class SystemConfig {
     public static String KAFKA_KEY_SERIALIZER = "kafka." + ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG;
     public static String KAFKA_VALUE_SERIALIZER = "kafka." + ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
     public static String KAFKA_PARTITIONER_CLASS = "kafka." + ProducerConfig.PARTITIONER_CLASS_CONFIG;
-    public static String KAFKA_DEFAULT_PARTITIONER_CLASS = "com.ecarx.kafka.client.PartitionRuler";
+    public static String KAFKA_DEFAULT_PARTITIONER_CLASS = "com.kaka.kafka.client.PartitionRuler";
     private Properties pro = null;
 
     private SystemConfig() {

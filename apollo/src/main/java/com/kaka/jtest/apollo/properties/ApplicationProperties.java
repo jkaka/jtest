@@ -6,7 +6,10 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Configuration
+/**
+ * EnableApolloConfig注解的作用: 把value对应namespace的配置注入到spring环境中
+ * RefreshScope注解的作用: 动态刷新该配置类的属性值
+ */
 @EnableApolloConfig(value = "application", order = 1)
 @RefreshScope
 @Component

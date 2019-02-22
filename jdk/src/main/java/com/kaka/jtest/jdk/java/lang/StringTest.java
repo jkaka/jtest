@@ -147,4 +147,13 @@ public class StringTest {
         System.out.println(string.length());
     }
 
+    /**
+     * 转义字符  不会进入到value数组
+     */
+    @Test
+    public void value(){
+        String string = "{\"aa\" : \"bb\"}";
+        System.out.println(string);
+    }
+
 }

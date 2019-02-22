@@ -131,9 +131,16 @@ public class JSONObjectTest {
         String[] strings = {"aa", "bb"};
         System.out.println(JSONObject.toJSONString(strings));
 
-        // 2.字符串 转json
-        String string = "{\"bizCode\":\"00012\",\"bizId\":\"\",\"triggerType\":\"\",\"triggerCron\":\"\",\"triggerTime\":\"\",\"startTime\":\"\",\"endTime\":\"\",\"responseBody\":\"\",\"executeTopic\":\"\",\"executeTag\":\"\",\"microServiceCode\":\"\"}";
-        System.out.println(JSONObject.toJSONString(string));
+        // 2.对象转json
+        Person person = new Person(1, "aa");
+        System.out.println(JSONObject.toJSONString(person));
+
+        // 3.解析json串
+        String json = "{\"id\":1,\"name\":\"aa\"}";
+        System.out.println(JSONObject.parseObject(json, Person.class));
+
+        // 4.json串转json
+        System.out.println(JSONObject.toJSONString(json));
     }
 
 }

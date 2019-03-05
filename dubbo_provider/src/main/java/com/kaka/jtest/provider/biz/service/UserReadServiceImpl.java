@@ -5,11 +5,13 @@ import com.kaka.jtest.api.client.dto.UserDTO;
 import com.kaka.jtest.api.client.service.UserReadService;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author shuangkaijia
  */
-@Service(version = "1.0.0", timeout = 10000)
+//@Service(version = "1.0.0", timeout = 10000)
+@Service(version = "1.0.0")
 public class UserReadServiceImpl implements UserReadService {
     public UserReadServiceImpl() {
         System.out.println("创建UserReadServiceImpl...");

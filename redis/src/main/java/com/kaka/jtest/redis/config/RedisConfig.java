@@ -3,7 +3,6 @@ package com.kaka.jtest.redis.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kaka.jtest.redis.listener.RedisKeyExpirationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -74,6 +73,16 @@ public class RedisConfig {
         return template;
     }
 
+    /**
+     * Jackson2JsonRedisSerializer:序列化带泛型的数据时(List<User>)，会以map的结构(List<LinkedHashMap>)进行存储   1000条数据0.9s
+     * 如果存放了List则在反系列化的时候如果没指定TypeReference则会报错java.util.LinkedHashMap cannot be cast to 。
+     * <p>
+     * GenericJackson2JsonRedisSerializer:会在序列化的json中加入@class属性，类的全路径包名，方便反系列化。    1000条数据1.5s
+     * Generic(泛型)Jackson2JsonRedisSerializer效率略低
+     *
+     * @param redisConnectionFactory
+     * @return RedisTemplate
+     */
     @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
@@ -98,7 +107,7 @@ public class RedisConfig {
 
 
     @Bean
-    public RedisMessageListenerContainer redisMessageListenerContainer(){
+    public RedisMessageListenerContainer redisMessageListenerContainer() {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory());
         return container;

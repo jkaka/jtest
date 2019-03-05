@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
 @Component
 public class DubboConfig {
     // 应用名称
-    @Value("${spring.dubbo.application1.name}")
+    @Value("${spring.dubbo.application.name}")
     private String applicationName;
 
     // 协议名称

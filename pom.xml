@@ -69,6 +69,16 @@
             </plugins>
         </pluginManagement>
     </build>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+    </dependencies>
+
     <!--项目版本管理：让子项目使用properties节点中的版本-->
     <dependencyManagement>
         <dependencies>
@@ -223,6 +233,14 @@
                 <artifactId>mysql-binlog-connector-java</artifactId>
                 <version>0.12.1</version>
             </dependency>
+
+            <!--zk客户端-->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.10</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

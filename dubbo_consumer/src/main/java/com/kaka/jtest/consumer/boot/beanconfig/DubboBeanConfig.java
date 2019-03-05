@@ -111,6 +111,7 @@ public class DubboBeanConfig {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
         consumerConfig.setFilter("consumer_filter");
+        consumerConfig.setTimeout(3000);
         // 这个不能在application的配置文件中配置
 //        consumerConfig.setCheck(false);
         return consumerConfig;

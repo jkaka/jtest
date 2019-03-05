@@ -10,8 +10,8 @@ spring:
    port: 20881
   registry:
    protocol: zookeeper
-   address: 10.43.100.169:2181
+   address: dev.cdh.ecarx.local:2181
   monitor:
    protocol: registry
-   address: 10.43.100.169:2181
-  scan: com.kaka.jtest.consumer.call,com.kaka.jtest.consumer.boot.controller
+   address: dev.cdh.ecarx.local:2181
+  scan: com.kaka.jtest.consumer.boot.controller

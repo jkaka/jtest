@@ -1,5 +1,6 @@
 package com.kaka.jtest.springboot.boot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.kaka.jtest.springboot.biz.dataobject.User;
 import com.kaka.jtest.springboot.biz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class TestController {
     @DeleteMapping("/user/{id}")
     public Integer deleteUser(@PathVariable Long id){
         return userService.deleteUser(id);
+    }
+
+    @PostMapping("/user/test")
+    public Integer deleteUser(@RequestBody JSONObject jsonObject){
+
+        System.out.println("jsonObject:" + jsonObject);
+        return 0;
     }
 
 }

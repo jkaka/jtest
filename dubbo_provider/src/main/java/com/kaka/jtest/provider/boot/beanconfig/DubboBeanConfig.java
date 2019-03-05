@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author shuangkaijia
  */
@@ -22,21 +19,9 @@ public class DubboBeanConfig {
     private DubboConfig dubboConfig;
 
     /**
-     * 1.通信规则配置(有 dubbo、rest、http、hessian、webservice)
-     * 在20880端口上使用dubbo协议来export服务
-     *
-     * @return
-     */
-    @Bean
-    public ProtocolConfig protocolConfig() {
-        ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setName(dubboConfig.getProtocolName());
-        protocolConfig.setPort(dubboConfig.getProtocolPort());
-        return protocolConfig;
-    }
-
-    /**
-     * 1.当前应用配置，主要用来给注册中心计算应用间依赖关系。
+     * 基础一、当前应用信息配置，主要用来给注册中心计算应用间依赖关系。
+     * 项目中有相同的应用信息,会报错   但不影响服务正常使用
+     * 解决：不配置这个就行了  因为1.0的starter会不管容器中是否存在,强制创建这个Bean
      *
      * @return
      */
@@ -48,7 +33,7 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 2.注册中心配置(服务注册中心和发现中心)
+     * 基础二、注册中心配置(服务注册中心和发现中心)
      * 常见的协议有：zookeeper、multicast
      *
      * @return
@@ -65,7 +50,22 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 4.监听地址、协议名
+     * 基础三、通信规则配置(有 dubbo、rest、http、hessian、webservice)
+     * 在20880端口上使用dubbo协议来export服务
+     *
+     * @return
+     */
+    @Bean
+    public ProtocolConfig protocolConfig() {
+        ProtocolConfig protocolConfig = new ProtocolConfig();
+        protocolConfig.setName(dubboConfig.getProtocolName());
+        protocolConfig.setPort(dubboConfig.getProtocolPort());
+        return protocolConfig;
+    }
+
+
+    /**
+     * 基础四(可选)、监听地址、协议名
      * 统计服务和调用次数，调用时间监控中心。
      *
      * @return
@@ -79,13 +79,14 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 5.设置dubbo扫描的包
+     * 1.设置dubbo扫描的包
      * 可以扫描到dubbo的注解，如：@Service、@Reference
      * 第一种：使用下面AnnotationBean(不推荐)
      * 第二种：在yml中配置spring.dubbo.scan的值(不推荐)
      * 第三种：使用@DubboComponentScan注解
-     *
+     * <p>
      * 同时使用以上方法，会扫描多次,进而产生多个提供者
+     *
      * @param
      * @return
      */
@@ -97,7 +98,7 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 6.提供方配置(默认使用springboot的applicationConfig，现在指定自己设定的applicationConfig)
+     * 2.提供方配置(默认使用springboot的applicationConfig，现在指定自己设定的applicationConfig)
      *
      * @param applicationConfig
      * @param registryConfig
@@ -111,6 +112,7 @@ public class DubboBeanConfig {
         providerConfig.setApplication(applicationConfig);
         providerConfig.setRegistry(registryConfig);
         providerConfig.setProtocol(protocolConfig);
+
         // 提供者的维度分组：分组后所有提供的服务都会在这个组中。
 //        providerConfig.setGroup("a-provider");
 
@@ -120,7 +122,7 @@ public class DubboBeanConfig {
     }
 
     /**
-     * 7.消费配置(默认使用springboot的applicationConfig，现在指定自己设定的applicationConfig)
+     * 3.消费配置(默认使用springboot的applicationConfig，现在指定自己设定的applicationConfig)
      *
      * @param applicationConfig
      * @return
@@ -156,4 +158,5 @@ public class DubboBeanConfig {
 
         return serviceConfig;
     }*/
+
 }

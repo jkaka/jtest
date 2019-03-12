@@ -33,7 +33,7 @@ public class DataSourceBeanConfig {
 
     /**
      * 扫描xml四种配置方式：
-     * 1.MapperScan注解；
+     * 1.MapperScan注解(这种情况需要xml和mapper接口在同一个包下,且名称一样)；
      * 2.MapperScannerConfigurer的basePackage；
      * 3.MybatisSqlSessionFactoryBean的mapperLocations
      * 4.application.properties
@@ -68,9 +68,9 @@ public class DataSourceBeanConfig {
             throws Exception {
         final MybatisSqlSessionFactoryBean sessionFactory = new MybatisSqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        // 与mapper接口在同一个目录下的xml,自动扫描    无需以下代码
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources("classpath:mapper/mybatisplus/*.xml"));
+        // 如果编译后的target目录中,xml文件与mapper接口在同一个目录下,mapper接口和xml会自动绑定    无需以下代码
+//        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
+//                .getResources("classpath:mapper/mybatisplus/*.xml"));
         sessionFactory.setPlugins(new Interceptor[]{
                 performanceInterceptor,
                 new PaginationInterceptor(),

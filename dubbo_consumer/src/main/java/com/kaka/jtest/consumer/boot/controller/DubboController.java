@@ -24,6 +24,11 @@ public class DubboController {
         return "callA";
     }
 
+    @RequestMapping("/selectOne")
+    public String selectOne() {
+        userReadService.selectOne(1);
+        return "selectOne";
+    }
     @RequestMapping("/dubboFilter")
     public String dubboFilter() {
         TraceIdUtil.setTraceId("测试通过dubboFilter传参！");

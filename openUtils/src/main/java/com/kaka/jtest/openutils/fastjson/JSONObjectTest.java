@@ -2,6 +2,7 @@ package com.kaka.jtest.openutils.fastjson;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.kaka.jtest.openutils.dataobject.Person;
 import com.kaka.jtest.openutils.dataobject.Student;
 import org.junit.Test;
@@ -41,6 +42,22 @@ public class JSONObjectTest {
         System.out.println(person);
     }
 
+
+    /**
+     * 泛型
+     */
+    @Test
+    public void type(){
+        Map<String, String> map = new HashMap<String, String>(8){{
+            put("name1", "AA");
+            put("name2", "BB");
+        }};
+        System.out.println(map);
+
+        String json = JSONObject.toJSONString(map);
+        Map<String, String> map1 = JSONObject.parseObject(json, new TypeReference<Map<String, String>>(){});
+        System.out.println(map1);
+    }
     /**
      * json字符串转map
      * parseObject(jsonStr); 返回值只能是Map<String, Object>

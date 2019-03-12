@@ -156,4 +156,14 @@ public class StringTest {
         System.out.println(string);
     }
 
+    /**
+     * 使用.或者|作为分隔符时,需要使用转义字符
+     */
+    @Test
+    public  void split(){
+        String string = "127.0.0.1";
+        String[] array = string.split("\\.");
+        System.out.println(array.length);
+    }
+
 }

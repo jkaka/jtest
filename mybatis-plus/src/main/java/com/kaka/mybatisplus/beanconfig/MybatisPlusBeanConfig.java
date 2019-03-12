@@ -82,7 +82,7 @@ public class MybatisPlusBeanConfig {
      * @return
      * @throws IOException
      */
-    @Bean
+//    @Bean
     public MybatisMapperRefresh mybatisMapperRefresh(SqlSessionFactory sqlSessionFactory) throws IOException {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         Resource[] mapperLocations = resolver.getResources("com/kaka/mybatisplus/mapper/*.xml");

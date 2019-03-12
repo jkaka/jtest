@@ -20,6 +20,12 @@ public class UserReadServiceImpl implements UserReadService {
     @Override
     public UserDTO selectOne(Integer id) {
         System.out.println("a平台,selectOne方法...");
+        System.out.println("service3");
+        try {
+            TimeUnit.SECONDS.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

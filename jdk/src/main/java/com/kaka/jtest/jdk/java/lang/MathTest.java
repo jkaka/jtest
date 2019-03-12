@@ -42,6 +42,8 @@ public class MathTest {
         double b = 33.50;
         long a = Math.round(b);
         System.out.println(a);
+
+        System.out.println(Math.round(-1.4));
     }
 
     @Test

@@ -20,12 +20,17 @@ public class ApolloBeanConfig {
     @Autowired
     private RefreshScope refreshScope;
 
+    /**
+     * 注解不写value默认监听application   如果写了,只监听value数组中的namespace
+     *
+     * @param changeEvent
+     */
     @ApolloConfigChangeListener({"application", "java.rocketmq"})
     private void someOnChange(ConfigChangeEvent changeEvent) {
         //update injected value of batch if it is changed in Apollo
         Set<String> changes = changeEvent.changedKeys();
-        for(String key : changes) {
-            logger.info("配置[" + key+"]发生变化：" + changeEvent.getChange(key));
+        for (String key : changes) {
+            logger.info("配置[" + key + "]发生变化：" + changeEvent.getChange(key));
             refreshScope.refresh("otaSyncConfig");
             refreshScope.refresh("devicePlatformConfig");
             refreshScope.refresh("otaSystemConfig");

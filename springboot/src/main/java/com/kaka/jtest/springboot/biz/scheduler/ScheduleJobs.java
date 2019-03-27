@@ -2,7 +2,6 @@ package com.kaka.jtest.springboot.biz.scheduler;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -43,7 +42,7 @@ public class ScheduleJobs {
         System.out.println(new Date() + "间隔秒执行结束..." + Thread.currentThread().getName());
     }
 
-    @Scheduled(cron = "0/30 * * * * ?")
+//    @Scheduled(cron = "0/30 * * * * ?")
     public void cronJob() {
         System.out.println(new Date() + "每15秒执行...");
     }

@@ -47,17 +47,19 @@ public class JSONObjectTest {
      * 泛型
      */
     @Test
-    public void type(){
-        Map<String, String> map = new HashMap<String, String>(8){{
+    public void type() {
+        Map<String, String> map = new HashMap<String, String>(8) {{
             put("name1", "AA");
             put("name2", "BB");
         }};
         System.out.println(map);
 
         String json = JSONObject.toJSONString(map);
-        Map<String, String> map1 = JSONObject.parseObject(json, new TypeReference<Map<String, String>>(){});
+        Map<String, String> map1 = JSONObject.parseObject(json, new TypeReference<Map<String, String>>() {
+        });
         System.out.println(map1);
     }
+
     /**
      * json字符串转map
      * parseObject(jsonStr); 返回值只能是Map<String, Object>
@@ -94,7 +96,7 @@ public class JSONObjectTest {
 
 
     /**
-     * 得到jsonObject中key对应的value，如果key不存在时返回null
+     * 得到jsonObject中key对应的value，如果key不存在时返回null 不会报错
      */
     @Test
     public void getString() {
@@ -132,14 +134,12 @@ public class JSONObjectTest {
      */
     @Test
     public void parseObjectNull() {
-        Map<String, Object> featuresMap = (Map<String, Object>)JSONObject.parse(null);
+        Map<String, Object> featuresMap = (Map<String, Object>) JSONObject.parse(null);
         System.out.println(featuresMap);
     }
 
 
-
     /**
-     *
      * 对象转json字符串
      */
     @Test
@@ -158,6 +158,16 @@ public class JSONObjectTest {
 
         // 4.json串转json
         System.out.println(JSONObject.toJSONString(json));
+    }
+
+    /**
+     * put进来的object会自动转json
+     */
+    @Test
+    public void putTest(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("ecuInventory", new Person(1,"AA"));
+        System.out.println(jsonObject.toJSONString());
     }
 
 }

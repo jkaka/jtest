@@ -7,6 +7,9 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
+ * 一个进程中的生产者组(消费者组),默认只能有一个生产者(消费者)实例(名称:ip@进程Id)
+ * 想要有多个生产者(消费者)实例,需要设置不同的实例名称
+ *
  * @author jsk
  * @Date 2018/11/29 15:02
  */
@@ -14,6 +17,7 @@ public class AsyncProducer {
 
     /**
      * 异步传输通常用于响应时间敏感的业务场景。
+     *
      * @param args
      * @throws Exception
      */
@@ -38,6 +42,7 @@ public class AsyncProducer {
                     System.out.printf("%-10d OK %s %n", index,
                             sendResult.getMsgId());
                 }
+
                 @Override
                 public void onException(Throwable e) {
                     System.out.printf("%-10d Exception %s %n", index, e);

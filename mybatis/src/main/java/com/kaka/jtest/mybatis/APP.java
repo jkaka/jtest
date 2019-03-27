@@ -43,6 +43,7 @@ public class APP {
     public void testParams() {
         String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUser";
         Map list11 = new HashMap();
+        list11.put("keys", Arrays.asList("BB"));
         list11.put("AA", "BB");
         List<User> users = sqlSession.selectList(statement, list11);
         System.out.println(users);

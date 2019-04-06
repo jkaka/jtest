@@ -6,7 +6,7 @@ package com.kaka.jtest.springboot.common.utils.jvm;
  */
 public class TestOne {
 
-    private static String a = "test1";
+    private static String a = "test2";
     public static void main(String[] args) {
         System.out.println("8888888888888");
         System.out.println("测试OK？" + a);

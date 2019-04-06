@@ -12,4 +12,8 @@ public class APP {
         System.out.println(objectTest);
     }
 
+    public static void main(String[] args) {
+        System.out.println("***********");
+    }
+
 }

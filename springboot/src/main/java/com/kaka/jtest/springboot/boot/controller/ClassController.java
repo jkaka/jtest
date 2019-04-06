@@ -1,6 +1,7 @@
 package com.kaka.jtest.springboot.boot.controller;
 
 import com.kaka.jtest.springboot.common.utils.jvm.JavaClassUtil;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +19,13 @@ import java.util.List;
 @RequestMapping("/classController")
 public class ClassController {
 
+    public ClassController(){
+        System.out.println(Thread.currentThread().getContextClassLoader());
+    }
     private String filed = "filed1";
 
     @PostMapping("/execute")
-    public List<String> executeCode(MultipartFile file) throws Exception {
+    public List<String> executeCode(MultipartFile file, String className) throws Exception {
 //        WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
 //        System.out.println(Arrays.toString(webApplicationContext.getBeanDefinitionNames()));
 
@@ -30,19 +34,25 @@ public class ClassController {
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes);
         inputStream.close();
-        JavaClassUtil.execute(bytes);
+        JavaClassUtil.execute(className, bytes);
         return new ArrayList<>();
     }
 
     @PostMapping("/compile")
-    public String compileCode(MultipartFile file) throws Exception {
+    public String compileCode(MultipartFile file, String className) throws Exception {
+        System.out.println(filed);
         InputStream inputStream = file.getInputStream();
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes);
         inputStream.close();
 
-        JavaClassUtil.compile(bytes);
+        JavaClassUtil.compile(className, bytes);
         return "compile";
     }
 
+    @GetMapping("/output")
+    public String output(){
+        System.out.println(filed);
+        return filed;
+    }
 }

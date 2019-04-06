@@ -2,9 +2,7 @@ package com.kaka.jtest.springmvc.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.kaka.jtest.springmvc.dataobject.Order;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author shuangkaijia
@@ -42,4 +40,15 @@ public class MvcController {
         return "objWrapObj";
     }
 
+    /**
+     * 支持中间带点的参数
+     *
+     * @param name
+     * @return
+     */
+    @GetMapping("/test/{name:.+}")
+    public String test(@PathVariable String name) {
+        System.out.println(name);
+        return "objWrapObj";
+    }
 }

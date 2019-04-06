@@ -9,7 +9,7 @@ public class HotSpotClassLoader extends ClassLoader {
         super(HotSpotClassLoader.class.getClassLoader());
     }
 
-    public Class loadByte(byte[] bytes){
-        return defineClass(null, bytes, 0, bytes.length);
+    public Class loadByte(String name, byte[] bytes){
+        return defineClass(name, bytes, 0, bytes.length);
     }
 }

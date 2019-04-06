@@ -3,6 +3,7 @@ package com.kaka.spring.annotation.configure;
 import com.kaka.spring.annotation.bean.GenericityBean;
 import com.kaka.spring.annotation.bean.InitBean;
 import com.kaka.spring.annotation.bean.Person;
+import com.kaka.spring.annotation.bean.ScanBean;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
+ * 泛型bean注入:与jdk中的泛型不同,IOC中原生类型是泛型的父类,可以兼容注入
+ *
  * @author: jsk
  * @date: 2019/3/21 22:54
  */
@@ -19,23 +22,28 @@ import java.util.Map;
 @Data
 public class GenericityConfigure {
 
+    /**
+     * 可以注入原生类型、Person泛型两种类型的bean
+     */
     @Autowired
     private Map<String, GenericityBean<Person>> genericityBeanMap;
+    @Autowired
+    private GenericityBean<ScanBean> genericityBean;
 
     @Bean
-    public GenericityBean genericityBeanOne(){
+    public GenericityBean genericityBeanOne() {
         return new GenericityBean<Person>();
     }
 
     @Bean
-    public GenericityBean<Person> genericityBeanTwo(){
+    public GenericityBean<Person> genericityBeanTwo() {
         GenericityBean<Person> genericityBean = new GenericityBean<>();
-        genericityBean.add(new Person(1,"AA"));
+        genericityBean.add(new Person(1, "AA"));
         return genericityBean;
     }
 
     @Bean
-    public GenericityBean<InitBean> genericityBeanThree(){
+    public GenericityBean<InitBean> genericityBeanThree() {
         return new GenericityBean<>();
     }
 
@@ -43,10 +51,11 @@ public class GenericityConfigure {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(GenericityConfigure.class);
         GenericityConfigure genericityConfigure = annotationConfigApplicationContext.getBean("genericityConfigure", GenericityConfigure.class);
         System.out.println(genericityConfigure);
+        System.out.println(genericityConfigure.genericityBean);
         Map<String, GenericityBean<Person>> genericityBeanMap = genericityConfigure.getGenericityBeanMap();
         System.out.println(genericityBeanMap);
 
-        for(String key : genericityBeanMap.keySet()){
+        for (String key : genericityBeanMap.keySet()) {
             GenericityBean<Person> personGenericityBean = genericityBeanMap.get(key);
             personGenericityBean.add(new Person(1, "AA"));
         }

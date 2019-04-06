@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Premain-Class: com.kaka.jtest.jdk.java.lang.instrument.MyAgent
+Agent-Class: com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgent
+Can-Retransform-Classes: true
+Can-Redefine-Classes: true
+
+

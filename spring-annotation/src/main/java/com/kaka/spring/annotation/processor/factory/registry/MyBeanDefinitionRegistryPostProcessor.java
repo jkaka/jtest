@@ -12,10 +12,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor {
+
+    /**
+     * 在BeanFactoryPostProcessor#postProcessBeanFactory之前调用
+     *
+     * @param beanDefinitionRegistry
+     * @throws BeansException
+     */
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
         System.out.println("BeanDefinitionRegistryPostProcessor:postProcessBeanDefinitionRegistry开始");
-        for (String name : beanDefinitionRegistry.getBeanDefinitionNames()){
+        for (String name : beanDefinitionRegistry.getBeanDefinitionNames()) {
             System.out.println(name);
         }
         System.out.println("BeanDefinitionRegistryPostProcessor:postProcessBeanDefinitionRegistry结束");

@@ -40,7 +40,7 @@ public class TestController {
     @PostMapping("/user/test")
     public Integer deleteUser(@RequestBody JSONObject jsonObject){
 
-        System.out.println("jsonObject:" + jsonObject);
+        System.out.println("jsonObject123:" + jsonObject);
         return 0;
     }
 

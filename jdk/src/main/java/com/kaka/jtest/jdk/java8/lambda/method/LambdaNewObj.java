@@ -1,7 +1,6 @@
 package com.kaka.jtest.jdk.java8.lambda.method;
 
 import com.kaka.jtest.jdk.model.Person;
-import com.sun.org.glassfish.gmbal.ManagedObject;
 
 /**
  * @author jsk

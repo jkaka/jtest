@@ -8,17 +8,17 @@ import java.lang.reflect.Method;
  */
 public class JavaClassUtil {
 
-    public static String execute(byte[] bytes) throws Exception {
+    public static String execute(String name, byte[] bytes) throws Exception {
         HotSpotClassLoader hotSpotClassLoader = new HotSpotClassLoader();
-        Class aClass = hotSpotClassLoader.loadByte(bytes);
+        Class aClass = hotSpotClassLoader.loadByte(name, bytes);
         Method main = aClass.getMethod("main", new Class[]{String[].class});
         main.invoke(null, new String[]{null});
         return "";
     }
 
-    public static String compile(byte[] bytes) throws Exception {
+    public static String compile(String name, byte[] bytes) throws Exception {
         HotSpotClassLoader hotSpotClassLoader = new HotSpotClassLoader();
-        hotSpotClassLoader.loadByte(bytes);
+        hotSpotClassLoader.loadByte(name, bytes);
         return "";
     }
 }

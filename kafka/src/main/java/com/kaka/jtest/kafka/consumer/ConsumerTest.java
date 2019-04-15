@@ -17,7 +17,7 @@ public class ConsumerTest {
     @Test
     public void poll(){
         Properties props = new Properties();
-        props.put("bootstrap.servers", "test.cdh.ecarx.local:9092,test01.cdh.ecarx.local:9092,test02.cdh.ecarx.local:9092");
+        props.put("bootstrap.servers", "*****");
         props.put("group.id", "group_1");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");

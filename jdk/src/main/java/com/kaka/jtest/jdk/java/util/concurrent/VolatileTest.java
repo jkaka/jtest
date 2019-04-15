@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class VolatileTest {
 
     private static volatile boolean stopRequested;
+    private static boolean finished;
     public boolean stop = false;
 
     /**
@@ -20,21 +21,37 @@ public class VolatileTest {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
-        Thread backgroundThread = new Thread(() -> {
-            int i = 0;
-            while (!stopRequested) {
-                // while(**)会被优化成:if(**) while(true)只判断一次
-                i++;
+        ThreadDemo threadDemo = new ThreadDemo();
+        new Thread(threadDemo).start();
+        while (true){
+            if(threadDemo.isFlag()){
+                System.out.println("******************");
+                break;
             }
-        });
+            System.out.println(threadDemo.isFlag());
+        }
+    }
+    static class ThreadDemo implements  Runnable{
+        private  boolean flag = false;
 
-        backgroundThread.start();
+        @Override
+        public void run() {
+            try {
+                TimeUnit.MILLISECONDS.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            flag = true;
+            System.out.println(isFlag());
+        }
 
-        TimeUnit.SECONDS.sleep(1);
-        stopRequested = true;
-        // ==========================================================
-        VolatileTest volatileTest = new VolatileTest();
-        volatileTest.visibilityTest();
+        public boolean isFlag() {
+            return flag;
+        }
+
+        public void setFlag(boolean flag) {
+            this.flag = flag;
+        }
     }
 
 
@@ -46,17 +63,23 @@ public class VolatileTest {
         // 线程1循环输出
         Thread thread = new Thread(() -> {
             while (true) {
-                if (volatileTest.stop) {
-                    System.out.println("------------------");
+                if (volatileTest.isStop()) {
+                    System.out.println("状态改变,程序结束!");
                     break;
                 }
+                System.out.println("888888888");
             }
         });
 
         // 线程2  修改stop的值
         Thread thread2 = new Thread(() -> {
             System.out.println("*****************************");
-            volatileTest.stop = true;
+            try {
+                TimeUnit.MILLISECONDS.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            volatileTest.setStop(true);
         });
 
         thread.start();
@@ -70,5 +93,13 @@ public class VolatileTest {
         ThreadManager.getInstance().execute(volatileTask);
         TimeUnit.SECONDS.sleep(5);
         ThreadManager.getInstance().shutdown();
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
     }
 }

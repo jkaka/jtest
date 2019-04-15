@@ -18,7 +18,7 @@ public class ProducerTest {
     @Test
     public void send(){
         Properties props = new Properties();
-        props.put("bootstrap.servers", "test.cdh.ecarx.local:9092,test01.cdh.ecarx.local:9092,test02.cdh.ecarx.local:9092");
+        props.put("bootstrap.servers", "***");
         props.put("acks", "all");
 //        props.put("delivery.timeout.ms", 30000);
         props.put("batch.size", 16384);

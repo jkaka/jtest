@@ -1,7 +1,6 @@
 package com.kaka.jtest.jdk.java.lang.instrument.hotswap;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kaka.jtest.jdk.model.HotSwapBean;
 
 import java.lang.instrument.Instrumentation;
 
@@ -20,10 +19,15 @@ public class ReplaceAgent {
             System.out.println(String.format("wrong agentArgument=%s", agentArgument));
             return;
         }
+        // 将自定义的 Transformer 注册到 TransformerManager 里
         instrumentation.addTransformer(new SimpleTransformer(filePath, className), true);
         System.out.println("ClassFileTransformer成功");
         try {
-            instrumentation.retransformClasses(HotSwapBean.class);
+            System.out.println("className(前):" + className);
+            className = className.replace("/", ".");
+            System.out.println("className(后):" + className);
+            Class<?> clz = Class.forName(className);
+            instrumentation.retransformClasses(clz);
         } catch (Exception e) {
             e.printStackTrace();
         }

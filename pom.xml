@@ -53,6 +53,8 @@
         <module>binlog</module>
         <module>git</module>
         <module>spring-annotation</module>
+        <module>scheduler</module>
+        <module>zookeeper</module>
     </modules>
 
     <build>

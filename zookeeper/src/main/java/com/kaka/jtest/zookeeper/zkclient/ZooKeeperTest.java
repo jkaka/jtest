@@ -16,7 +16,7 @@ import java.util.List;
  * @Date 2019/3/1 15:55
  */
 public class ZooKeeperTest {
-    private String zkUrl = "dev.cdh.ecarx.local:2181";
+    private String zkUrl = "localhost:2181";
     private int sessionTimeout = 20000;
     private int connectTimeout = 20000;
     ZooKeeper zkClient = null;

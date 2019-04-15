@@ -58,6 +58,7 @@
                                 <Can-Retransform-Classes>
                                     true
                                 </Can-Retransform-Classes>
+                                <Boot-Class-Path>D:\Java\jdk1.8.0_31\lib\tools.jar</Boot-Class-Path>
                             </manifestEntries>
                         </archive>
                     </configuration>

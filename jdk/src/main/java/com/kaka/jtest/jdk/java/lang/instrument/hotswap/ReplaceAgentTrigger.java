@@ -9,11 +9,15 @@ import com.sun.tools.attach.VirtualMachineDescriptor;
  * @date: 2019/4/3 15:40
  */
 public class ReplaceAgentTrigger {
-    private final static String VM_NAME = "com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgentMain";
+//    private final static String VM_NAME = "com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgentMain";
+//    private final static String VM_NAME = "com.ecarx.ota.Application";
+    private final static String VM_NAME = "ota.jar";
     private final static String AGENT_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\target\\jdk-1.0-SNAPSHOT.jar";
 
-    private final static String FILE_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\src\\main\\java\\com\\kaka\\jtest\\jdk\\java\\lang\\instrument\\hotswap\\HotSwapBean.class";
-    private final static String CLASS_NAME = "com/kaka/jtest/jdk/model/HotSwapBean";
+//    private final static String FILE_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\src\\main\\java\\com\\kaka\\jtest\\jdk\\java\\lang\\instrument\\hotswap\\HotSwapBean.class";
+    private final static String FILE_PATH = "D:\\Java\\jdk1.8.0_31\\lib/EcarxOtaTestController.class";
+    private final static String CLASS_NAME = "com/ecarx/ota/controller/EcarxOtaTestController";
+//    private final static String CLASS_NAME = "com/kaka/jtest/jdk/model/HotSwapBean";
 
     public static void main(String[] args) {
         VirtualMachineDescriptor vmdTar = null;

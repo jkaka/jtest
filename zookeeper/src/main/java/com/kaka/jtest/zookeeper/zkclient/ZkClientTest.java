@@ -20,7 +20,7 @@ public class ZkClientTest {
 
     @Before
     public void init() {
-        String zkUrl = "dev.cdh.ecarx.local:2181";
+        String zkUrl = "localhost:2181";
         int sessionTimeout = 20000;
         int connectTimeout = 20000;
         zkClient = new ZkClient(zkUrl, sessionTimeout, connectTimeout);

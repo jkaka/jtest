@@ -31,7 +31,7 @@ public class Consumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("test-group");
 
         // Specify name server addresses.
-        consumer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
+        consumer.setNamesrvAddr("dev.cdh.***.local:9876");
 
 //         Subscribe one more more topics to consume.
         consumer.subscribe(TOPIC, "*");

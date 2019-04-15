@@ -33,6 +33,10 @@ public class SimpleTransformer implements ClassFileTransformer {
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
                             ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+        // 简单的判断是否是 要进行转换的类,
+        // 如果不是,  返回 null ，应该是表示不进行转换的 意思
+        // 如果是, 则使用新的类定义文件 进行替换
+        // 复杂一些的逻辑 可以使用 字节码技术 在原来的基础上进行更改
         if (!className.equals(this.className)) {
             return null;
         }

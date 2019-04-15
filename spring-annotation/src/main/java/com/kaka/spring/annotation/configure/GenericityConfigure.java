@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * 泛型bean注入:与jdk中的泛型不同,IOC中原生类型是泛型的父类,可以兼容注入
+ * 泛型bean注入:IOC中原生类型与泛型可以兼容注入;泛型之间不存在子父类关系,不可兼容注入
  *
  * @author: jsk
  * @date: 2019/3/21 22:54
@@ -27,6 +27,10 @@ public class GenericityConfigure {
      */
     @Autowired
     private Map<String, GenericityBean<Person>> genericityBeanMap;
+
+    /**
+     * 根据Bean【方法签名上的】返回类型注入
+     */
     @Autowired
     private GenericityBean<ScanBean> genericityBean;
 

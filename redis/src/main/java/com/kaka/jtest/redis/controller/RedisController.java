@@ -2,6 +2,7 @@ package com.kaka.jtest.redis.controller;
 
 import com.kaka.jtest.redis.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -23,10 +24,13 @@ public class RedisController {
     private DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss SSS");
 
     @Autowired
+    @Qualifier("jsonRedisTemplate")
     private RedisTemplate<String, String> redisTemplate;
     @Autowired
+    @Qualifier("jsonRedisTemplate")
     private RedisTemplate<Object, Object> redisTemplateObject;
     @Autowired
+    @Qualifier("jsonRedisTemplate")
     private RedisTemplate<String, List<User>> redisTemplateUsers;
 
     @ResponseBody
@@ -70,7 +74,6 @@ public class RedisController {
 
         return "testSelect";
     }
-
 
     /**
      * 测试批量插入
@@ -136,25 +139,26 @@ public class RedisController {
 
     /**
      * 查看保存Object和String的区别
+     * 存储方式跟序列化方式有关,跟泛型无关
      */
     @ResponseBody
     @RequestMapping("/setObjectAndString")
     public String setObjectAndString() {
-        List<User> users = Arrays.asList(new User(1));
+        // 存储值一样
         redisTemplate.opsForValue().set("str", "ss");
-//        redisTemplateUsers.opsForValue().set("user", users);
         redisTemplateObject.opsForValue().set("objStr", "ss");
-//        redisTemplateObject.opsForValue().set("objUser", users);
+
+        // 存储值一样
+        List<User> users = Collections.singletonList(new User(1));
+        redisTemplateUsers.opsForValue().set("user", users);
+        redisTemplateObject.opsForValue().set("objUser", users);
 
         Map<String, Object> properties = new HashMap<>();
         properties.put("123", "hello");
         properties.put("abc", "5");
-
         redisTemplate.opsForHash().putAll("hash", properties);
-
         Map<Object, Object> ans = redisTemplate.opsForHash().entries("hash");
         System.out.println("ans: " + ans);
-
         return "setObjectAndString";
     }
 

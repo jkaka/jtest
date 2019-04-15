@@ -1,25 +1,34 @@
 package com.kaka.jtest.jdk.java;
 
-import com.kaka.jtest.jdk.model.Person;
-import org.junit.Test;
-
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class APP {
 
-    @Test
-    public void test1() {
-        List<Person> list = null;
-        list.stream().filter(task ->
-                null != task.getId()
-                        && task.getId() < System.currentTimeMillis()
-        )
-                .forEach((task) -> {
-                    System.out.println("---");
-                    task.setName("offline");
-                    System.out.println(task);
-                });
+    public static void main(String[] args) throws InterruptedException {
+        Thread loadConfigThread = new Thread(() -> {
+            while (true){
+                System.out.println("888999");
+            }
+        });
 
+        Thread loadConfigThread1 = new Thread(() -> {
+            while (true){
+                System.out.println("111222");
+            }
+        });
+
+        Thread loadConfigThread2 = new Thread(() -> {
+            while (true){
+                System.out.println("111222");
+            }
+        });
+
+
+        loadConfigThread.start();
+        loadConfigThread1.start();
+        loadConfigThread2.start();
+
+        TimeUnit.SECONDS.sleep(10);
     }
 
 }

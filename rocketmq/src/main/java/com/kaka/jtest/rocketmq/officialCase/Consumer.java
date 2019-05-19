@@ -23,18 +23,19 @@ import java.util.List;
  */
 public class Consumer {
 
-    private final static String TOPIC = "test-jsk";
+    private final static String TOPIC = "tsp-schedule-center";
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
 
         // Instantiate with specified consumer group name.
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("test-group");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumer-group_tsp-schedule-center1");
 
         // Specify name server addresses.
-        consumer.setNamesrvAddr("dev.cdh.***.local:9876");
+        consumer.setNamesrvAddr("test.cdh.ecarx.local:9876;test01.cdh.ecarx.local:9876");
+//        consumer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
 
 //         Subscribe one more more topics to consume.
-        consumer.subscribe(TOPIC, "*");
+        consumer.subscribe(TOPIC, "generate_task");
         // 订阅多个主题
 //        consumer.setSubscription(new HashMap<String, String>(8){{
 //            put("test-jsk", "");

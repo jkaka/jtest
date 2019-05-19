@@ -3,8 +3,10 @@ package com.kaka.jtest.openutils.fastjson;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.kaka.jtest.openutils.dataobject.Person;
-import com.kaka.jtest.openutils.dataobject.Student;
+import com.kaka.jtest.openutils.beans.FiledObject;
+import com.kaka.jtest.openutils.beans.FiledTwoObject;
+import com.kaka.jtest.openutils.beans.Person;
+import com.kaka.jtest.openutils.beans.Student;
 import org.junit.Test;
 
 import java.util.*;
@@ -105,6 +107,16 @@ public class JSONObjectTest {
         System.out.println(matCode);
     }
 
+    @Test
+    public void getBoolean() {
+        JSONObject jsonObject = new JSONObject();
+        Boolean matCode = jsonObject.getBoolean("matCode");
+        System.out.println(matCode);
+        if (matCode) {
+            System.out.println("**************");
+        }
+    }
+
     /**
      * 从jsonObject中获取JSONArray
      * 如果key不存在时,JSONArray的值返回null
@@ -158,15 +170,38 @@ public class JSONObjectTest {
 
         // 4.json串转json
         System.out.println(JSONObject.toJSONString(json));
+
+        // 5.map转 json
+        Map<String, String> map = new HashMap<>(8);
+        map.put("id", "99");
+        map.put("name", "jsk");
+        System.out.println(map);
+        System.out.println(JSONObject.toJSONString(map));
+    }
+
+    /**
+     * 通过对象中的getter方法来取对应field值,进而转成json串
+     */
+    @Test
+    public void toJSONStringMapParam() {
+        Map<String, String> param = new HashMap<>(8);
+        param.put("aa", "aa");
+        FiledTwoObject filedTwoObject = new FiledTwoObject();
+        filedTwoObject.setMapParam(param);
+
+        FiledObject person = new FiledObject();
+        person.setId(8);
+        person.setFiledTwoObject(filedTwoObject);
+        System.out.println(JSONObject.toJSONString(person));
     }
 
     /**
      * put进来的object会自动转json
      */
     @Test
-    public void putTest(){
+    public void putTest() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ecuInventory", new Person(1,"AA"));
+        jsonObject.put("ecuInventory", new Person(1, "AA"));
         System.out.println(jsonObject.toJSONString());
     }
 

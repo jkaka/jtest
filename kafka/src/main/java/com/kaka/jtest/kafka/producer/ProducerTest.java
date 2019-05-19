@@ -18,7 +18,7 @@ public class ProducerTest {
     @Test
     public void send(){
         Properties props = new Properties();
-        props.put("bootstrap.servers", "***");
+        props.put("bootstrap.servers", "dev.cdh.ecarx.local:9092");
         props.put("acks", "all");
 //        props.put("delivery.timeout.ms", 30000);
         props.put("batch.size", 16384);
@@ -28,8 +28,8 @@ public class ProducerTest {
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
         Producer<String, String> producer = new KafkaProducer<>(props);
-        for (int i = 0; i < 1; i++) {
-            Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>("jsk-topic", Integer.toString(i), Integer.toString(i)), null);
+        for (int i = 0; i < 5; i++) {
+            Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>("devices-command-RVC", Integer.toString(i), Integer.toString(i)), null);
         }
 
         producer.close();

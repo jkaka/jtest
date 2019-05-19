@@ -1,9 +1,7 @@
 package com.kaka.scheduler.beanconfig;
 
-import com.alibaba.dubbo.config.*;
-import com.alibaba.dubbo.config.spring.AnnotationBean;
-import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.dubbo.config.*;
+import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

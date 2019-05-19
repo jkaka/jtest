@@ -28,10 +28,15 @@
             <groupId>com.kaka.common</groupId>
             <artifactId>common</artifactId>
         </dependency>
-        <!--使用自己指定版本的dubbo-->
+        <!--使用自己指定版本的dubbo   2.7.x更改为Apache的包名-->
         <dependency>
-            <groupId>com.alibaba</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-dependencies-zookeeper</artifactId>
+            <type>pom</type>
         </dependency>
         <!--dubbo启动器-->
         <dependency>

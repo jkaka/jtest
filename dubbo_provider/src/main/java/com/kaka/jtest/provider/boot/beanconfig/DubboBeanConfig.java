@@ -1,9 +1,8 @@
 package com.kaka.jtest.provider.boot.beanconfig;
 
-import com.alibaba.dubbo.config.*;
-import com.alibaba.dubbo.config.spring.AnnotationBean;
-import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.kaka.jtest.provider.config.DubboConfig;
+import org.apache.dubbo.config.*;
+import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -91,11 +90,11 @@ public class DubboBeanConfig {
      * @return
      */
     //@Bean
-    public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
+    /*public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
         AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(packageName);
         return annotationBean;
-    }
+    }*/
 
     /**
      * 2.提供方配置(默认使用springboot的applicationConfig，现在指定自己设定的applicationConfig)

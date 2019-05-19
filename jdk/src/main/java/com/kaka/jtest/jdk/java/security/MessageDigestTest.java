@@ -3,6 +3,8 @@ package com.kaka.jtest.jdk.java.security;
 import org.junit.Test;
 import sun.misc.BASE64Encoder;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -65,8 +67,8 @@ public class MessageDigestTest {
     @Test
     public void token() throws Exception {
         // 1.取出body体的字符串
-        String appSecret = "geely7QGT";
-        String bodyStr = "{\"approveStatus\": \"approve\",\"approveOpinion\": \"通过\",\"operatorType\": \"geely\",\"operator\": \"zhengjie.gao\",\"time\": \"1539745584157\"}";
+        String appSecret = "upload";
+        String bodyStr = "{\"serviceName\":\"ad\",\"key\":\"1970CBFD9B7A4C21CFF6659323D0792F\",\"fileName\":\"ClipX.rar\",\"rename\":\"\"}";
         System.out.println(bodyStr);
         String befoteSecret = (bodyStr + appSecret).replaceAll("\\s*", "");
         // 2.md5加密(加密之后把字节转为16进制的字符)
@@ -77,17 +79,33 @@ public class MessageDigestTest {
         System.out.println(baseToken);
     }
 
+
+    /**
+     * get方式验签
+     */
+    @Test
+    public void getTest() throws UnsupportedEncodingException {
+        String path = "/check-sign/upload/resource";
+        String queryStr = "filename=abc.rar&filesize=5555&timestamp=888";
+        path += "?" + URLEncoder.encode(queryStr, "utf-8") + "upload";
+        String beforeSecret = path.replaceAll("\\s*", "");
+        System.out.println(beforeSecret);
+        String md5Str = Md5Util.md5Encode(beforeSecret);
+        String authorization = new String(new BASE64Encoder().encode(md5Str.toUpperCase().getBytes()));
+        System.out.println(authorization);
+    }
+
     /**
      * file验签
      */
     @Test
     public void fileToken() {
         Map<String, String> map = new HashMap<>();
-        map.put("key", "892fc6e02ebee25d0f0a4d441f916973");
-        map.put("fileName", "5.zip");
+        map.put("key", "1970CBFD9B7A4C21CFF6659323D0792F");
+        map.put("fileName", "ClipX.rar");
         map.put("chunk", "1");
-        map.put("chunks", "1");
-        map.put("fileSize", "5618");
+        map.put("chunks", "10");
+        map.put("fileSize", "1163860");
 
         Object[] keyArray = map.keySet().toArray();
         //1.把key按自然排序

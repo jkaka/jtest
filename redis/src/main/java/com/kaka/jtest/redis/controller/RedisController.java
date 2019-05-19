@@ -61,7 +61,7 @@ public class RedisController {
         // 当要创建的匿名内部类包含泛型参数时，lambda表达式的参数需要指明类型，即内部类的具体类型
         int sum = redisTemplate.execute((RedisCallback<Set<Object>>) connection -> {
             Set<Object> binaryKeys = new HashSet<>();
-            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(pattern).count(20000).build());
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(pattern).count(10000).build());
             connection.close();
             while (cursor.hasNext()) {
                 binaryKeys.add(new String(cursor.next()));

@@ -63,6 +63,15 @@ public class MultiTaskScheduleTest implements IScheduleTaskDealMulti<HelloTask> 
         return null;
     }
 
+    /**
+     * 每次执行数量：仅在使用批量处理接口（IScheduleTaskDealMulti）时生效，tbs会将selectTasks()返回的List均分到每个线程。
+     * 每次处理完休眠时间:子计时单元开始，只要有数据，就会不停的获取不停的处理，这个时间设置后，子计时单元开始每次获取执行后，
+     * 不管还有没有待数据，都先歇会儿再获取处理. 写0.0就可以了
+     * @param helloTasks
+     * @param ownSign
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean execute(HelloTask[] helloTasks, String ownSign) throws Exception {
         logger.info("线程：" + Thread.currentThread().getName() + "；正在处理helloTasks:" + new ArrayList<>(Arrays.asList(helloTasks)));

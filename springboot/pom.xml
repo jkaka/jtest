@@ -103,6 +103,23 @@
 
     <build>
         <plugins>
+            <!--打包时指定主类-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring_boot.version}</version>
+                <configuration>
+                    <mainClass>com.kaka.jtest.springboot.Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

@@ -1,7 +1,6 @@
 package com.kaka.jtest.consumer.boot.beanconfig;
 
 import com.alibaba.dubbo.config.*;
-import com.alibaba.dubbo.config.spring.AnnotationBean;
 import com.kaka.jtest.consumer.config.DubboConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -75,11 +74,11 @@ public class DubboBeanConfig {
      * @return
      */
 //    @Bean
-    public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
+    /*public static AnnotationBean annotationBean(@Value("${spring.dubbo.scan}") String packageName) {
         AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(packageName);
         return annotationBean;
-    }
+    }*/
 
     /**
      * 6.提供方配置

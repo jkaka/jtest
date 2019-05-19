@@ -2,7 +2,7 @@ package com.kaka.jtest.openutils.fastjson;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.kaka.jtest.openutils.dataobject.Person;
+import com.kaka.jtest.openutils.beans.Person;
 import org.junit.Test;
 
 import java.util.*;
@@ -24,6 +24,17 @@ public class JSONArrayTest {
         // 把json字符串转为list对象
         List<Person> people = JSONArray.parseArray(listJson, Person.class);
         System.out.println(people);
+    }
+
+    @Test
+    public void getJSONArray(){
+        String json = "{\"errorMsg\":null,\"code\":null,\"data\":{\"cursor\":\"\",\"datas\":[]},\"success\":true}";
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        String data = jsonObject.getString("data");
+        jsonObject = JSONObject.parseObject(data);
+        JSONArray datas = jsonObject.getJSONArray("datas");
+        System.out.println(datas.size());
+        System.out.println(datas.isEmpty());
     }
 
 }

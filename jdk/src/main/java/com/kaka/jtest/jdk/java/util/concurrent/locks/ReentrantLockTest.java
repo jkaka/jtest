@@ -18,30 +18,18 @@ public class ReentrantLockTest {
         ReentrantLockTest reentrantLockTest = new ReentrantLockTest();
         // 1.公平锁测试
         reentrantLockTest.fairTest();
-
-
     }
 
     /**
      * 公平
      */
     public void fairTest(){
-        FairTest fairTest = new FairTest();
-        Thread threadA = new Thread(fairTest, "a线程");
-        Thread threadB = new Thread(fairTest, "b线程");
 
-        threadA.start();
-        threadB.start();
-    }
-
-    class FairTest implements Runnable{
-        /**
-         * 公平锁对象
-         */
+        // 1.创建公平锁对象
         final Lock lock = new ReentrantLock(true);
 
-        @Override
-        public void run() {
+        // 2.累加执行体
+        Runnable fairTest = () -> {
             while (number < 100) {
                 try {
                     lock.lock();
@@ -54,7 +42,13 @@ public class ReentrantLockTest {
                     lock.unlock();
                 }
             }
-        }
+        };
+
+        Thread threadA = new Thread(fairTest, "a线程");
+        Thread threadB = new Thread(fairTest, "b线程");
+
+        threadA.start();
+        threadB.start();
     }
 
     class CommunicationTest implements Runnable{

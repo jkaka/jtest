@@ -44,10 +44,10 @@
                             </manifest>
                             <manifestEntries>
                                 <Premain-Class>
-                                    com.kaka.jtest.jdk.java.lang.instrument.MyAgent
+                                    com.kaka.jtest.jdk.java.lang.instrument.VMAgent
                                 </Premain-Class>
                                 <!--<Agent-Class>
-                                    com.kaka.jtest.jdk.java.lang.instrument.HelloAttach
+                                    com.kaka.jtest.jdk.java.lang.instrument.AttachAgent
                                 </Agent-Class>-->
                                 <Agent-Class>
                                     com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgent

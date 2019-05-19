@@ -1,8 +1,8 @@
 package com.kaka.jtest.provider.biz.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.kaka.jtest.api.client.dto.UserDTO;
 import com.kaka.jtest.api.client.service.UserReadService;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

@@ -30,6 +30,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.sohu.tv</groupId>
+            <artifactId>mq-client-open</artifactId>
+            <version>1.6</version>
+        </dependency>
     </dependencies>
 
 </project>

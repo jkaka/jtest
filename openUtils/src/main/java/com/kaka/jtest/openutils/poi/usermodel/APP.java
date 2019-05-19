@@ -1,6 +1,6 @@
 package com.kaka.jtest.openutils.poi.usermodel;
 
-import com.kaka.jtest.openutils.dataobject.ErrorDevice;
+import com.kaka.jtest.openutils.beans.ErrorDevice;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,7 +11,6 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

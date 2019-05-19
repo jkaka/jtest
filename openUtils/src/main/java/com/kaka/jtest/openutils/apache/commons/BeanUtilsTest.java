@@ -1,11 +1,10 @@
 package com.kaka.jtest.openutils.apache.commons;
 
-import com.kaka.jtest.openutils.dataobject.CommonClass;
-import com.kaka.jtest.openutils.dataobject.Person;
+import com.kaka.jtest.openutils.beans.CommonClass;
+import com.kaka.jtest.openutils.beans.Person;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;

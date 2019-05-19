@@ -54,4 +54,23 @@ public class IntegerTest {
         Integer max = 1024 * 1024 * 1024;
         System.out.println(max);
     }
+
+    /**
+     * 双等号适用于同等类型之间(基本类型是一种类型,对象类型包含N中类型)
+     * 特殊:包装类型和基本类型之间可以用双等号,但是注意空指针异常
+     */
+    @Test
+    public void doubleE() {
+        Integer a = null;
+        String b = null;
+        Double c = null;
+        // 自动改拆箱,会有空指针异常
+        System.out.println(a == 0);
+        System.out.println(c == 0);
+//        System.out.println(a == b);
+
+        int d = 5;
+        long f = 5L;
+        System.out.println(d == f);
+    }
 }

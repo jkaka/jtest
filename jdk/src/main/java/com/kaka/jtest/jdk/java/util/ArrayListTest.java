@@ -3,10 +3,7 @@ package com.kaka.jtest.jdk.java.util;
 import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author: jsk
@@ -74,7 +71,7 @@ public class ArrayListTest {
      */
     @Test
     public void genericity() {
-        Object list = new ArrayList<>(Arrays.asList(new Person(1, "AA")));
+        Object list = new ArrayList<>(Collections.singletonList(new Person(1, "AA")));
         List<String> one = (List<String>) list;
         System.out.println(one.size());
         // 当取出元素的时候，会把list中的对象转换为String

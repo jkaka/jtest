@@ -1,7 +1,7 @@
 package com.kaka.jtest.openutils.json;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kaka.jtest.openutils.dataobject.Person;
+import com.kaka.jtest.openutils.beans.Person;
 import org.junit.Test;
 
 import java.util.ArrayList;

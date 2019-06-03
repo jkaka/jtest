@@ -91,7 +91,7 @@ public class CollectorsTest {
 
     /**
      * partitioningBy：分割成两个流
-     * 使用 Predicate 对象作为分类器,将数据分成 ture 和 false 两部分
+     * 使用 Predicate 对象作为分类器,将数据分成 true 和 false 两部分
      */
     @Test
     public void partitioningByTest() {

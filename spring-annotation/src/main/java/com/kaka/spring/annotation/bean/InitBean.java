@@ -12,11 +12,14 @@ import javax.annotation.PreDestroy;
  * @author: jsk
  * @date: 2019/3/13 20:39
  */
-public class InitBean implements InitializingBean,DisposableBean {
+public class InitBean implements InitializingBean, DisposableBean {
 
     @Autowired
     private RocketMqProperties rocketMqProperties;
 
+    /**
+     * afterPropertiesSet之后执行
+     */
     public void initTest() {
         System.out.println("InitBean：@Bean中initMethod指定的方法..." + rocketMqProperties);
     }
@@ -46,6 +49,10 @@ public class InitBean implements InitializingBean,DisposableBean {
         System.out.println("InitBean：DisposableBean接口的覆盖方法...");
     }
 
+    /**
+     * @throws Exception
+     * @PostConstruct之后执行
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("InitBean：InitializingBean接口覆盖的方法...");

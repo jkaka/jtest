@@ -27,7 +27,7 @@ public class SingleTaskScheduleTest implements IScheduleTaskDealSingle<HelloTask
 
     @Override
     public List<HelloTask> selectTasks(String taskParameter, String ownSign, int taskQueueNum,
-                                       List<TaskItemDefine> taskItemList, int eachFetchDataNum) throws Exception {
+                                       List<TaskItemDefine> taskItemList, int eachFetchDataNum, int pageNum) throws Exception {
         logger.info("singleTaskScheduleTest单任务列表..........");
         List<HelloTask> helloTaskList = new ArrayList<HelloTask>();
         helloTaskList.add(new HelloTask(1, "task1"));

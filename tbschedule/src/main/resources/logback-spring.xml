@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextName>jsk-boot</contextName>
+
+    <!--1.控制台输出日志 ConsoleAppender-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+        2.滚动输出
+        注意：SizeBasedTriggeringPolicy和TimeBasedRollingPolicy同时使用会产生冲突
+        SizeAndTimeBasedRollingPolicy:该策略需要指定%i
+    -->
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--文件路径：可使用ognl-->
+            <fileNamePattern>${LOG_PATH}tsp-ota/info.tsp-ota.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
+        </encoder>
+    </appender>
+    <!--
+        普通logger
+        name:处理该日志名称为jsk、或jsk该包下的类输出的日志
+        level：处理该level以上的日志
+        additivity:是否将此logger的打印信息向root传递,默认为true
+    -->
+    <logger name="com.taobao.pamirs.schedule.taskmanager.TBScheduleProcessorSleep" level="INFO" additivity="false">
+        <appender-ref ref="rollingFile"/>
+    </logger>
+
+    <!--
+        根节点logger
+        按级别指定输出：info及以上级别的日志输出到：STDOUT、rollingFile对应的appender
+        注意：root节点只能有一个,可以理解为一个name为root的logger
+    -->
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>

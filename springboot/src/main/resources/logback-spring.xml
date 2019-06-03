@@ -13,15 +13,17 @@
     <!--
         2.滚动输出
         注意：SizeBasedTriggeringPolicy和TimeBasedRollingPolicy同时使用会产生冲突
+        SizeAndTimeBasedRollingPolicy:该策略需要指定%i
     -->
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--文件路径：可使用ognl-->
-            <FileNamePattern>${LOG_PATH}tsp-ota/info.tsp-ota.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
-            <!--5天-->
-            <MaxHistory>5</MaxHistory>
-            <MaxFileSize>50MB</MaxFileSize>
-            <TotalSizeCap>250MB</TotalSizeCap>
+            <fileNamePattern>${LOG_PATH}tsp-ota/info.tsp-ota.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <!--文件总大小超过20G就会删掉首个文件；文件保存天数超过60天，就会删掉第一天的日志文件-->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>

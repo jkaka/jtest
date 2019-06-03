@@ -28,9 +28,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.taobao.pamirs.schedule</groupId>
-            <artifactId>tbschedule</artifactId>
-            <version>3.3.3.2</version>
+            <groupId>com.wednesday</groupId>
+            <artifactId>wed-job</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

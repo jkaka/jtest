@@ -15,7 +15,7 @@
         <spring.version>5.0.7.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <dubbo-version>2.5.7</dubbo-version>
-        <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
+        <dubbo-spring-boot>2.0.0</dubbo-spring-boot>
         <gson.version>2.8.0</gson.version>
         <fastjson.version>1.2.35</fastjson.version>
         <mybatis-spring>1.2.2</mybatis-spring>
@@ -113,23 +113,8 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
             </dependency>
+
             <!--dubbo-->
-            <dependency>
-                <groupId>io.dubbo.springboot</groupId>
-                <artifactId>spring-boot-starter-dubbo</artifactId>
-                <version>${dubbo-spring-boot}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.alibaba</groupId>
-                        <artifactId>dubbo</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!--<dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo-version}</version>
-            </dependency>-->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>

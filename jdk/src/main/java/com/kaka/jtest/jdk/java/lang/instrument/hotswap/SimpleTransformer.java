@@ -7,6 +7,11 @@ import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
 /**
+ * Transformer实现了ClassFileTransformer接口，该接口只有一个transform方法，
+ * 参数传入包括该类的类加载器，类名，原字节码字节流等，返回被转换后的字节码字节流。
+ *   当方法返回后，Java虚拟机会使用所返回的byte数组，来完成接下来的类加载工作；返回null或者抛出异常，
+ * 那么Java虚拟机将使用原来的byte数组完成类加载工作。
+ *
  * @author: jsk
  * @date: 2019/4/3 15:34
  */
@@ -22,17 +27,16 @@ public class SimpleTransformer implements ClassFileTransformer {
 
     /**
      *
-     * @param loader
-     * @param className  注意:这个是类的全路径,不是全类名
+     * @param loader 将被转换的类的类装载器，如果是启动类装载器则此参数可以为空；
+     * @param className 类名字，不过这是JVM规范定义的全限名字如java/util/List
      * @param classBeingRedefined
-     * @param protectionDomain
-     * @param classfileBuffer
-     * @return
-     * @throws IllegalClassFormatException
+     * @param protectionDomain 保护域，跟安全有关；
+     * @param classfileBuffer 这个便是被代理类字节码流，正是通过操作这个buffer完成对字节码的修改；
+     * @return 如果返回null，则表示不对类的字节码做任何的修改，否则应该返回修改过的byte[]对象。
      */
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
-                            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+                            ProtectionDomain protectionDomain, byte[] classfileBuffer){
         // 简单的判断是否是 要进行转换的类,
         // 如果不是,  返回 null ，应该是表示不进行转换的 意思
         // 如果是, 则使用新的类定义文件 进行替换

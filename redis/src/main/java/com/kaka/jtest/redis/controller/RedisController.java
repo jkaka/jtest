@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/redisController")
@@ -83,7 +84,7 @@ public class RedisController {
     public String insertBatch() {
         System.out.println("方式一：回调函数");
         long startTime = System.currentTimeMillis();
-        redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+        redisTemplate.execute(connection -> {
             RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
             for (int i = 0; i < 500; i++) {
                 byte[] key2 = serializer.serialize("A" + i);
@@ -109,6 +110,33 @@ public class RedisController {
         return "insertBatch";
     }
 
+    /**
+     * 测试批量插入
+     */
+    @ResponseBody
+    @RequestMapping("/insertBatchTest")
+    public String insertBatchTest() {
+        try {
+            long startTime = System.currentTimeMillis();
+
+            AtomicInteger num = new AtomicInteger(0);
+            for(int i = 0; i < 100; i ++){
+                new Thread(() ->{
+                    for (; num.intValue() < 500000; ) {
+                        int tmp = num.incrementAndGet();
+                        redisTemplate.opsForValue().set("ota-task-upgrading-" + tmp, "Y");
+                        System.out.println("插入数据:" + tmp);
+                    }
+
+                }).start();
+            }
+            long endTime = System.currentTimeMillis();
+            System.out.println("耗时：" + (endTime - startTime));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "insertBatch";
+    }
 
     /**
      * 测试批量插入
@@ -176,4 +204,20 @@ public class RedisController {
         return "setObjectAndString";
     }
 
+    @ResponseBody
+    @RequestMapping("/delKey")
+    public String delKey() {
+        AtomicInteger num = new AtomicInteger(0);
+        for(int i = 0; i < 100; i ++){
+            new Thread(() ->{
+                for (; num.intValue() < 800000; ) {
+                    int tmp = num.incrementAndGet();
+                    Boolean delete = redisTemplateObject.delete("ota-task-upgrading-" + num);
+                    System.out.println("删除:" + tmp + ";status:" + delete);
+                }
+
+            }).start();
+        }
+        return "delKey";
+    }
 }

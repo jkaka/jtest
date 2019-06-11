@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kaka.mybatisplus.dataobject.User;
 import com.kaka.mybatisplus.service.UserService;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +38,7 @@ public class UserController {
 
     /**
      * 新增多个
+     *
      * @param userList
      * @return
      */
@@ -74,35 +74,42 @@ public class UserController {
         return userService.getOne(new QueryWrapper<User>().allEq(param));
     }
 
-    @PostMapping("/user/selectList")
-    public IPage<User> selectList(@RequestBody Map<String, Object> param) {
+    @PostMapping("/user/selectPage")
+    public IPage<User> selectPage(@RequestBody Map<String, Object> param) {
 
         Wrapper<User> wrapper = new QueryWrapper<User>()
-                .gt("age", 20)
-                ;
+                .gt("age", 20);
         System.out.println("7777");
         IPage<User> userIPage = userService.page(new Page<>(1, 2), wrapper);
         return userIPage;
     }
 
+    @PostMapping("/user/selectList")
+    public List<User> selectList(@RequestBody User user) {
+        Wrapper<User> wrapper = new QueryWrapper<>(user);
+        return userService.list(wrapper);
+    }
+
     /**
      * 根据id更新
+     *
      * @param user
      * @return
      */
     @PutMapping("/user")
     @Transactional
-    public boolean updateUser(@RequestBody User user){
+    public boolean updateUser(@RequestBody User user) {
         return userService.updateById(user);
     }
 
     /**
      * 根据条件更新
+     *
      * @param user
      * @return
      */
     @PutMapping("/user/updateByParam")
-    public boolean updateUserByParam(@RequestBody User user){
+    public boolean updateUserByParam(@RequestBody User user) {
         Wrapper<User> wrapper = new QueryWrapper<User>().eq("name", "Jack");
         return userService.update(user, wrapper);
     }

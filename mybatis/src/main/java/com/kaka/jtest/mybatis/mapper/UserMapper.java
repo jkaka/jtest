@@ -13,4 +13,6 @@ public interface UserMapper {
     User testIf(HashMap<String, Object> hashMap);
 
     User selectOne(int id);
+
+    User selectByName(String name);
 }

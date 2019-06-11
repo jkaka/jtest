@@ -28,6 +28,7 @@
         <commons-lang3>3.0</commons-lang3>
         <kafka.client.version>2.1.0</kafka.client.version>
         <kafka.streams.version>2.1.0</kafka.streams.version>
+        <shardingsphere.version>3.1.0</shardingsphere.version>
     </properties>
 
     <modules>
@@ -56,6 +57,7 @@
         <module>scheduler</module>
         <module>zookeeper</module>
         <module>servlet</module>
+        <module>sharding-sphere</module>
     </modules>
 
     <build>
@@ -157,6 +159,14 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot}</version>
             </dependency>
+
+            <!--mybatis plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
@@ -287,6 +297,20 @@
                 <version>3.4.2</version>
             </dependency>
 
+            <!--shardingsphere start-->
+            <!-- for spring boot -->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- for spring namespace -->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-namespace</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!--shardingsphere end-->
         </dependencies>
     </dependencyManagement>
 </project>

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
-
 /**
  * @author: jsk
  * @date: 2019/5/9 11:51
@@ -16,4 +14,8 @@ import java.util.Map;
 public class Person {
     private Integer id;
     private String name;
+
+    public void sayHello() {
+        System.out.println("hello...");
+    }
 }

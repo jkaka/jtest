@@ -1,0 +1,3 @@
+- **Instrumentation介绍**
+
+Java Instrumentation指的是可以用独立于应用程序之外的代理（agent）程序来监测和协助运行在JVM上的应用程序。Instrumentation提供的主要功能是修改jvm中类的行为。 Java SE6中由两种应用Instrumentation的方式，premain和agentmain（运行时）

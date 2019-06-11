@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * 泛型bean注入:IOC中原生类型与泛型可以兼容注入;泛型之间不存在子父类关系,不可兼容注入
+ * 泛型bean注入(签名上的类型):IOC中原生类型与泛型可以兼容注入;泛型之间不存在子父类关系,不可兼容注入
  *
  * @author: jsk
  * @date: 2019/3/21 22:54

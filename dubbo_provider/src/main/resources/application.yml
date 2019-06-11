@@ -1,5 +1,5 @@
 server:
- port: 8001
+ port: 8002
 
 spring:
  dubbo:
@@ -7,7 +7,7 @@ spring:
    name: dubbo_a
   protocol:
    name: dubbo
-   port: 20881
+   port: 20882
   registry:
    protocol: zookeeper
    address: dev.cdh.ecarx.local:2181

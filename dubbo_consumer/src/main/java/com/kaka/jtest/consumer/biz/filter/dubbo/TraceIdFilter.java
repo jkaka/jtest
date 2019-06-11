@@ -1,7 +1,8 @@
 package com.kaka.jtest.consumer.biz.filter.dubbo;
 
-import com.alibaba.dubbo.rpc.*;
 import com.kaka.common.utils.TraceIdUtil;
+import org.apache.dubbo.common.Constants;
+import org.apache.dubbo.rpc.*;
 import org.slf4j.MDC;
 
 /**
@@ -19,6 +20,8 @@ public class TraceIdFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation inv) throws RpcException {
         System.out.println("把当前线程中的traceId,通过filter传给dubbo提供者");
+        RpcContext.getContext().setAttachment("request.tag","red");
+        RpcContext.getContext().setAttachment("request.tag.force","true");
         if (inv.getAttachment(TRACE_ID) != null) {
             // 服务提供方接收traceId：provider接收consumer中的traceId
             TraceIdUtil.setTraceId(inv.getAttachment(TRACE_ID));
@@ -26,6 +29,8 @@ public class TraceIdFilter implements Filter {
         } else if (TraceIdUtil.getTraceId() != null) {
             inv.getAttachments().put(TRACE_ID, TraceIdUtil.getTraceId());
         }
+        inv.getAttachments().put("request.tag","red");
+        inv.getAttachments().put("request.tag.force","true");
         return invoker.invoke(inv);
     }
 }

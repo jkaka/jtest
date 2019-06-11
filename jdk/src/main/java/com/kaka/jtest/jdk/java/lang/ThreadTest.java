@@ -22,6 +22,6 @@ public class ThreadTest {
         thread.start();
         thread.interrupt();
         TimeUnit.SECONDS.sleep(5);
-        thread.start();
+//        thread.start();
     }
 }

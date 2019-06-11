@@ -11,15 +11,16 @@ import java.util.concurrent.TimeUnit;
  * @author shuangkaijia
  */
 //@Service(version = "1.0.0", timeout = 10000)
-@Service(version = "1.0.0")
+@Service(version = "1.0.0" , tag = "tag0001")
 public class UserReadServiceImpl implements UserReadService {
     public UserReadServiceImpl() {
         System.out.println("创建UserReadServiceImpl...");
     }
 
+    private String tag = "red";
     @Override
     public UserDTO selectOne(Integer id) {
-        System.out.println("a平台,selectOne方法...");
+        System.out.println("a平台,selectOne方法..." + tag);
         System.out.println("service3");
         try {
             TimeUnit.SECONDS.sleep(30);

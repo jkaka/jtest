@@ -85,4 +85,12 @@ public class ArrayListTest {
         strings.add(null);
         System.out.println(strings.size());
     }
+
+    @Test
+    public void test(){
+        List<Person> personList = Arrays.asList(new Person(1, "AA"), new Person(2, "BB"));
+        Person person = personList.get(1);
+        person.setName("BB00");
+        System.out.println(personList);
+    }
 }

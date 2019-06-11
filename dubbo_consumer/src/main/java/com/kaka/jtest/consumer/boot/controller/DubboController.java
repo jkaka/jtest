@@ -1,8 +1,8 @@
 package com.kaka.jtest.consumer.boot.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.kaka.common.utils.TraceIdUtil;
 import com.kaka.jtest.api.client.service.UserReadService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

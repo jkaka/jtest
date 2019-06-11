@@ -1,11 +1,14 @@
 package com.kaka.jtest.consumer.boot.beanconfig;
 
-import com.alibaba.dubbo.config.*;
 import com.kaka.jtest.consumer.config.DubboConfig;
+import org.apache.dubbo.common.Constants;
+import org.apache.dubbo.config.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DubboBeanConfig {
@@ -34,6 +37,9 @@ public class DubboBeanConfig {
     public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName(dubboConfig.getApplicationName());
+        Map<String,String> parameters = new HashMap<>();
+        parameters.put(Constants.ROUTER_KEY, "tag");
+        applicationConfig.setParameters(parameters);
         return applicationConfig;
     }
 
@@ -114,7 +120,7 @@ public class DubboBeanConfig {
         consumerConfig.setLoadbalance("leastactive");
         consumerConfig.setFilter("activelimit,consumer_filter");
         // 这个不能在application的配置文件中配置
-//        consumerConfig.setCheck(false);
+        consumerConfig.setCheck(false);
         return consumerConfig;
     }
 }

@@ -46,4 +46,8 @@
     <select id="selectOne" parameterType="integer" resultMap="BaseResultMap">
         select * from users where id = #{id }
     </select>
+
+    <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from users where name = #{name }
+    </select>
 </mapper>

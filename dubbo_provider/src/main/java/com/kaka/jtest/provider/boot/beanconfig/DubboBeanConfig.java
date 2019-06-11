@@ -1,12 +1,15 @@
 package com.kaka.jtest.provider.boot.beanconfig;
 
 import com.kaka.jtest.provider.config.DubboConfig;
+import org.apache.dubbo.common.Constants;
 import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author shuangkaijia
@@ -28,6 +31,9 @@ public class DubboBeanConfig {
     public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName(dubboConfig.getApplicationName());
+        Map<String,String> parameters = new HashMap<>();
+        parameters.put(Constants.ROUTER_KEY, "tag");
+        applicationConfig.setParameters(parameters);
         return applicationConfig;
     }
 
@@ -45,9 +51,16 @@ public class DubboBeanConfig {
         registryConfig.setAddress(dubboConfig.getRegistryAddress());
         // zk的维度分组：分组后，监听的服务和注册的服务都会在这个分组中；默认值为dubbo
 //        registryConfig.setGroup("registry-ota");
+        registryConfig.setSimplified(true);
         return registryConfig;
     }
 
+    @Bean
+    public MetadataReportConfig metadataReportConfig(){
+        MetadataReportConfig metadataReportConfig = new MetadataReportConfig();
+        metadataReportConfig.setAddress("zookeeper://" + dubboConfig.getRegistryAddress());
+        return metadataReportConfig;
+    }
     /**
      * 基础三、通信规则配置(有 dubbo、rest、http、hessian、webservice)
      * 在20880端口上使用dubbo协议来export服务
@@ -117,6 +130,7 @@ public class DubboBeanConfig {
 
         // 这个名称在com.alibaba.dubbo.rpc.Filter文件中配置
         providerConfig.setFilter("dubboTraceIdFilter");
+        providerConfig.setTag("tag001");
         return providerConfig;
     }
 

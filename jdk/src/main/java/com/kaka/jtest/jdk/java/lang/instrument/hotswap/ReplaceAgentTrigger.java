@@ -9,16 +9,24 @@ import com.sun.tools.attach.VirtualMachineDescriptor;
  * @date: 2019/4/3 15:40
  */
 public class ReplaceAgentTrigger {
-//    private final static String VM_NAME = "com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgentMain";
+    //    private final static String VM_NAME = "com.kaka.jtest.jdk.java.lang.instrument.hotswap.ReplaceAgentMain";
 //    private final static String VM_NAME = "com.ecarx.ota.Application";
     private final static String VM_NAME = "ota.jar";
     private final static String AGENT_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\target\\jdk-1.0-SNAPSHOT.jar";
 
-//    private final static String FILE_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\src\\main\\java\\com\\kaka\\jtest\\jdk\\java\\lang\\instrument\\hotswap\\HotSwapBean.class";
+    //    private final static String FILE_PATH = "E:\\workspace\\myProject\\jtest\\jdk\\src\\main\\java\\com\\kaka\\jtest\\jdk\\java\\lang\\instrument\\hotswap\\HotSwapBean.class";
     private final static String FILE_PATH = "D:\\Java\\jdk1.8.0_31\\lib/EcarxOtaTestController.class";
     private final static String CLASS_NAME = "com/ecarx/ota/controller/EcarxOtaTestController";
 //    private final static String CLASS_NAME = "com/kaka/jtest/jdk/model/HotSwapBean";
 
+    /**
+     * Attach API 不是 Java 的标准 API，而是 Sun 公司提供的一套扩展 API，用来向目标 JVM ”附着”（Attach）代理工具程序的。
+     * 有了它，开发者可以方便的监控一个 JVM，运行一个外加的代理程序。
+     *
+     * Attach API 很简单，只有 2 个主要的类，都在 com.sun.tools.attach 包里面： VirtualMachine 代表一个 Java 虚拟机，
+     * 也就是程序需要监控的目标虚拟机，提供了 JVM 枚举，Attach 动作和 Detach 动作（Attach 动作的相反行为，从 JVM 上面解除一个代理）等等 ;
+     * VirtualMachineDescriptor 则是一个描述虚拟机的容器类，配合 VirtualMachine 类完成各种功能。
+     */
     public static void main(String[] args) {
         VirtualMachineDescriptor vmdTar = null;
         // VirtualMachine类可以拿到这台机子的所有jvm进程
@@ -37,6 +45,7 @@ public class ReplaceAgentTrigger {
 
                 VirtualMachine vm = VirtualMachine.attach(vmdTar);
                 vm.loadAgent(AGENT_PATH, jsonObject.toJSONString());
+                vm.detach();
                 System.out.println("attached成功！");
             } catch (Exception e) {
                 e.printStackTrace();

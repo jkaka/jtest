@@ -1,7 +1,7 @@
 package com.kaka.jtest.consumer.boot.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.kaka.jtest.api.client.service.TimeOutService;
+import com.kaka.jtest.provider.client.service.TimeOutService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -10,6 +10,9 @@ import lombok.Data;
 @Data
 @TableName("")
 public class User {
+    /**
+     * 如果指定自增id的策略,则传入的id就无效了
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private String id;
     private String name;

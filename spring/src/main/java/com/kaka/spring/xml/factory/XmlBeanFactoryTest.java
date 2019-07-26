@@ -1,8 +1,10 @@
 package com.kaka.spring.xml.factory;
 
 import com.kaka.spring.beans.Person;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * @author: jsk
@@ -10,7 +12,8 @@ import org.springframework.core.io.ClassPathResource;
  */
 public class XmlBeanFactoryTest {
     public static void main(String[] args) {
-        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(new ClassPathResource("applicationContext.xml"));
+        Resource classPathResource = new ClassPathResource("applicationContext.xml");
+        BeanFactory xmlBeanFactory = new XmlBeanFactory(classPathResource);
         Person person = (Person) xmlBeanFactory.getBean("person");
         System.out.println(person);
     }

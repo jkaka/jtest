@@ -3,10 +3,7 @@ package com.kaka.jtest.openutils.fastjson;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.kaka.jtest.openutils.beans.FiledObject;
-import com.kaka.jtest.openutils.beans.FiledTwoObject;
-import com.kaka.jtest.openutils.beans.Person;
-import com.kaka.jtest.openutils.beans.Student;
+import com.kaka.jtest.openutils.beans.*;
 import org.junit.Test;
 
 import java.util.*;
@@ -135,10 +132,20 @@ public class JSONObjectTest {
      */
     @Test
     public void parseObject() {
-        String json = "{\"dubbo\":\"group001\"}";
+        String json = "{\"name\":\"group001\"}";
         JSONObject jsonObject = JSONObject.parseObject(json);
         String str = jsonObject.getString("dubbo");
         System.out.println(str);
+    }
+
+    /**
+     * json字符串转指定类
+     */
+    @Test
+    public void parseObject2Class() {
+        String json = "{\"name\":\"group001\",\"gmtCreate\":\"2019-07-18 18:24:05\"}";
+        DateObj dateObj = JSONObject.parseObject(json, DateObj.class);
+        System.out.println(JSONObject.toJSONString(dateObj));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kaka.jtest.mybatis.mapper.UserMapper">
+    <cache/>
 
     <resultMap id="BaseResultMap" type="com.kaka.jtest.mybatis.entities.User">
         <result column="id" property="id" jdbcType="INTEGER"/>
@@ -50,4 +51,11 @@
     <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
         select * from users where name = #{name }
     </select>
+
+    <select id="selectMultiParam" resultMap="BaseResultMap">
+        select * from users
+        where id = #{param.id}
+        and name = #{name }
+    </select>
+
 </mapper>

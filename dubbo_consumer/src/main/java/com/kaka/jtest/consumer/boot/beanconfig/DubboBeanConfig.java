@@ -1,8 +1,7 @@
 package com.kaka.jtest.consumer.boot.beanconfig;
 
+import com.alibaba.dubbo.config.*;
 import com.kaka.jtest.consumer.config.DubboConfig;
-import org.apache.dubbo.common.Constants;
-import org.apache.dubbo.config.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +37,7 @@ public class DubboBeanConfig {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName(dubboConfig.getApplicationName());
         Map<String,String> parameters = new HashMap<>();
-        parameters.put(Constants.ROUTER_KEY, "tag");
+        parameters.put("", "tag");
         applicationConfig.setParameters(parameters);
         return applicationConfig;
     }
@@ -64,7 +63,7 @@ public class DubboBeanConfig {
      *
      * @return
      */
-    @Bean
+//    @Bean
     public MonitorConfig monitorConfig() {
         MonitorConfig monitorConfig = new MonitorConfig();
         monitorConfig.setProtocol(dubboConfig.getMonitorProtocol());
@@ -117,8 +116,9 @@ public class DubboBeanConfig {
         consumerConfig.setApplication(applicationConfig);
 //        consumerConfig.setFilter("consumer_filter");
         consumerConfig.setTimeout(30000);
-        consumerConfig.setLoadbalance("leastactive");
-        consumerConfig.setFilter("activelimit,consumer_filter");
+//        consumerConfig.setTag("tag1");
+//        consumerConfig.setLoadbalance("leastactive");
+//        consumerConfig.setFilter("activelimit,consumer_filter");
         // 这个不能在application的配置文件中配置
         consumerConfig.setCheck(false);
         return consumerConfig;

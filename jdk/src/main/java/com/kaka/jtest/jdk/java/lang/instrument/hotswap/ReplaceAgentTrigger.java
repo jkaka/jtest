@@ -26,6 +26,10 @@ public class ReplaceAgentTrigger {
      * Attach API 很简单，只有 2 个主要的类，都在 com.sun.tools.attach 包里面： VirtualMachine 代表一个 Java 虚拟机，
      * 也就是程序需要监控的目标虚拟机，提供了 JVM 枚举，Attach 动作和 Detach 动作（Attach 动作的相反行为，从 JVM 上面解除一个代理）等等 ;
      * VirtualMachineDescriptor 则是一个描述虚拟机的容器类，配合 VirtualMachine 类完成各种功能。
+     *
+     * 1. 列出当前所有的JVM实例描述
+     * 2. Attach到其中一个JVM上，建立通信管道
+     * 3. 让目标JVM加载Agent
      */
     public static void main(String[] args) {
         VirtualMachineDescriptor vmdTar = null;

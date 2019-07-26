@@ -29,6 +29,7 @@
         <kafka.client.version>2.1.0</kafka.client.version>
         <kafka.streams.version>2.1.0</kafka.streams.version>
         <shardingsphere.version>3.1.0</shardingsphere.version>
+        <curator.version>2.12.0</curator.version>
     </properties>
 
     <modules>
@@ -40,7 +41,6 @@
         <module>redis</module>
         <module>apollo</module>
         <module>openUtils</module>
-        <module>dubbo-api</module>
         <module>ssm</module>
         <module>springmvc</module>
         <module>dubbo_provider</module>
@@ -54,7 +54,6 @@
         <module>binlog</module>
         <module>git</module>
         <module>spring-annotation</module>
-        <module>scheduler</module>
         <module>zookeeper</module>
         <module>servlet</module>
         <module>sharding-sphere</module>
@@ -94,6 +93,20 @@
                 <groupId>com.kaka.common</groupId>
                 <artifactId>common</artifactId>
                 <version>${kaka-common}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!--gson依赖-->
             <dependency>
@@ -116,21 +129,34 @@
                 <version>${junit.version}</version>
             </dependency>
 
-            <!--dubbo-->
+            <!--阿里系 开始-->
+            <dependency>
+                <groupId>com.alibaba.spring.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>2.0.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
-                <version>2.7.1</version>
+                <version>2.7.2</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-dependencies-zookeeper</artifactId>
-                <version>2.7.1</version>
+                <version>2.7.2</version>
                 <type>pom</type>
                 <exclusions>
                     <exclusion>
                         <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -141,6 +167,15 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
+            <!--druid连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--阿里系 结束-->
+
             <!-- mybatis核心包 -->
             <dependency>
                 <groupId>org.mybatis</groupId>
@@ -171,13 +206,6 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
-            </dependency>
-
-            <!--阿里连接池-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
@@ -259,12 +287,25 @@
                 <version>0.12.1</version>
             </dependency>
 
-            <!--zk客户端-->
+            <!--zk客户端(zkclient)-->
             <dependency>
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>0.10</version>
             </dependency>
+
+            <!--zk客户端(curator)-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.apache.kafka</groupId>

@@ -1,7 +1,6 @@
 package com.kaka.jtest.provider.boot.beanconfig;
 
 import com.kaka.jtest.provider.config.DubboConfig;
-import org.apache.dubbo.common.Constants;
 import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import java.util.Map;
  * @author shuangkaijia
  */
 @Configuration
-@DubboComponentScan(basePackages = "com.kaka.jtest.provider.biz.service")
+@DubboComponentScan(basePackages = "com.kaka.jtest.provider.client.service")
 public class DubboBeanConfig {
     @Autowired
     private DubboConfig dubboConfig;
@@ -32,7 +31,7 @@ public class DubboBeanConfig {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName(dubboConfig.getApplicationName());
         Map<String,String> parameters = new HashMap<>();
-        parameters.put(Constants.ROUTER_KEY, "tag");
+//        parameters.put(Constants.ROUTER_KEY, "tag");
         applicationConfig.setParameters(parameters);
         return applicationConfig;
     }
@@ -82,11 +81,11 @@ public class DubboBeanConfig {
      *
      * @return
      */
-    @Bean
+//    @Bean
     public MonitorConfig monitorConfig() {
         MonitorConfig monitorConfig = new MonitorConfig();
-        monitorConfig.setProtocol(dubboConfig.getMonitorProtocol());
-        monitorConfig.setAddress(dubboConfig.getMonitorAddress());
+        monitorConfig.setProtocol("registry");
+//        monitorConfig.setAddress(dubboConfig.getMonitorAddress());
         return monitorConfig;
     }
 
@@ -130,7 +129,7 @@ public class DubboBeanConfig {
 
         // 这个名称在com.alibaba.dubbo.rpc.Filter文件中配置
         providerConfig.setFilter("dubboTraceIdFilter");
-        providerConfig.setTag("tag001");
+//        providerConfig.setTag("tag001");
         return providerConfig;
     }
 

@@ -76,7 +76,7 @@ public class MultiTaskScheduleTest implements IScheduleTaskDealMulti<HelloTask> 
 
     /**
      * 每次执行数量：tbs会将selectTasks()返回的List均分到每个线程；多线程情况下,A线程获取的任务不一定都由A线程处理。
-     * 下次获取任务，总发生在execute处理完成之后。(多线程也是如此，未处理完成之前，不会有线程去查任务。)
+     * 下次获取任务(selectTasks方法)，总发生在execute处理完成之后。(多线程也是如此，未处理完成之前，不会有线程去查任务。)
      * 每次处理完数据后休眠时间(秒)：execute处理完成之后休眠的时间   一般不改这个值，默认为0
      *
      * 每次处理完休眠时间:子计时单元开始，只要有数据，就会不停的获取不停的处理，这个时间设置后，子计时单元开始每次获取执行后，

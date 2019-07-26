@@ -5,7 +5,7 @@
     <session id="-1467502903">
       <usages-collector id="statistics.spring.core.usages.trigger">
         <counts>
-          <entry key="fixes.SpringFacetInspection.AddFacetFix" value="1" />
+          <entry key="fixes.SpringFacetInspection.AddFacetFix" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -21,7 +21,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/scheduler/pom.xml" />
         <option value="$PROJECT_DIR$/zookeeper/pom.xml" />
       </list>
     </option>
@@ -30,6 +29,7 @@
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-A/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-B/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-api/pom.xml" />
         <option value="$PROJECT_DIR$/plugin/pom.xml" />
         <option value="$PROJECT_DIR$/poi/pom.xml" />
         <option value="$PROJECT_DIR$/test2/pom.xml" />

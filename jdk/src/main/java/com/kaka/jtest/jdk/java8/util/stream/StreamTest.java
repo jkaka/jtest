@@ -293,4 +293,14 @@ public class StreamTest {
         }
     }
 
+    @Test
+    public void anyMatchTest(){
+        List<Student> students = asList(new Student("张三", 524),
+                new Student("李四", 378),
+                new Student("王五", 451));
+        boolean b = students.stream()
+                .anyMatch(s -> s.getScore() > 500);
+        System.out.println(b);
+    }
+
 }

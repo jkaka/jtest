@@ -21,11 +21,11 @@ public class Main {
         client.registerEventListener(event -> {
             EventData eventData = event.getData();
             System.out.println("事件类型:" + eventData);
-            /*if(eventData instanceof QueryEventData){
+            if(eventData instanceof QueryEventData){
                 System.out.println(((QueryEventData) eventData).getSql());
             }else if(eventData instanceof TableMapEventData){
                 System.out.println(((TableMapEventData) eventData).getTable());
-            }*/
+            }
         });
         client.connect();
     }

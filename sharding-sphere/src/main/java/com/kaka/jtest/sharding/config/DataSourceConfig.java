@@ -80,7 +80,7 @@ public class DataSourceConfig {
                 new ScorePreciseShardingAlgorithm()));
 //        personTableRuleConfig.setTableShardingStrategyConfig(new HintShardingStrategyConfiguration(new ScoreHintShardingAlgorithm()));
 
-        // 4.分布式主键
+        // 4.分布式主键(如果insert的时候指定了主键的值,则本次插入不会使用分布式主键)
         DefaultKeyGenerator.setWorkerId(5L);
         personTableRuleConfig.setKeyGeneratorColumnName("id");
 
@@ -100,7 +100,7 @@ public class DataSourceConfig {
         ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
         shardingRuleConfig.getTableRuleConfigs().add(getPersonTableRuleConfig());
         // 获取数据源对象
-        Properties properties=new Properties();
+        Properties properties = new Properties();
         properties.put("sql.show", "true");
         return ShardingDataSourceFactory.createDataSource(createDataSourceMap(), shardingRuleConfig, new ConcurrentHashMap(), properties);
     }

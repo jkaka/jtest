@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="/home"/>
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] - [%L] -%-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="jskFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--文件路径：默认根目录为当前项目-->
+            <FileNamePattern>${LOG_HOME}/logback/test-${traceId}-test.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <MaxHistory>5</MaxHistory>
+            <MaxFileSize>50MB</MaxFileSize>
+            <TotalSizeCap>250MB</TotalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="siftTest" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <!--discriminator鉴别器，根据car_model这个key对应的value鉴别日志事件，然后委托给具体appender写日志-->
+        <discriminator>
+            <key>car_model</key>
+            <defaultValue>unknown</defaultValue>
+        </discriminator>
+        <sift>
+            <!--具体的写日志appender，每一个taskId创建一个文件-->
+            <!--<appender name="test" class="ch.qos.logback.core.FileAppender">
+                <file>${LOG_HOME}/${car_model}_login.log</file>
+                <append>true</append>
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-&#45;&#45;%magenta([%thread])-&#45;&#45;%-5level-&#45;&#45;%blue([%c])-&#45;&#45;%green([%L])-&#45;&#45;[traceId:%X{traceId}]-&#45;&#45;[%msg]%n</pattern>
+                </layout>
+            </appender>-->
+            <appender name="jskFile1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!--文件路径：默认根目录为当前项目-->
+                    <FileNamePattern>${LOG_HOME}/logback/sift-${car_model}-test.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+                    <MaxHistory>5</MaxHistory>
+                    <MaxFileSize>50MB</MaxFileSize>
+                    <TotalSizeCap>250MB</TotalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <charset>UTF-8</charset>
+                    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <logger name="jsk" level="INFO" additivity="false">
+        <appender-ref ref="siftTest"/>
+    </logger>
+
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

@@ -1,9 +1,6 @@
 package com.kaka.jtest.jdk.java.util.concurrent;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author jsk
@@ -71,14 +68,14 @@ public class ThreadManager {
                         maximumPoolSize,// 最大线程数
                         keepAliveTime,// 当线程空闲时，线程存活时间
                         TimeUnit.MILLISECONDS,// 时间单位
-                        new LinkedBlockingDeque<>(5)/*,// 线程任务队列
+                        new LinkedBlockingDeque<>(5),// 线程任务队列
                         Executors.defaultThreadFactory(),// 线程工厂
                         new ThreadPoolExecutor.AbortPolicy() {// 队列已满,而且当前线程数已经超过最大线程数时的异常处理策略
                             @Override
                             public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
                                 super.rejectedExecution(r, e);
                             }
-                        }*/
+                        }
                 );
             }
             threadPoolExecutor.execute(runnable);

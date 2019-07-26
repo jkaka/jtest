@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <contextName>jsk-boot</contextName>
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_PATH" value="/home" />
 
     <!--1.控制台输出日志 ConsoleAppender-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,7 +15,7 @@
     <!--
         2.滚动输出
         注意：SizeBasedTriggeringPolicy和TimeBasedRollingPolicy同时使用会产生冲突
-        SizeAndTimeBasedRollingPolicy:该策略需要指定%i
+        所以使用SizeAndTimeBasedRollingPolicy,注意该策略需要指定%i
     -->
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -73,6 +75,13 @@
         </encoder>
     </appender>
 
+    <!--异步Appender-->
+    <appender name="rollingFileAsync" class="ch.qos.logback.classic.AsyncAppender">
+        <!--队列深度-->
+        <queueSize>2048</queueSize>
+        <appender-ref ref="rollingFile"/>
+    </appender>
+
     <!--
         普通logger
         name:处理该日志名称为jsk、或jsk该包下的类输出的日志
@@ -91,7 +100,23 @@
         注意：root节点只能有一个,可以理解为一个name为root的logger
     -->
     <root level="info">
+        <!--控制台日志:生产环境建议关掉-->
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="rollingFile"/>
+        <!--异步输出日志-->
+        <appender-ref ref="rollingFileAsync"/>
     </root>
+
+    <springProfile name="local,test-sohu,local-sohu">
+        <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} {%thread} %-5level %logger{50}-%L - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <logger name="RocketmqClient" level="INFO" additivity="false">
+            <appender-ref ref="stdout" />
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="stdout" />
+        </root>
+    </springProfile>
 </configuration>

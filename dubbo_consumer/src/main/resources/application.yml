@@ -4,14 +4,14 @@ server:
 spring:
  dubbo:
   application:
-   name: dubbo_b
+   name: jsk_consumer
   protocol:
    name: dubbo
    port: 20884
   registry:
    protocol: zookeeper
-   address: dev.cdh.ecarx.local:2181
+   address: 127.0.0.1:2181
   monitor:
    protocol: registry
-   address: dev.cdh.ecarx.local:2181
+   address: 127.0.0.1:2181
 #  scan: com.kaka.jtest.consumer.boot.controller

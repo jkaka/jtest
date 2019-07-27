@@ -1,4 +1,4 @@
-package com.kaka.jtest.designpatter.status;
+package com.kaka.jtest.designpatter.state;
 
 /**
  * @author: jsk

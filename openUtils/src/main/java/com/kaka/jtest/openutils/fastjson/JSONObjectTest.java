@@ -35,6 +35,7 @@ public class JSONObjectTest {
         student.setId(10);
         student.setName("student");
         student.setClassId(9);
+        student.setAge(null);
         String studentJson = JSONObject.toJSONString(student);
         System.out.println(studentJson);
         Person person = JSONObject.parseObject(studentJson, Person.class);

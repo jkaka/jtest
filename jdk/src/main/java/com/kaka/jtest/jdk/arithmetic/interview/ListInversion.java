@@ -102,7 +102,7 @@ public class ListInversion {
             System.out.print(tmp != null ? "->" : "");
         }
         //反转单链表
-        ListNode node = reverseList(a1);
+        ListNode node = reverseList2(a1);
 
         //打印输出结果
         System.out.println("\n反转后结果：");

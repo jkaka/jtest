@@ -15,7 +15,7 @@
     <!--
         2.滚动输出
         注意：SizeBasedTriggeringPolicy和TimeBasedRollingPolicy同时使用会产生冲突
-        所以使用SizeAndTimeBasedRollingPolicy,注意该策略需要指定%i
+        所以使用SizeAndTimeBasedRollingPolicy,注意《该策略必须在fileNamePattern指定%i》
     -->
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">

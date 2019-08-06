@@ -34,6 +34,12 @@ public class ArrayListTest {
         System.out.println(strings);
     }
 
+    @Test
+    public void foreachTest() {
+        List<String> strings = new ArrayList<>(Arrays.asList("a", "b", "c", "b"));
+        strings.forEach(s -> System.out.println("8888"));
+    }
+
     /**
      * 自身循环时删除元素：使用iterator
      */
@@ -87,7 +93,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         List<Person> personList = Arrays.asList(new Person(1, "AA"), new Person(2, "BB"));
         Person person = personList.get(1);
         person.setName("BB00");

@@ -1,10 +1,7 @@
 package com.kaka.jtest.consumer.biz.filter.dubbo;
 
-import com.alibaba.dubbo.rpc.Invoker;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.rpc.RpcException;
 import com.kaka.common.utils.TraceIdUtil;
-import com.alibaba.dubbo.rpc.*;
+import org.apache.dubbo.rpc.*;
 import org.slf4j.MDC;
 
 /**

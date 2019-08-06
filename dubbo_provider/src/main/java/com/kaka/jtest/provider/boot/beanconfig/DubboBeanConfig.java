@@ -128,7 +128,7 @@ public class DubboBeanConfig {
 //        providerConfig.setGroup("a-provider");
 
         // 这个名称在com.alibaba.dubbo.rpc.Filter文件中配置
-        providerConfig.setFilter("dubboTraceIdFilter");
+//        providerConfig.setFilter("dubboTraceIdFilter");
 //        providerConfig.setTag("tag001");
         return providerConfig;
     }

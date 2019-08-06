@@ -1,6 +1,6 @@
 package com.kaka.jtest.consumer.boot.beanconfig;
 
-import com.alibaba.dubbo.config.*;
+import org.apache.dubbo.config.*;
 import com.kaka.jtest.consumer.config.DubboConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -114,7 +114,7 @@ public class DubboBeanConfig {
     public ConsumerConfig consumerConfig(ApplicationConfig applicationConfig, RegistryConfig registryConfig) {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
-//        consumerConfig.setFilter("consumer_filter");
+        consumerConfig.setFilter("consumer_filter,testFilter");
         consumerConfig.setTimeout(30000);
 //        consumerConfig.setTag("tag1");
 //        consumerConfig.setLoadbalance("leastactive");

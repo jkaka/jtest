@@ -7,6 +7,7 @@ package com.kaka.jtest.designpatter.builder.nondirector;
 public class ProductClient {
 
     public static void main(String[] args) {
+        // Builder->add->build
         Product product = new Product.Builder("A")
                 .addPartB("B")
                 .addPartC("C")

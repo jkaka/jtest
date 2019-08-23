@@ -1,7 +1,5 @@
 package com.kaka.jtest.designpatter.singleton.example;
 
-import com.kaka.jtest.designpatter.singleton.SingletonB;
-
 /**
  * @author: jsk
  * @date: 2019/6/29 14:48
@@ -23,7 +21,7 @@ public class Store {
      */
     public static Store getInstance() {
         if (uniqueInstance == null) {
-            synchronized (SingletonB.class) {
+            synchronized (Store.class) {
                 if (uniqueInstance == null) {
                     uniqueInstance = new Store();
                 }

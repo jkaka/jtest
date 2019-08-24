@@ -14,6 +14,9 @@ public class VoidTest {
         forEachReturnTest();
     }
 
+    /**
+     * for循环中的return语句,会结束程序
+     */
     public static void returnTest() {
         for (int i = 0; i < 10; i++) {
             if (i < 5) {

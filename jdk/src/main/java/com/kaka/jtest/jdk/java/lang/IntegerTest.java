@@ -73,4 +73,24 @@ public class IntegerTest {
         long f = 5L;
         System.out.println(d == f);
     }
+
+    /**
+     * int和Integer可以相互赋值
+     * int接收null的Integer时,编译器是允许的;但是会报空指针异常
+     */
+    @Test
+    public void boxTest() {
+        // int值给Integer
+        int a = 10;
+        Integer b = a;
+        Integer c = 10;
+
+        // integer值给int
+        Integer d = null;
+        Integer e = 10;
+        a = d;
+        a = e;
+
+        System.out.println(a);
+    }
 }

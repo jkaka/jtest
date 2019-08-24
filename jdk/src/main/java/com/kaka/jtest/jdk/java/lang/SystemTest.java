@@ -26,6 +26,10 @@ public class SystemTest {
     public void getenv() {
         String path = System.getenv("a");
         System.out.println(path);
+
+        // 获取用户名
+        String username = System.getenv("username");
+        System.out.println(username);
     }
 
     @Test

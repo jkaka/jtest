@@ -92,11 +92,26 @@ public class ArrayListTest {
         System.out.println(strings.size());
     }
 
+    /**
+     * 修改引用的对象,list中的对象就会改变
+     */
     @Test
-    public void test() {
+    public void updateReference() {
         List<Person> personList = Arrays.asList(new Person(1, "AA"), new Person(2, "BB"));
         Person person = personList.get(1);
         person.setName("BB00");
+        System.out.println(personList);
+    }
+
+    @Test
+    public void sortTest() {
+        List<Person> personList = Arrays.asList(new Person(1, "AA", 2),
+                new Person(3, "BB", 1),
+                new Person(2, "BB", 3));
+        personList.sort(Comparator.comparing(Person::getAge));
+        System.out.println(personList);
+
+        personList.sort((p1, p2) -> p1.getAge()>p2.getAge() ? 1 : -1);
         System.out.println(personList);
     }
 }

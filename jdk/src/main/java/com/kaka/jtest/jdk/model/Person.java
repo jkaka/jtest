@@ -3,6 +3,7 @@ package com.kaka.jtest.jdk.model;
 public class Person {
     private Integer id;
     private String name;
+    private int age;
 
     public Person() {
         System.out.println("创建了一个Person...");
@@ -16,6 +17,12 @@ public class Person {
         System.out.println("创建了一个：" + name);
         this.id = id;
         this.name = name;
+    }
+
+    public Person(Integer id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public Integer getId() {
@@ -39,6 +46,7 @@ public class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 '}';
     }
 
@@ -48,5 +56,13 @@ public class Person {
 
     public Integer getAgeByName(String name){
         return 55;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

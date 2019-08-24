@@ -150,6 +150,9 @@ public class StringTest {
     public void length(){
         String string = "https://device-platform-tbox-pki.oss-cn-hangzhou.aliyuncs.com/2700471017035359HC800151.p12" + System.currentTimeMillis();
         System.out.println(string.length());
+
+        String s = null;
+        System.out.println(s.length());
     }
 
     /**

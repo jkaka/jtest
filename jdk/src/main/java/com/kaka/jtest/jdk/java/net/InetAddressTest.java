@@ -11,48 +11,55 @@ import java.util.Enumeration;
  */
 public class InetAddressTest {
 
-    public static void main(String[] args) {
-        System.out.println(getHostIp1());
+    public static void main(String[] args) throws Exception {
+        System.out.println(getHostIp());
+        System.out.println(getLocalHostLANAddress().getHostAddress());
     }
 
-
-    private static String getHostIp1() {
-
-        try {
-            InetAddress address = InetAddress.getLocalHost();
-            return address.getHostAddress();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-            return "";
-        }
+    private static String getHostIp() throws UnknownHostException {
+        InetAddress address = InetAddress.getLocalHost();
+        return address.getHostAddress();
     }
-    public static String getHostIp() {
 
-        String sIP = "";
-        InetAddress ip = null;
+    /**
+     * 正确的IP拿法，即优先拿site-local地址
+     *
+     * @return
+     * @throws UnknownHostException
+     */
+    private static InetAddress getLocalHostLANAddress() throws UnknownHostException {
         try {
-            boolean bFindIP = false;
-            Enumeration<NetworkInterface> netInterfaces = NetworkInterface.getNetworkInterfaces();
-            while (netInterfaces.hasMoreElements()) {
-                if (bFindIP){
-                    break;
-                }
-                NetworkInterface ni = netInterfaces.nextElement();
-                Enumeration<InetAddress> ips = ni.getInetAddresses();
-                while (ips.hasMoreElements()) {
-                    ip = ips.nextElement();
-                    if (!ip.isLoopbackAddress()
-                            && ip.getHostAddress().matches("(\\d{1,3}\\.){3}\\d{1,3}")) {
-                        bFindIP = true;
-                        break;
+            InetAddress candidateAddress = null;
+            // 遍历所有的网络接口
+            for (Enumeration ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements(); ) {
+                NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
+                // 在所有的接口下再遍历IP
+                for (Enumeration inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements(); ) {
+                    InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
+                    if (!inetAddr.isLoopbackAddress()) {// 排除loopback类型地址
+                        if (inetAddr.isSiteLocalAddress()) {
+                            // 如果是site-local地址，就是它了
+                            return inetAddr;
+                        } else if (candidateAddress == null) {
+                            // site-local类型的地址未被发现，先记录候选地址
+                            candidateAddress = inetAddr;
+                        }
                     }
                 }
             }
+            if (candidateAddress != null) {
+                return candidateAddress;
+            }
+            // 如果没有发现 non-loopback地址.只能用最次选的方案
+            InetAddress jdkSuppliedAddress = InetAddress.getLocalHost();
+            if (jdkSuppliedAddress == null) {
+                throw new UnknownHostException("The JDK InetAddress.getLocalHost() method unexpectedly returned null.");
+            }
+            return jdkSuppliedAddress;
         } catch (Exception e) {
-            e.printStackTrace();
+            UnknownHostException unknownHostException = new UnknownHostException("Failed to determine LAN address: " + e);
+            unknownHostException.initCause(e);
+            throw unknownHostException;
         }
-        if (null != ip)
-            sIP = ip.getHostAddress();
-        return sIP;
     }
 }

@@ -3,19 +3,20 @@ package com.kaka.jtest.jdk.java.util;
 import org.junit.Test;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
- * 输出的顺序和输入的相同
+ * 按自然顺序或自定义顺序遍历键
  *
  * @author: jsk
- * @date: 2019/4/9 19:57
+ * @date: 2019/8/22 19:55
  */
-public class LinkedHashMapTest {
+public class TreeMapTest {
+
     @Test
-    public void test() {
-        Map<String, String> map = new LinkedHashMap<>();
+    public void putTest() {
+        Map<String, String> map = new TreeMap<>();
         map.put("apple", "苹果");
         map.put("watermelon", "西瓜");
         map.put("banana", "香蕉");

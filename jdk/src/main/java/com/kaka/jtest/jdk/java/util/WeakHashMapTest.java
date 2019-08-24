@@ -25,7 +25,7 @@ public class WeakHashMapTest {
         Map<String, Person> map = new WeakHashMap<>();
         map.put(aa, new Person(1, "AA"));
         map.put(bb, new Person(1, "BB"));
-        aa = null;
+//        aa = null;
         System.gc();
         TimeUnit.SECONDS.sleep(1);
         System.out.println(map.size());

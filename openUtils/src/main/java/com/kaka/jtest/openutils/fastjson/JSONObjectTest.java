@@ -115,6 +115,14 @@ public class JSONObjectTest {
         }
     }
 
+    @Test
+    public void getDubble(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("value", 4.46979288E8);
+        Double value = jsonObject.getDouble("value");
+        System.out.println(value);
+    }
+
     /**
      * 从jsonObject中获取JSONArray
      * 如果key不存在时,JSONArray的值返回null

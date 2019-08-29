@@ -10,8 +10,23 @@ spring:
    port: 20884
   registry:
    protocol: zookeeper
-   address: 127.0.0.1:2181
+   address: dev.cdh.ecarx.local:2181
   monitor:
    protocol: registry
-   address: 127.0.0.1:2181
+   address: dev.cdh.ecarx.local:2181
 #  scan: com.kaka.jtest.consumer.boot.controller
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    dubboreferences:
+     enabled: true
+    dubboservices:
+     enabled: true
+    dubboshutdown:
+     enabled: true

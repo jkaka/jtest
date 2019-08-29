@@ -31,4 +31,12 @@ public class Person {
         super();
         // TODO Auto-generated constructor stub
     }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 }

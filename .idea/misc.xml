@@ -5,6 +5,7 @@
     <session id="-1467502903">
       <usages-collector id="statistics.spring.core.usages.trigger">
         <counts>
+          <entry key="actions.SpringChangeActiveProfiles" value="2" />
           <entry key="fixes.SpringFacetInspection.AddFacetFix" value="2" />
         </counts>
       </usages-collector>

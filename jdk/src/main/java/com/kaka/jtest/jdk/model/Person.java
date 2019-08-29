@@ -1,5 +1,8 @@
 package com.kaka.jtest.jdk.model;
 
+/**
+ * @author shuangkai.jia
+ */
 public class Person {
     private Integer id;
     private String name;

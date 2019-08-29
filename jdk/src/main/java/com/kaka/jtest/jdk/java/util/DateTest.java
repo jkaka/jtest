@@ -47,4 +47,10 @@ public class DateTest {
         System.out.println(dateFormat.format(new Date(1549011837397L)));
         System.out.println(dateFormat.format(new Date(1550653437397L)));
     }
+
+    @Test
+    public void constructTest(){
+        Date date = new Date(1566885312164L);
+        System.out.println(date);
+    }
 }

@@ -10,10 +10,27 @@ spring:
    port: 20882
   registry:
    protocol: zookeeper
-   address: 127.0.0.1:2181
+   address: dev.cdh.ecarx.local:2181
   monitor:
    protocol: registry
-   address: 127.0.0.1:2181
+   address: dev.cdh.ecarx.local:2181
   ##scan: com.kaka.jtest.provider.biz.service
-dubbo:
- configcenter: zookeeper://10.43.104.122:2181
+
+# config.center与健康检查有冲突
+#dubbo:
+# configcenter: zookeeper://dev.cdh.ecarx.local:2181
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    dubboreferences:
+     enabled: true
+    dubboservices:
+     enabled: true
+    dubboshutdown:
+     enabled: true

@@ -1,5 +1,8 @@
 package com.kaka.jtest.jdk.model;
 
+/**
+ * @author shuangkai.jia
+ */
 public class RealObject implements Interface {
     @Override
     public void doSomething() {

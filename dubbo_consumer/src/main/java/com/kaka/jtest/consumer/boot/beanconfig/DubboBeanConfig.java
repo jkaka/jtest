@@ -114,10 +114,11 @@ public class DubboBeanConfig {
     public ConsumerConfig consumerConfig(ApplicationConfig applicationConfig, RegistryConfig registryConfig) {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setApplication(applicationConfig);
-        consumerConfig.setFilter("consumer_filter,testFilter");
+        consumerConfig.setFilter("activelimit,consumer_filter,testFilter");
         consumerConfig.setTimeout(30000);
 //        consumerConfig.setTag("tag1");
-//        consumerConfig.setLoadbalance("leastactive");
+        // 默认是随机（random）
+        consumerConfig.setLoadbalance("leastactive");
 //        consumerConfig.setFilter("activelimit,consumer_filter");
         // 这个不能在application的配置文件中配置
         consumerConfig.setCheck(false);

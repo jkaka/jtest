@@ -111,6 +111,19 @@ public class StringTest {
         System.out.println(str.replaceAll("http://.*.oss-cn-hangzhou.aliyuncs.com/", ""));
     }
 
+
+    /**
+     * 第一次出现的下标
+     */
+    @Test
+    public void indexOfTest(){
+        String fileName = "ab2ab";
+        System.out.println(fileName.indexOf("a"));
+        System.out.println(fileName.indexOf("a", 0));
+        System.out.println(fileName.indexOf("a", 1));
+        System.out.println(fileName.indexOf("a", -1));
+    }
+
     @Test
     public void lastIndexOf() {
         String fileName = "ab.c.rar";

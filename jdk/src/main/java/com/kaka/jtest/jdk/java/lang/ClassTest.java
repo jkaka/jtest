@@ -46,4 +46,21 @@ public class ClassTest {
     }
 
 
+    /**
+     * 类型转换
+     */
+    @Test
+    public void castTest(){
+        Interface anInterface = Interface.class.cast(new RealObject());
+        anInterface.doSomething();
+    }
+
+    @Test
+    public void nameTest(){
+        System.out.println(ClassTest.class.getName());
+        System.out.println(ClassTest.class.getTypeName());
+        // 不带包名
+        System.out.println(ClassTest.class.getSimpleName());
+    }
+
 }

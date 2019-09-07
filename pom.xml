@@ -16,8 +16,9 @@
         <spring.version>5.0.7.RELEASE</spring.version>
 
         <dubbo-version>2.7.3</dubbo-version>
-        <fastjson.version>1.2.35</fastjson.version>
+        <fastjson.version>1.2.60</fastjson.version>
         <druid.version>1.0.31</druid.version>
+        <metrics.version>2.0.1</metrics.version>
 
         <junit.version>4.12</junit.version>
         <dubbo-spring-boot>2.0.0</dubbo-spring-boot>
@@ -60,6 +61,7 @@
         <module>zookeeper</module>
         <module>servlet</module>
         <module>sharding-sphere</module>
+        <module>metrics</module>
     </modules>
 
     <build>
@@ -85,7 +87,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
         </dependency>
     </dependencies>
 
@@ -183,6 +185,21 @@
                 <version>${druid.version}</version>
             </dependency>
             <!--阿里系 结束-->
+
+            <!--Apache开始-->
+            <!--文件上传-->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.14</version>
+            </dependency>
+            <!--Apache结束-->
 
             <!-- mybatis核心包 -->
             <dependency>
@@ -360,6 +377,30 @@
                 <version>${shardingsphere.version}</version>
             </dependency>
             <!--shardingsphere end-->
+
+            <!--metrics 度量开始-->
+            <dependency>
+                <groupId>com.alibaba.middleware</groupId>
+                <artifactId>metrics-core-api</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.middleware</groupId>
+                <artifactId>metrics-core-impl</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.middleware</groupId>
+                <artifactId>metrics-integration</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.middleware</groupId>
+                <artifactId>metrics-rest</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <!--metrics 度量结束-->
+
         </dependencies>
     </dependencyManagement>
 </project>

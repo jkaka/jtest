@@ -32,7 +32,8 @@ public class MockControllerTest extends ApplicationTest {
     private MockMvc mockMvc;
 
     /**
-     * SpyBean注解标注的bean,原来bean方法体的内容;如果不使用Mockito自定义方法的返回值,则按照bean原来的方法体执行
+     * SpyBean注解标注的bean,会保留原来bean方法体的内容;如果不使用Mockito自定义方法的返回值,则按照bean原来的方法体执行
+     *
      * MockBean注解标注的bean,不会保留原来bean方法体的内容;每个方法都需要使用Mockito自定义返回值,否则返回mock中对应类型定义的默认值
      */
     @MockBean

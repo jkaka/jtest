@@ -11,6 +11,6 @@ public class ScheduledExecutorServiceTest {
     public static void main(String[] args) {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);
         scheduledExecutorService.schedule(()-> System.out.println("AAAAAAA"),2,TimeUnit.SECONDS);
-        scheduledExecutorService.scheduleAtFixedRate(()-> System.out.println("BB:" + new Date()),2,1,TimeUnit.SECONDS);
+        scheduledExecutorService.scheduleAtFixedRate(()-> System.out.println("BB:" + new Date()),2,3,TimeUnit.SECONDS);
     }
 }

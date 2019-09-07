@@ -4,6 +4,8 @@ import com.kaka.jtest.jdk.java.lang.management.ManagementFactoryTest;
 import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
  * @author jsk
  * @Date 2018/9/14 9:34
@@ -44,6 +46,18 @@ public class RuntimeTest {
         //当前JVM占用的内存总数，其值相当于当前JVM已使用的内存及freeMemory()的总和
         long totalMemory = Runtime.getRuntime().totalMemory();
         System.out.println(totalMemory / (1024 * 1024) + "M");
+    }
+
+    /**
+     * 执行命令
+     * @throws Exception
+     */
+    @Test
+    public void execTest() throws Exception {
+        // 计算器
+        Process p = Runtime.getRuntime().exec("calc.exe");
+        p.waitFor();
+        System.out.println("Process finished");
     }
 
 }

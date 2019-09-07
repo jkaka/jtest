@@ -1,7 +1,8 @@
 package com.kaka.jtest.consumer.boot.controller;
 
-import org.apache.dubbo.config.annotation.Reference;
 import com.kaka.jtest.provider.client.service.TimeOutService;
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,24 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/timeOutController")
 public class TimeOutController {
-    @Reference(version = "1.0.0")
+    @Reference
     private TimeOutService timeOutService;
 
-    @RequestMapping("/sleepFour")
-    public String sleepFour() throws InterruptedException {
-        timeOutService.sleepFour();
-        return "sleepFour";
-    }
-
-    @RequestMapping("/sleepTwo")
-    public String sleepTwo() throws InterruptedException {
-        timeOutService.sleepTwo();
-        return "sleepTwo";
-    }
-
-    @RequestMapping("/sleepHalf")
-    public String sleepHalf() throws InterruptedException {
-        timeOutService.sleepHalf();
-        return "sleepHalf";
+    @RequestMapping("/sleep/{second}")
+    public String sleepFour(@PathVariable Integer second) throws InterruptedException {
+        timeOutService.sleepNum(second);
+        return second + "";
     }
 }

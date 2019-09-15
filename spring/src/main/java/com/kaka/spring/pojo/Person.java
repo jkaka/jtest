@@ -1,4 +1,4 @@
-package com.kaka.spring.beans;
+package com.kaka.spring.pojo;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans.dtd">-->
 <!-- -Dspring.profiles.active=test -->
-<beans profile="test"
-       xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="person" class="com.kaka.spring.beans.Person">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <bean id="person" class="com.kaka.spring.pojo.Person">
         <property name="age" value="22"/>
     </bean>
+
+    <bean id="person1" class="com.kaka.spring.pojo.Person"/>
+    <tx:annotation-driven/>
+
+    <!--meta 子元素-->
+    <bean id="metaPerson" class="com.kaka.spring.pojo.Person">
+        <property name="age" value="22"/>
+        <meta key="myMeta" value="元数据"/>
+    </bean>
+
+    <!--lookup-method 子元素-->
+    <bean id="cat" class="com.kaka.spring.pojo.Cat"/>
+
+    <bean id="abstractMethodBean" class="com.kaka.spring.pojo.AbstractMethodBean">
+        <lookup-method name="getAnimalBean" bean="cat"/>
+    </bean>
+
+    <!--replace-method 子元素-->
+    <bean id="replaceMethodBean" class="com.kaka.spring.pojo.ReplaceMethodBean"/>
+
+    <bean id="dog" class="com.kaka.spring.pojo.Dog">
+        <replaced-method name="say" replacer="replaceMethodBean"/>
+    </bean>
+
 </beans>

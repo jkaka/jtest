@@ -1,6 +1,6 @@
 package com.kaka.spring.context;
 
-import com.kaka.spring.beans.Person;
+import com.kaka.spring.pojo.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**

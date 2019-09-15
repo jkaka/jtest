@@ -27,8 +27,9 @@ public class ConsumerTest {
         consumer.subscribe(Arrays.asList("jsk-topic", "devices-command-FOTA"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records)
+            for (ConsumerRecord<String, String> record : records){
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            }
         }
     }
 }

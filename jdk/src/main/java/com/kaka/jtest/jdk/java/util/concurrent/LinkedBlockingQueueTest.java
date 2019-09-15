@@ -72,4 +72,18 @@ public class LinkedBlockingQueueTest {
             System.out.println("take元素:" + objects.take());
         }
     }
+
+    /**
+     * 剩余容量
+     *
+     * @throws InterruptedException
+     */
+    @Test
+    public void remainingCapacityTest() throws InterruptedException {
+        BlockingQueue<String> objects = new LinkedBlockingQueue<>(10);
+        for (int i = 0; i < 100; i++) {
+            objects.put("aa");
+            System.out.println("remainingCapacity:" + objects.remainingCapacity());
+        }
+    }
 }

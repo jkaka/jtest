@@ -51,7 +51,7 @@ public class WebBeanConfig extends WebMvcConfigurerAdapter {
         registration.addUrlPatterns("/*");
         // 过滤器名称
         registration.setName("AuthenticationTokenFilter");
-        // 过滤器顺序
+        // 过滤器顺序 越小越靠前拦截
         registration.setOrder(2);
         return registration;
     }

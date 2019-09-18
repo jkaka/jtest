@@ -5,6 +5,7 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.List;
@@ -24,20 +25,31 @@ import java.util.concurrent.TimeUnit;
  */
 public class Consumer {
 
-    private final static String TOPIC = "jsk-test-rocketmq";
+    private final static String TOPIC = "OFFSET_MOVED_EVENT";
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
 
 
         // Instantiate with specified consumer group name.
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("jsk_group");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("jsk_group0036");
 
         // Specify name server addresses.
 //        consumer.setNamesrvAddr("test01.cdh.ecarx.local:9876;test02.cdh.ecarx.local:9876");
         consumer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
-
+        /**
+         * 设置消费位置
+         * CONSUME_FROM_LAST_OFFSET(默认)
+         *  1. 如果该消费者组已存在对应的offset,则从该offset开始消费
+         *  2. 若topic的minOffset为0时,从0开始消费;否则从队尾消费
+         *
+         *
+         * CONSUME_FROM_FIRST_OFFSET
+         *  1. 如果该消费者组已存在对应的offset,则从该offset开始消费
+         *  2. 从队列中的第一条消息开始消费
+         */
+        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 //         Subscribe one more more topics to consume.
-        consumer.subscribe(TOPIC, "OWNERDRIVER");
+        consumer.subscribe(TOPIC, "*");
         // 订阅多个主题
 //        consumer.setSubscription(new HashMap<String, String>(8){{
 //            put("test-jsk", "");
@@ -58,14 +70,15 @@ public class Consumer {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
                                                             ConsumeConcurrentlyContext context) {
-                try {
-                    TimeUnit.SECONDS.sleep(5);
+                /*try {
+                    TimeUnit.SECONDS.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                }*/
                 System.out.printf(TOPIC + "：%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
                 System.out.println("\n" + msgs.size());
-
+                int reconsumeTimes = msgs.get(0).getReconsumeTimes();
+                System.out.println("reconsumeTimes:" + reconsumeTimes);
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });

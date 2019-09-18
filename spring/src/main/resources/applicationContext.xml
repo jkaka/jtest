@@ -31,4 +31,23 @@
         <replaced-method name="say" replacer="replaceMethodBean"/>
     </bean>
 
+
+    <!--qualifier子元素-->
+    <bean id="q1" class="com.kaka.spring.pojo.QualifierBean">
+        <qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="q002">
+            <attribute key="myQualifierAttr" value="abc"/>
+        </qualifier>
+    </bean>
+    <bean id="q2" class="com.kaka.spring.pojo.QualifierBean">
+        <qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="q002"/>
+    </bean>
+
+    <!--constructor-arg子元素-->
+    <bean id="constructorBean" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg name="a" value="a001"/>
+    </bean>
+
+    <bean id="constructorBean1" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg index="0" value="a002" />
+    </bean>
 </beans>

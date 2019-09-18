@@ -2,6 +2,7 @@ package com.kaka.spring.beans.factory.config;
 
 
 import com.kaka.spring.pojo.AbstractMethodBean;
+import com.kaka.spring.pojo.ConstructorBean;
 import com.kaka.spring.pojo.Dog;
 import org.junit.After;
 import org.junit.Before;
@@ -43,6 +44,14 @@ public class BeanDefinitionTest {
     public void replaceMethodTest(){
         Dog dog = xmlBeanFactory.getBean("dog", Dog.class);
         dog.say();
+    }
+
+    @Test
+    public void constructorArgTest(){
+        ConstructorBean constructorBean = xmlBeanFactory.getBean("constructorBean", ConstructorBean.class);
+        System.out.println(constructorBean);
+        ConstructorBean constructorBean1 = xmlBeanFactory.getBean("constructorBean1", ConstructorBean.class);
+        System.out.println(constructorBean1);
     }
 
     @After

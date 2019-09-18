@@ -30,7 +30,11 @@ public class ConsumerOrderly {
 //         Subscribe one more more topics to consume.
         consumer.subscribe(TOPIC, "OWNERDRIVER");
 
-        // 有序消息   一个线程对应一个队列
+        /**
+         * 有序消息
+         * 1. 一个线程对应一个队列
+         * 2. 重试的消息不会进入重试队列
+         */
         consumer.registerMessageListener(new MessageListenerOrderly() {
 
             @Override

@@ -8,7 +8,6 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author: jsk
@@ -30,6 +29,17 @@ public class ConsumerOrderly {
 //         Subscribe one more more topics to consume.
         consumer.subscribe(TOPIC, "OWNERDRIVER");
 
+        consumer.setConsumeMessageBatchMaxSize(1);
+
+        /**
+         * 最大重试次数
+         */
+        consumer.setMaxReconsumeTimes(5);
+
+        /**
+         * 重复消费的时间间隔
+         */
+        consumer.setSuspendCurrentQueueTimeMillis(5000);
         /**
          * 有序消息
          * 1. 一个线程对应一个队列
@@ -40,15 +50,10 @@ public class ConsumerOrderly {
             @Override
             public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs,
                                                        ConsumeOrderlyContext context) {
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 System.out.printf(TOPIC + "：%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
                 System.out.println("\n" + msgs.size());
-
-                return ConsumeOrderlyStatus.SUCCESS;
+                System.out.println("重试次数:" + msgs.get(0).getReconsumeTimes());
+                return ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
             }
         });
 

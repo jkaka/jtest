@@ -52,6 +52,8 @@ public class BeanDefinitionTest {
         System.out.println(constructorBean);
         ConstructorBean constructorBean1 = xmlBeanFactory.getBean("constructorBean1", ConstructorBean.class);
         System.out.println(constructorBean1);
+        ConstructorBean constructorBean2 = xmlBeanFactory.getBean("constructorBean2", ConstructorBean.class);
+        System.out.println(constructorBean2);
     }
 
     @After

@@ -45,9 +45,20 @@
     <!--constructor-arg子元素-->
     <bean id="constructorBean" class="com.kaka.spring.pojo.ConstructorBean">
         <constructor-arg name="a" value="a001"/>
+        <constructor-arg name="b" value="a001"/>
     </bean>
 
     <bean id="constructorBean1" class="com.kaka.spring.pojo.ConstructorBean">
         <constructor-arg index="0" value="a002" />
+        <constructor-arg index="1" value="a002" />
+    </bean>
+
+    <bean id="constructorBean2" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg name="a">
+            <value type="java.lang.String">a003</value>
+        </constructor-arg>
+        <constructor-arg name="b">
+            <null/>
+        </constructor-arg>
     </bean>
 </beans>

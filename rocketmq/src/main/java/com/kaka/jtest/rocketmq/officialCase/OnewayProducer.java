@@ -24,9 +24,9 @@ public class OnewayProducer {
         producer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
         //Launch the instance.
         producer.start();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1; i++) {
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("jsk-test-rocketmq",
+            Message msg = new Message("OFFSET_MOVED_EVENT",
                     "OWNERDRIVER",
                     ("Hello linkedlistRocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );

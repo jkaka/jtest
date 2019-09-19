@@ -8,6 +8,7 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -64,6 +65,11 @@ public class Consumer {
         // 拉取消息最小线程数(默认为20)
         consumer.setConsumeThreadMin(10);
 
+        /**
+         * 最大重试次数
+         */
+        consumer.setMaxReconsumeTimes(2);
+
         // Register callback to execute on arrival of messages fetched from brokers.
         consumer.registerMessageListener(new MessageListenerConcurrently() {
 
@@ -78,8 +84,9 @@ public class Consumer {
                 System.out.printf(TOPIC + "：%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
                 System.out.println("\n" + msgs.size());
                 int reconsumeTimes = msgs.get(0).getReconsumeTimes();
-                System.out.println("reconsumeTimes:" + reconsumeTimes);
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                System.out.println("重试:" + reconsumeTimes);
+                System.out.println(new Date());
+                return ConsumeConcurrentlyStatus.RECONSUME_LATER;
             }
         });
 

@@ -1,4 +1,4 @@
-package com.kaka.servlet.test;
+package com.kaka.servlet.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

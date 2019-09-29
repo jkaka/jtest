@@ -5,6 +5,7 @@ import com.kaka.jtest.jdk.model.Person;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.logging.LogManager;
 
 /**
  * @author jsk
@@ -60,4 +61,11 @@ public class RuntimeTest {
         System.out.println("Process finished");
     }
 
+    @Test
+    public void addShutdownHookTest(){
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("jvm 结束了...");
+        }));
+        System.out.println("正常执行程序...");
+    }
 }

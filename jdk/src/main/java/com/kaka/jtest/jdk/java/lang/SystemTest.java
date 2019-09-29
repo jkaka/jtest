@@ -36,5 +36,17 @@ public class SystemTest {
     public void getProperty() {
         String machineId = System.getProperty("machine_Id");
         System.out.println(machineId);
+
+        String osName = System.getProperty("os.name");
+        System.out.println(osName);
+
+        String osVersion = System.getProperty("os.version");
+        System.out.println(osVersion);
+
+        String arch = System.getProperty("os.arch");
+        System.out.println(arch);
+
+        String javaVersion = System.getProperty("java.version");
+        System.out.println(javaVersion);
     }
 }

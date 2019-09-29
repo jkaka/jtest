@@ -8,8 +8,9 @@
     <artifactId>jtest</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <kaka-common>1.0-SNAPSHOT</kaka-common>
 
         <spring_boot.version>2.0.3.RELEASE</spring_boot.version>
@@ -34,6 +35,7 @@
         <kafka.streams.version>2.1.0</kafka.streams.version>
         <shardingsphere.version>3.1.0</shardingsphere.version>
         <curator.version>2.12.0</curator.version>
+
     </properties>
 
     <modules>

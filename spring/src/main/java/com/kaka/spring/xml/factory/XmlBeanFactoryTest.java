@@ -19,5 +19,8 @@ public class XmlBeanFactoryTest {
 
         Person person = (Person) xmlBeanFactory.getBean("person");
         System.out.println(person);
+
+        Person test01Person = (Person) xmlBeanFactory.getBean("test01Person");
+        System.out.println(test01Person);
     }
 }

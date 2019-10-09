@@ -21,16 +21,42 @@ public class ArrayListTest {
     }
 
     /**
-     * 自身循环时删除元素：使用foreach
+     * 在foreach中删除元素会报错:ConcurrentModificationException
      */
     @Test
     public void removeInForeach() {
         List<String> strings = new ArrayList<>(Arrays.asList("a", "b", "c", "b"));
         for (String str : strings) {
-            if (str.equals("b")) {
+            if ("b".equals(str)) {
                 strings.remove(str);
             }
         }
+        System.out.println(strings);
+    }
+
+    /**
+     * 使用迭代器的remove方法,即可正常删除
+     */
+    @Test
+    public void removeSuccess(){
+        List<String> strings = new ArrayList<>(Arrays.asList("a", "b", "c", "b"));
+        Iterator<String> it = strings.iterator();
+        while(it.hasNext()){
+            String str = it.next();
+            if("b".equals(str)){
+                it.remove();
+            }
+        }
+        System.out.println(strings);
+    }
+
+    /**
+     * jdk 1.8的新方法
+     */
+    @Test
+    public void removeIfTest(){
+        List<String> strings = new ArrayList<>(Arrays.asList("a", "b", "c", "b"));
+        strings.removeIf("b"::equals);
         System.out.println(strings);
     }
 

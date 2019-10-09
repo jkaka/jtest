@@ -18,7 +18,7 @@ public class CommonTest extends BaseTest {
     @Test
     public void testParams() {
         String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUser";
-        Map list11 = new HashMap();
+        Map<String, Object> list11 = new HashMap<>(8);
         list11.put("keys", Arrays.asList("BB"));
         list11.put("AA", "BB");
         List<User> users = sqlSession.selectList(statement, list11);
@@ -32,7 +32,7 @@ public class CommonTest extends BaseTest {
     public void testSize(){
         List<String> ids = new ArrayList<>();
         String statement = "com.kaka.jtest.mybatis.mapper.UserMapper.listUser";
-        Map params = new HashMap();
+        Map<String, Object> params = new HashMap<>(8);
         params.put("keys", Arrays.asList("BB"));
         params.put("idList", ids);
         List<User> users = sqlSession.selectList(statement, params);

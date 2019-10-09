@@ -27,6 +27,12 @@
                 <property name="url" value="${jdbc.url}"/>
                 <property name="username" value="${jdbc.username}"/>
                 <property name="password" value="${jdbc.password}"/>
+                <!--最大活跃连接数 -->
+                <property name="poolMaximumActiveConnections" value="10"/>
+                <!--最大空闲连接数-->
+                <property name="poolMaximumIdleConnections" value="5"/>
+                <!--创建连接时最大等待时间20s-->
+                <property name="poolTimeToWait" value="20000"/>
             </dataSource>
         </environment>
     </environments>

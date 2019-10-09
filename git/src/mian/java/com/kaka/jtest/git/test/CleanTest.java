@@ -9,6 +9,6 @@ public class CleanTest {
     /**
      * 回到未改动：git checkout .
      * 回到未add：git reset .
-     * 回到未新建：git clean -d
+     * 回到未新建：git clean -f
      */
 }

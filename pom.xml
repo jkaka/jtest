@@ -26,7 +26,6 @@
         <junit.version>4.12</junit.version>
         <dubbo-spring-boot>2.0.0</dubbo-spring-boot>
         <gson.version>2.8.0</gson.version>
-        <mybatis-spring>1.2.2</mybatis-spring>
         <mybatis-version>3.4.6</mybatis-version>
         <mybatis-spring>1.3.0</mybatis-spring>
         <mybatis-spring-boot>1.1.1</mybatis-spring-boot>
@@ -137,7 +136,7 @@
                 <version>${junit.version}</version>
             </dependency>
 
-            <!--阿里系 开始-->
+
             <dependency>
                 <groupId>com.alibaba.spring.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -181,15 +180,6 @@
                 <version>${fastjson.version}</version>
             </dependency>
 
-            <!--druid连接池-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-            <!--阿里系 结束-->
-
-            <!--Apache开始-->
             <!--文件上传-->
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -201,54 +191,6 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>3.4.14</version>
-            </dependency>
-            <!--Apache结束-->
-
-            <!-- mybatis核心包 -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis-version}</version>
-            </dependency>
-            <!-- mybatis/spring包 -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>${mybatis-spring}</version>
-            </dependency>
-            <!--mybatis/springboot-->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot}</version>
-            </dependency>
-
-            <!--mybatis plus-->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.17</version>
-            <!--<version>5.1.37</version>-->
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
-            <dependency>
-                <groupId>c3p0</groupId>
-                <artifactId>c3p0</artifactId>
-                <version>0.9.1.2</version>
-            </dependency>
-
-            <!--分页工具-->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper-version}</version>
             </dependency>
 
             <!--Apache common-->
@@ -265,10 +207,82 @@
                 <version>1.9.3</version>
             </dependency>
 
+            <!--mybatis相关(开始)-->
+            <!-- mybatis核心包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis-version}</version>
+            </dependency>
+            <!-- mybatis/spring包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring}</version>
+            </dependency>
+            <!--mybatis生成器插件-->
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>1.3.2</version>
+            </dependency>
+            <!--mybatis/springboot-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot}</version>
+            </dependency>
+            <!--mybatis plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+            <!--mybatis相关(结束)-->
+
+            <!--数据库相关(开始)-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.17</version>
+            <!--<version>5.1.37</version>-->
+            </dependency>
+            <!--binlog-->
+            <dependency>
+                <groupId>com.github.shyiko</groupId>
+                <artifactId>mysql-binlog-connector-java</artifactId>
+                <version>0.12.1</version>
+            </dependency>
+            <!--druid连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--c3p0-->
+            <dependency>
+                <groupId>c3p0</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>0.9.1.2</version>
+            </dependency>
+            <!--数据库相关(结束)-->
+
+            <!--分页工具-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper-version}</version>
+            </dependency>
+
             <!--Spring相关包-->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
+                <artifactId>spring-bean</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
@@ -302,19 +316,21 @@
                 <version>${spring.version}</version>
             </dependency>
 
+            <!--日志相关(开始)-->
             <!--slf4j-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.21</version>
             </dependency>
-
-            <!--binlog-->
             <dependency>
-                <groupId>com.github.shyiko</groupId>
-                <artifactId>mysql-binlog-connector-java</artifactId>
-                <version>0.12.1</version>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
             </dependency>
+            <!--日志相关(结束)-->
+
+
 
             <!--zk客户端(zkclient)-->
             <dependency>

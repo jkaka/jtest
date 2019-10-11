@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaka.jtest.mybatis.mapper.LabelMapper">
+
+    <update id="setLabelTest" parameterType="com.kaka.jtest.mybatis.entities.User">
+        update users
+        <set>
+            <if test="age != null">age = #{age},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <update id="ifLabelTest" parameterType="com.kaka.jtest.mybatis.entities.User">
+        update users
+        <set>
+            <if test="name != null &amp;&amp; name!=''">name = #{name},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

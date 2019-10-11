@@ -20,7 +20,7 @@ public class GeneratorSqlmap {
 		boolean overwrite = true;
 		//指定 逆向工程配置文件
 		System.out.println(this.getClass());
-		String filePath = this.getClass().getResource("/generatorConfig.xml").getPath();
+		String filePath = this.getClass().getResource("/generator/generatorConfig.xml").getPath();
 		File configFile = new File(filePath);
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);

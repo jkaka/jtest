@@ -11,7 +11,7 @@ public class ModifyField {
      */
     private String a;
     /**
-     * 没有关键字修饰，在当前类或者在当前包中的类可以使用，这些都是该类的朋友  (其实没有friendly、default关键字)
+     * 没有关键字修饰，在当前类或者在当前包(不包含子包)中的类可以使用，这些都是该类的朋友  (其实没有friendly、default关键字)
      */
     String b;
     /**

@@ -11,6 +11,8 @@ import com.aliyun.odps.data.RecordReader;
 import com.aliyun.odps.tunnel.TableTunnel;
 import com.aliyun.odps.tunnel.TunnelException;
 import com.kaka.jtest.aliyun.common.constant.Constants;
+import com.kaka.jtest.aliyun.odps.OdpsBaseTest;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Date;
@@ -20,23 +22,17 @@ import java.util.Date;
  * @version 1.0
  * @since 2019-10-14 11:00
  */
-public class TableTunnelTest {
-    private static String accessId = Constants.ACCESS_ID;
-    private static String accessKey = Constants.ACCESS_KEY;
-    private static String odpsUrl = "http://service.odps.aliyun.com/api";
-    private static String tunnelUrl = "http://dt.cn-hangzhou.maxcompute.aliyun.com";
-    //设置tunnelUrl，若需要走内网时必须设置，否则默认公网。
-    private static String project = "dpdefault_75544";
-    private static String table = "ingestion_test";
-    private static String partition = "pt=2019_09_27_20_00";
+public class TableTunnelTest extends OdpsBaseTest {
+    private static String table = "jsk_user";
+    private static String partition = "region=hz";
 
-    public static void main(String args[]) {
-        Account account = new AliyunAccount(accessId, accessKey);
-        Odps odps = new Odps(account);
-        odps.setEndpoint(odpsUrl);
-        odps.setDefaultProject(project);
+
+    @Test
+    public void downloadSessionTest(){
         TableTunnel tunnel = new TableTunnel(odps);
-        tunnel.setEndpoint(tunnelUrl);//设置tunnelUrl。
+        //设置tunnelUrl。
+        tunnel.setEndpoint(tunnelUrl);
+        // 查找指定分区的数据
         PartitionSpec partitionSpec = new PartitionSpec(partition);
         try {
             TableTunnel.DownloadSession downloadSession = tunnel.createDownloadSession(project, table, partitionSpec);
@@ -51,14 +47,12 @@ public class TableTunnelTest {
                 consumeRecord(record, downloadSession.getSchema());
             }
             recordReader.close();
-        } catch (TunnelException e) {
+        } catch (TunnelException | IOException e) {
             e.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
         }
     }
 
-    private static void consumeRecord(Record record, TableSchema schema) {
+    private void consumeRecord(Record record, TableSchema schema) {
         for (int i = 0; i < schema.getColumns().size(); i++) {
             Column column = schema.getColumn(i);
             String colValue = null;

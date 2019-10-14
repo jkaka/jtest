@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kaka.common</groupId>
+            <groupId>com.kaka</groupId>
             <artifactId>common</artifactId>
         </dependency>
 

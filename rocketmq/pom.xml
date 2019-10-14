@@ -12,12 +12,6 @@
     <artifactId>rocketmq</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.kaka.common</groupId>
-            <artifactId>common</artifactId>
-        </dependency>
-
         <!--rocket mq-->
         <dependency>
             <groupId>org.apache.rocketmq</groupId>

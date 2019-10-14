@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <kaka-common>1.0-SNAPSHOT</kaka-common>
+        <jtest.version>1.0-SNAPSHOT</jtest.version>
 
         <!--spring-->
         <spring_boot.version>2.0.3.RELEASE</spring_boot.version>
@@ -23,7 +23,6 @@
         <druid.version>1.0.31</druid.version>
         <metrics.version>2.0.1</metrics.version>
 
-        <junit.version>4.12</junit.version>
         <dubbo-spring-boot>2.0.0</dubbo-spring-boot>
         <gson.version>2.8.0</gson.version>
         <mybatis-version>3.4.6</mybatis-version>
@@ -35,12 +34,10 @@
         <kafka.streams.version>2.1.0</kafka.streams.version>
         <shardingsphere.version>3.1.0</shardingsphere.version>
         <curator.version>2.12.0</curator.version>
-
     </properties>
 
     <modules>
         <module>jdk</module>
-        <module>aliyun-log</module>
         <module>mybatis</module>
         <module>springboot</module>
         <module>tbschedule</module>
@@ -64,6 +61,8 @@
         <module>servlet</module>
         <module>sharding-sphere</module>
         <module>metrics</module>
+        <module>common</module>
+        <module>aliyun-sdk</module>
     </modules>
 
     <build>
@@ -86,35 +85,36 @@
 
 
     <dependencies>
+        <!--junit测试工具-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>common</artifactId>
+            <version>${jtest.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
     <!--项目版本管理：让子项目使用properties节点中的版本-->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.kaka.common</groupId>
-                <artifactId>common</artifactId>
-                <version>${kaka-common}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
             <!--gson依赖-->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
@@ -129,13 +129,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--junit测试工具-->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-
 
             <dependency>
                 <groupId>com.alibaba.spring.boot</groupId>

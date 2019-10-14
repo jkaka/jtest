@@ -1,4 +1,4 @@
-package com.kaka.jtest.aliyun.log;
+package com.kaka.jtest.aliyun.sls;
 
 import com.aliyun.openservices.log.Client;
 import com.aliyun.openservices.log.common.*;

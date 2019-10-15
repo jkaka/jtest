@@ -1,16 +1,12 @@
 package com.kaka.jtest.aliyun.odps.tunnel;
 
 import com.aliyun.odps.Column;
-import com.aliyun.odps.Odps;
 import com.aliyun.odps.PartitionSpec;
 import com.aliyun.odps.TableSchema;
-import com.aliyun.odps.account.Account;
-import com.aliyun.odps.account.AliyunAccount;
 import com.aliyun.odps.data.Record;
 import com.aliyun.odps.data.RecordReader;
 import com.aliyun.odps.tunnel.TableTunnel;
 import com.aliyun.odps.tunnel.TunnelException;
-import com.kaka.jtest.aliyun.common.constant.Constants;
 import com.kaka.jtest.aliyun.odps.OdpsBaseTest;
 import org.junit.Test;
 
@@ -28,7 +24,7 @@ public class TableTunnelTest extends OdpsBaseTest {
 
 
     @Test
-    public void downloadSessionTest(){
+    public void downloadSessionTest() {
         TableTunnel tunnel = new TableTunnel(odps);
         //设置tunnelUrl。
         tunnel.setEndpoint(tunnelUrl);
@@ -87,8 +83,9 @@ public class TableTunnelTest extends OdpsBaseTest {
                             + column.getType());
             }
             System.out.print(colValue == null ? "null" : colValue);
-            if (i != schema.getColumns().size())
+            if (i != schema.getColumns().size()){
                 System.out.print("\t");
+            }
         }
         System.out.println();
     }

@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
+ * 解析完成的BeanDefinition信息保存在：DefaultListableBeanFactory#beanDefinitionMap
  * @author: jsk
  * @date: 2019/9/15 16:16
  */

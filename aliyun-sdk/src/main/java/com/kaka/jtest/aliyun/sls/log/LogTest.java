@@ -2,7 +2,6 @@ package com.kaka.jtest.aliyun.sls.log;
 
 import com.aliyun.openservices.log.common.*;
 import com.aliyun.openservices.log.exception.LogException;
-import com.aliyun.openservices.log.request.CreateIndexRequest;
 import com.aliyun.openservices.log.request.GetHistogramsRequest;
 import com.aliyun.openservices.log.request.GetLogsRequest;
 import com.aliyun.openservices.log.request.PutLogsRequest;
@@ -13,7 +12,6 @@ import com.aliyun.openservices.log.response.GetLogsResponse;
 import com.kaka.jtest.aliyun.sls.SlsBaseTest;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -130,6 +128,7 @@ public class LogTest extends SlsBaseTest {
 
     /**
      * 查询指定时间段日志内容
+     *
      * @throws Exception
      */
     @Test
@@ -168,11 +167,11 @@ public class LogTest extends SlsBaseTest {
         //使用分析功能
         GetLogsRequest req4 = new GetLogsRequest(project, logstore, from, to, "", " index0:value | select avg(index1) as v1,sum(index2) as v2, index0 group by index0");
         GetLogsResponse res4 = client.GetLogs(req4);
-        if(res4 != null && res4.IsCompleted()){
-            for (QueriedLog log : res4.GetLogs()){
+        if (res4 != null && res4.IsCompleted()) {
+            for (QueriedLog log : res4.GetLogs()) {
                 LogItem item = log.GetLogItem();
-                for(LogContent content : item.GetLogContents()){
-                    System.out.print(content.GetKey()+":"+content.GetValue());
+                for (LogContent content : item.GetLogContents()) {
+                    System.out.print(content.GetKey() + ":" + content.GetValue());
                 }
                 System.out.println();
             }

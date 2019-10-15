@@ -1,6 +1,7 @@
-package com.kaka.jtest.aliyun.odps;
+package com.kaka.jtest.aliyun.odps.table;
 
 import com.aliyun.odps.Table;
+import com.kaka.jtest.aliyun.odps.OdpsBaseTest;
 import org.junit.Test;
 
 /**

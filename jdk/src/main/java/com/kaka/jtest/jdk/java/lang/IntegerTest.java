@@ -80,17 +80,20 @@ public class IntegerTest {
      */
     @Test
     public void boxTest() {
-        // int值给Integer
+        // 1. int值给Integer
         int a = 10;
         Integer b = a;
         Integer c = 10;
+        // 2. 双等号也会拆箱
+        System.out.println(a == c);
 
-        // integer值给int
+        // 3. integer值给int
         Integer d = null;
         Integer e = 10;
-        a = d;
         a = e;
-
+        // 4. int接收为null的integer值，编译不报错；运行会报空指针(因为调用 integer的intvalue()方法)
+        a = d;
         System.out.println(a);
     }
+
 }

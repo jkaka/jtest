@@ -38,6 +38,13 @@
             <artifactId>odps-sdk-core</artifactId>
             <version>0.32.5-public</version>
         </dependency>
+
+        <!--oss-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.5.0</version>
+        </dependency>
     </dependencies>
 
 </project>

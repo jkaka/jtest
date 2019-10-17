@@ -10,15 +10,21 @@ import org.junit.Before;
  * @since 2019-10-14 12:13
  */
 public class SlsBaseTest {
-    private final String accessId = Constants.ACCESS_ID;
-    private final String accessKey = Constants.ACCESS_KEY;
-    private final String endPoint = "cn-hangzhou.log.aliyuncs.com";
-    private final String intranetEndPoint = "cn-hangzhou-intranet.log.aliyuncs.com";
+	private final String accessId = Constants.ACCESS_ID;
+	private final String accessKey = Constants.ACCESS_KEY;
+	private final String endPoint = "cn-hangzhou.log.aliyuncs.com";
+	/**
+	 * 预发环境
+	 */
+	private final String innerEndPoint = "cn-shanghai-staging-share.sls.aliyuncs.com";
 
-    protected Client client = null;
+	protected Client client = null;
 
-    @Before
-    public void before() {
-        client = new Client(endPoint, accessId, accessKey);
-    }
+	protected String defaultProject = "sls-jsk-log";
+
+	protected String defaultLogStore = "test-logstore1";
+	@Before
+	public void before() {
+		client = new Client(innerEndPoint, accessId, accessKey);
+	}
 }

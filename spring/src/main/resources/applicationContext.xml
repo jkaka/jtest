@@ -11,6 +11,10 @@
         <property name="age" value="22"/>
     </bean>
 
+    <bean id="myPerson" class="com.kaka.spring.pojo.MyFactoryBean">
+        <property name="personInfo" value="test factory bean"/>
+    </bean>
+
     <bean id="person1" class="com.kaka.spring.pojo.Person"/>
     <tx:annotation-driven/>
 

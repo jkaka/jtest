@@ -79,6 +79,26 @@
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <!--跳过测试类的编译、执行；等同于：mvn package -Dmaven.test.skip=true-->
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <!--执行单元测试,但忽略错误结果；等同于：mvn package -Dmaven.test.failure.ignore=true-->
+                        <testFailureIgnore>true</testFailureIgnore>
+                        <!--跳过测试类的编译、执行；等同于：mvn package -Dmaven.test.skip=true-->
+                        <skip>true</skip>
+                        <!--仅跳过测试类的执行；等同于：mvn package -DskipTests-->
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -91,30 +111,32 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-        <dependency>
-            <groupId>com.kaka</groupId>
-            <artifactId>common</artifactId>
-            <version>${jtest.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--父工程不能直接依赖自己的子模块，可以把子模块放到dependencyManagement标签中指定版本-->
     </dependencies>
 
     <!--项目版本管理：让子项目使用properties节点中的版本-->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.kaka</groupId>
+                <artifactId>common</artifactId>
+                <version>${jtest.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
             <!--gson依赖-->
             <dependency>
                 <groupId>com.google.code.gson</groupId>

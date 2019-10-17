@@ -18,6 +18,7 @@ public class OssBaseTest extends BaseTest {
 
     protected OSS ossClient;
     protected String bucketName= "yunlei-bill";
+    protected String storeBucketName= "jsk-store";
 
     @Before
     public void initOss() {

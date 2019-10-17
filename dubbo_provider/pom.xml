@@ -12,6 +12,10 @@
     <artifactId>dubbo_provider</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <!--使用自己指定版本的dubbo   2.7.x更改为Apache的包名-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

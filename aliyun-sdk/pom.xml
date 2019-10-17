@@ -12,7 +12,10 @@
     <artifactId>aliyun-sdk</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <!--sls开始-->
         <dependency>
             <groupId>com.google.protobuf</groupId>

@@ -1,1 +1,3 @@
 java -Djava.ext.dirs=依赖jar所在文件夹 -jar **.jar
+
+java -classpath **.jar

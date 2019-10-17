@@ -1,6 +1,8 @@
 package com.kaka.jtest.aliyun.oss.bucket;
 
 import com.aliyun.oss.model.Bucket;
+import com.aliyun.oss.model.CreateBucketRequest;
+import com.aliyun.oss.model.StorageClass;
 import com.kaka.jtest.aliyun.oss.OssBaseTest;
 import org.junit.Test;
 
@@ -19,5 +21,14 @@ public class BucketTest extends OssBaseTest {
         for (Bucket bucket : buckets) {
             System.out.println(bucket.getName());
         }
+    }
+
+    @Test
+    public void createBucket(){
+        CreateBucketRequest createBucketRequest = new CreateBucketRequest("jsk-store");
+        createBucketRequest.setStorageClass(StorageClass.Archive);
+        Bucket bucket = ossClient.createBucket(createBucketRequest);
+        System.out.println(bucket.getName());
+        System.out.println(bucket.getCreationDate());
     }
 }

@@ -12,6 +12,10 @@
     <artifactId>rocketmq</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <!--rocket mq-->
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
@@ -24,7 +28,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

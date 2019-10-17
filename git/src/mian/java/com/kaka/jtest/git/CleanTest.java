@@ -1,4 +1,4 @@
-package com.kaka.jtest.git.test;
+package com.kaka.jtest.git;
 
 /**
  * @author jiashuangkai

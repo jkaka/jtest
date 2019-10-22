@@ -15,7 +15,7 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("《myFilter start...》");
         filterChain.doFilter(servletRequest, servletResponse);
-        System.out.println("《myFilter stop...》");
+        System.out.println("《myFilter end...》");
     }
 
     @Override

@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>jettyServlet</servlet-name>
+    <servlet-class>com.kaka.servlet.servlet.JettyServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>jettyServlet</servlet-name>
+    <url-pattern>/test/jettyServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

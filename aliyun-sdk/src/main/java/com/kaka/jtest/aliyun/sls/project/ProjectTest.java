@@ -18,7 +18,7 @@ public class ProjectTest extends SlsBaseTest {
 
 	@Test
 	public void projectList() throws LogException {
-		ListProjectResponse listProjectResponse = client.ListProject();
+		ListProjectResponse listProjectResponse = cdClient.ListProject();
 		List<Project> projects = listProjectResponse.getProjects();
 		System.out.println("project size :" + projects.size());
 		for (Project project : projects) {
@@ -26,9 +26,14 @@ public class ProjectTest extends SlsBaseTest {
 		}
 	}
 
+	/**
+	 * project  全局唯一
+	 *
+	 * @throws LogException
+	 */
 	@Test
 	public void createProject() throws LogException {
-		CreateProjectResponse createProjectResponse = client.CreateProject(defaultProject, "create project by sdk.");
+		CreateProjectResponse createProjectResponse = cdClient.CreateProject("sls-jsk-cd", "create project by sdk.");
 		System.out.println(createProjectResponse.GetAllHeaders());
 	}
 }

@@ -10,4 +10,6 @@ import com.kaka.common.utils.PropertiesUtil;
 public interface Constants {
     String ACCESS_ID = PropertiesUtil.getLocalProperty("accessKeyId");
     String ACCESS_KEY = PropertiesUtil.getLocalProperty("accessKey");
+    String OSS_ROLE_ARN = PropertiesUtil.getLocalProperty("oss.role.arn");
+    String BSS_ROLE_ARN = PropertiesUtil.getLocalProperty("bss.role.arn");
 }

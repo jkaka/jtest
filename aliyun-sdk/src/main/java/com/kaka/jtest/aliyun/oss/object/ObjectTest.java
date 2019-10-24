@@ -15,7 +15,7 @@ public class ObjectTest extends OssBaseTest {
 	@Test
 	public void getObject() {
 		try {
-			OSSObject object = ossClient.getObject(storeBucketName, "test01.md");
+			OSSObject object = ossClient.getObject(bucketName, "multi_line/javaException.txt");
 			System.out.println(object);
 		}catch (OSSException e){
 			System.out.println("出现异常!errorCode:" + e.getErrorCode());

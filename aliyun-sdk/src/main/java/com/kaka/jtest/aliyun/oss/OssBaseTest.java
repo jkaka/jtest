@@ -13,21 +13,20 @@ import org.junit.Before;
  * @since 2019-10-15 17:47
  */
 public class OssBaseTest extends BaseTest {
-    private String accessKeyId = PropertiesUtil.getLocalProperty("oss.accessKeyId");
-    private String secretAccessKey = PropertiesUtil.getLocalProperty("oss.accessKeySecret");
+	private String accessKeyId = PropertiesUtil.getLocalProperty("oss.accessKeyId");
+	private String secretAccessKey = PropertiesUtil.getLocalProperty("oss.accessKeySecret");
+	protected String bucketName = "like-test-ingestion";
+	protected String storeBucketName = "jsk-store";
 
     protected OSS ossClient;
-    protected String bucketName= "yunlei-bill";
-    protected String storeBucketName= "jsk-store";
+	@Before
+	public void initOss() {
+		String endpoint = "oss-cn-shenzStringUtilshen.aliyuncs.com";
+		ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, secretAccessKey);
+	}
 
-    @Before
-    public void initOss() {
-        String endpoint = "oss-cn-beijing.aliyuncs.com";
-        ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, secretAccessKey);
-    }
-
-    @After
-    public void after() {
-        ossClient.shutdown();
-    }
+	@After
+	public void after() {
+		ossClient.shutdown();
+	}
 }

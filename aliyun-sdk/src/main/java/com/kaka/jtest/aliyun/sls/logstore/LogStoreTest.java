@@ -34,9 +34,9 @@ public class LogStoreTest extends SlsBaseTest {
 	@Test
 	public void createLogStore() throws LogException {
 		LogStore logStore = new LogStore();
-		logStore.SetLogStoreName(defaultLogStore);
+		logStore.SetLogStoreName("test-oss-logstore");
 		logStore.SetShardCount(1);
 		logStore.SetTtl(10);
-		client.CreateLogStore("project-intg-1571214601", logStore);
+		cdClient.CreateLogStore("sls-jsk-cd", logStore);
 	}
 }

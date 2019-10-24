@@ -17,11 +17,10 @@ public class LogStoreTest extends SlsBaseTest {
 
 	@Test
 	public void listLogStore() throws LogException {
-		String project = "project-intg-1571214601";
 		String logStoreSubName = "";
 		ListLogStoresRequest req1 = new ListLogStoresRequest(defaultProject, 0, 10, logStoreSubName);
-		ArrayList<String> logStores = client.ListLogStores(req1).GetLogStores();
-		System.out.println("ListLogs:" + logStores.toString() + "\n");
+		ArrayList<String> logStores = innerClient.ListLogStores(req1).GetLogStores();
+		System.out.println("ListLogStore:" + logStores.toString() + "\n");
 	}
 
 	/**
@@ -37,6 +36,6 @@ public class LogStoreTest extends SlsBaseTest {
 		logStore.SetLogStoreName("test-oss-logstore");
 		logStore.SetShardCount(1);
 		logStore.SetTtl(10);
-		cdClient.CreateLogStore("sls-jsk-cd", logStore);
+		innerClient.CreateLogStore(defaultProject, logStore);
 	}
 }

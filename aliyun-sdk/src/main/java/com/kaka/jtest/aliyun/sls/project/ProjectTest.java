@@ -18,7 +18,7 @@ public class ProjectTest extends SlsBaseTest {
 
 	@Test
 	public void projectList() throws LogException {
-		ListProjectResponse listProjectResponse = cdClient.ListProject();
+		ListProjectResponse listProjectResponse = innerClient.ListProject();
 		List<Project> projects = listProjectResponse.getProjects();
 		System.out.println("project size :" + projects.size());
 		for (Project project : projects) {
@@ -33,7 +33,7 @@ public class ProjectTest extends SlsBaseTest {
 	 */
 	@Test
 	public void createProject() throws LogException {
-		CreateProjectResponse createProjectResponse = cdClient.CreateProject("sls-jsk-cd", "create project by sdk.");
+		CreateProjectResponse createProjectResponse = innerClient.CreateProject("sls-jsk-cd", "create project by sdk.");
 		System.out.println(createProjectResponse.GetAllHeaders());
 	}
 }

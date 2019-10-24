@@ -105,9 +105,9 @@ public class LogTest extends SlsBaseTest {
 					}
 				}
 			}
-			String next_cursor = logDataRes.GetNextCursor();
-			System.out.println("The Next cursor:" + next_cursor);
-			curCursor = next_cursor;
+			String nextCursor = logDataRes.GetNextCursor();
+			System.out.println("The Next cursor:" + nextCursor);
+			curCursor = nextCursor;
 		}
 	}
 
@@ -122,7 +122,7 @@ public class LogTest extends SlsBaseTest {
 		while (true) {
 			GetHistogramsRequest req3 = new GetHistogramsRequest(project, logstore, topic, query, from, to);
 			res3 = client.GetHistograms(req3);
-			/**
+			/* *
 			 * IsCompleted() 返回true，表示查询结果是准确的，如果返回false，则重复查询
 			 */
 			if (res3 != null && res3.IsCompleted()) {
@@ -145,28 +145,29 @@ public class LogTest extends SlsBaseTest {
 	public void listLogByTime() throws Exception {
 		String topic = "";
 		// 查询日志分布情况
-		String query = "key";
+		String query = "";
 		int from = (int) (System.currentTimeMillis() / 1000 - 500);
 		int to = (int) (System.currentTimeMillis() / 1000);
 
 		// 查询日志数据
-		long total_log_lines = 500;
-		int log_offset = 0;
-		int log_line = 10;//log_line 最大值为100，每次获取100行数据。若需要读取更多数据，请使用offset翻页。offset和lines只对关键字查询有效，若使用SQL查询，则无效。在SQL查询中返回更多数据，请使用limit语法。
-		while (log_offset <= total_log_lines) {
+		long totalLogLines = 500;
+		int logOffset = 0;
+		int logLine = 10;//logLine 最大值为100，每次获取100行数据。若需要读取更多数据，请使用offset翻页。offset和lines只对关键字查询有效，若使用SQL查询，则无效。在SQL查询中返回更多数据，请使用limit语法。
+		while (logOffset <= totalLogLines) {
 			GetLogsResponse res4 = null;
 			// 对于每个 log offset,一次读取 10 行 log，如果读取失败，最多重复读取 3 次。
-			for (int retry_time = 0; retry_time < 3; retry_time++) {
-				GetLogsRequest req4 = new GetLogsRequest(project, logstore, from, to, topic, query, log_offset,
-						log_line, false);
-				res4 = client.GetLogs(req4);
+			for (int retryTime = 0; retryTime < 3; retryTime++) {
+				GetLogsRequest req4 = new GetLogsRequest(project, "test-oss-logstore", from, to, topic, query, logOffset,
+						logLine, false);
+				res4 = innerClient.GetLogs(req4);
 				if (res4 != null && res4.IsCompleted()) {
 					break;
 				}
 				Thread.sleep(200);
 			}
-			System.out.println("Read log count:" + String.valueOf(res4.GetCount()));
-			log_offset += log_line;
+			assert res4 != null;
+			System.out.println("Read log count:" + res4.GetCount());
+			logOffset += logLine;
 		}
 	}
 

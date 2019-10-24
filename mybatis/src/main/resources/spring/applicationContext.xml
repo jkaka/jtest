@@ -65,7 +65,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:/mybatis/SqlMapConfig.xml"/>
+        <property name="configLocation" value="classpath:/mybatis/mybatisSpringConfig.xml"/>
         <!-- 自动扫描mapper目录中的XML配置文件, 需要去掉sqlMapConfig.xml中的手工注册，否则会引起冲突 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>

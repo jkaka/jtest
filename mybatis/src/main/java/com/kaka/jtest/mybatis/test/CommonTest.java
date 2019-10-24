@@ -75,12 +75,6 @@ public class CommonTest extends BaseTest {
         System.out.println(userMapper.selectOne(2));
     }
 
-    @Test
-    public void selectByName(){
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        System.out.println(userMapper.selectByName("aa1"));
-    }
-
     /**
      * 多参数
      * DefaultSqlSession.selectOne()

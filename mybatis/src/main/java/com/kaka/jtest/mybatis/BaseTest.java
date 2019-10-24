@@ -23,7 +23,7 @@ public class BaseTest {
         // 2.用类加载器获得配置数据库的流
         InputStream is = this.getClass().getResourceAsStream(resource);
         // 1.构建sqlSession的工厂，需要一个配置数据源的流(输入流无需我们代码关闭,build方法内已关闭)
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(is, "test");
         // 3.创建能执行映射文件中sql的SqlSession-------用的工厂的openSession方法
         sqlSession = sqlSessionFactory.openSession(true);//事务默认是手动提交openSession()
     }

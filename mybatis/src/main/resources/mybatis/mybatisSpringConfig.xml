@@ -5,7 +5,6 @@
     <!--引入properties文件-->
     <properties resource="mybatis/db.properties"/>
 
-    <!--2.别名设置-->
     <typeAliases>
         <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
         <package name="com.kaka.jtest.mybatis.entities"/>
@@ -20,16 +19,8 @@
         </plugin>
     </plugins>
 
-    <!--4.环境相关设置-->
     <environments default="development">
-        <!--4.1 开发环境-->
         <environment id="development">
-            <!--
-                transactionManager的事务类型type一共有三种：
-                JDBC，这个配置就是直接使用了JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务范围；
-                MANAGED，采用容器方式管理事务，在JNDI数据源中常用；
-                自定义，由使用者自定义数据库事务管理办法，适用于特殊应用。
-            -->
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc.driver}"/>
@@ -44,22 +35,12 @@
                 <property name="poolTimeToWait" value="20000"/>
             </dataSource>
         </environment>
-        <!--4.2 测试环境数据源-->
-        <environment id="test">
-            <transactionManager type="JDBC"/>
-            <!--
-                dataSource的type属性是提供我们对数据厍连接方式的配置：
-                UNPOOLED（非连接池数据库）、POOLED（连接池数据库）、JNDI（JNDI数据源）、自定义数据源。
-            -->
-            <dataSource type="com.kaka.jtest.mybatis.datasource.MyDataSourceFactory"/>
-        </environment>
     </environments>
-
-    <!-- 5.注册映射文件 -->
+    <!-- 2.注册映射文件 -->
     <!--与SqlSessionFactoryBean的mapperLocations属性同时配置会产生冲突，产生重复的mapperBean-->
-    <mappers>
+    <!--<mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/LabelMapper.xml"/>
-    </mappers>
+    </mappers>-->
 
 </configuration>

@@ -52,7 +52,6 @@
         <module>rocketmq</module>
         <module>kafka</module>
         <module>binlog</module>
-        <module>git</module>
         <module>spring-annotation</module>
         <module>zookeeper</module>
         <module>servlet</module>
@@ -60,6 +59,7 @@
         <module>metrics</module>
         <module>common</module>
         <module>aliyun-sdk</module>
+        <module>test</module>
     </modules>
 
     <build>

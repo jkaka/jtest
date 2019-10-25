@@ -2,7 +2,6 @@
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/aliyun-log" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aliyun-sdk" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/apollo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/binlog" charset="UTF-8" />
@@ -17,19 +16,18 @@
     <file url="file://$PROJECT_DIR$/metrics" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-plus" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/odps" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/openUtils" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rocketmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/servlet" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sharding-sphere" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/sls" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-annotation" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springmvc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ssm" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tbschedule" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zookeeper" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

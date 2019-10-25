@@ -20,7 +20,8 @@ public class CSVReaderTest {
 
 	@Test
 	public void read() throws Exception {
-		String filePath = "src/main/resources/csv/test.csv";
+//		String filePath = "src/main/resources/csv/test.csv";
+		String filePath = "/Users/jiashuangkai/Downloads/CTS工单明细数据_1015to1021的副本.csv";
 		InputStreamReader reader = new InputStreamReader(new FileInputStream(filePath));
 		CSVParser parser = new CSVParserBuilder()
 				.withQuoteChar('\"')
@@ -34,7 +35,9 @@ public class CSVReaderTest {
 		CSVReader csvReader = new CSVReaderBuilder(reader)
 				.withCSVParser(parser)
 				.withSkipLines(0)
-				.withMultilineLimit(300)
+				// 设置多行记录中允许的最大行数。
+				// 在一条记录中超过这个数字将导致IOException。
+				.withMultilineLimit(50)
 				.withKeepCarriageReturn(false)
 				.build();
 		String[] strs;

@@ -12,8 +12,14 @@ import org.junit.Test;
 public class FactoryBeanTest extends SpringBaseTest {
 
 	@Test
-	public void getFactoryBean(){
+	public void getFactoryBean() {
 		Person myPerson = xmlBeanFactory.getBean("myPerson", Person.class);
 		System.out.println(myPerson);
+	}
+
+	@Test
+	public void getBean() {
+		Person person = (Person) xmlBeanFactory.getBean("person");
+		System.out.println(person);
 	}
 }

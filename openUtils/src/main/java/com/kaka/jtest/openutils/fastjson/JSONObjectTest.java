@@ -116,7 +116,7 @@ public class JSONObjectTest {
     }
 
     @Test
-    public void getDubble(){
+    public void getDouble(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("value", 4.46979288E8);
         Double value = jsonObject.getDouble("value");
@@ -219,6 +219,21 @@ public class JSONObjectTest {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("ecuInventory", new Person(1, "AA"));
         System.out.println(jsonObject.toJSONString());
+    }
+
+    @Test
+    public void empty(){
+        JSONObject jsonObject = new JSONObject();
+        System.out.println(jsonObject.isEmpty());
+        System.out.println(jsonObject);
+    }
+
+    @Test
+    public void keySet(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("key001", "value");
+        jsonObject.put("key002", "value");
+        System.out.println(jsonObject.keySet());
     }
 
 }

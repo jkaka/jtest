@@ -33,7 +33,7 @@ public class ProjectTest extends SlsBaseTest {
 	 */
 	@Test
 	public void createProject() throws LogException {
-		CreateProjectResponse createProjectResponse = innerClient.CreateProject("sls-jsk-cd", "create project by sdk.");
+		CreateProjectResponse createProjectResponse = innerClient.CreateProject("sls-jsk-log", "create project by sdk.");
 		System.out.println(createProjectResponse.GetAllHeaders());
 	}
 }

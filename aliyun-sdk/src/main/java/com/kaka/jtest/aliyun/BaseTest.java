@@ -8,6 +8,6 @@ import com.kaka.jtest.aliyun.common.constant.Constants;
  * @since 2019-10-15 17:48
  */
 public class BaseTest {
-    protected final String accessKeyId = Constants.ACCESS_ID;
-    protected final String accessKeySecret = Constants.ACCESS_KEY;
+    protected static final String ACCESS_KEY_ID = Constants.ACCESS_ID;
+    protected static final String ACCESS_KEY_SECRET = Constants.ACCESS_KEY;
 }

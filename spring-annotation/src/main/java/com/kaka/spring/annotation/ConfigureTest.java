@@ -12,5 +12,6 @@ public class ConfigureTest {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(MyConfigure.class);
         Object person = annotationConfigApplicationContext.getBean("person");
         System.out.println(person);
+		annotationConfigApplicationContext.close();
     }
 }

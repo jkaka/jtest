@@ -48,6 +48,13 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.5.0</version>
         </dependency>
+
+        <!--rocketmq-->
+        <dependency>
+            <groupId>com.aliyun.mq</groupId>
+            <artifactId>mq-http-sdk</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

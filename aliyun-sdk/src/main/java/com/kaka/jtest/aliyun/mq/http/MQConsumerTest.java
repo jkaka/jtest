@@ -48,6 +48,7 @@ public class MQConsumerTest extends MqBaseTest {
 			// 处理业务逻辑
 			for (Message message : messages) {
 				System.out.println("Receive message: " + message);
+				System.out.println("Receive message: " + message.getMessageBodyString());
 			}
 
 			// Message.nextConsumeTime前若不确认消息消费成功，则消息会重复消费

@@ -1,5 +1,6 @@
 package com.kaka.spring.pojo;
 
+import lombok.Data;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.FactoryBean;
  * @version 1.0
  * @since 2019-10-16 19:28
  */
+@Data
 public class MyFactoryBean implements FactoryBean<Person> {
 	private String personInfo;
 	@Override

@@ -18,8 +18,8 @@ public class StringUtilsTest {
 		System.out.println(StringUtils.isNotBlank(null));
 		System.out.println(StringUtils.isNotBlank(""));
 		System.out.println(StringUtils.isNotBlank(" "));
-		System.out.println(StringUtils.isNotBlank("/t /n /f /r"));
-		System.out.println(StringUtils.isNotBlank("/b"));
+		System.out.println(StringUtils.isNotBlank("\t \n \f \r"));
+		System.out.println(StringUtils.isNotBlank("\b"));
 		System.out.println(StringUtils.isNotBlank("bob"));
 		System.out.println(StringUtils.isNotBlank(" bob "));
 	}

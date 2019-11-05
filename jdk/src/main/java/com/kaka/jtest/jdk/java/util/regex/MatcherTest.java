@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public class MatcherTest {
     private Pattern p = Pattern.compile("abc+");
     private Pattern pattern1 = Pattern.compile("\\d+");
+    private Pattern pattern2 = Pattern.compile("\\w*test.csv");
 
 
     /**
@@ -34,12 +35,7 @@ public class MatcherTest {
      */
     @Test
     public void matchesTest() {
-        Matcher m = pattern1.matcher("22bb23");
-        //返回false,因为bb不能被\d+匹配,导致整个字符串匹配未成功.
-        System.out.println(m.matches());
-        Matcher m2 = pattern1.matcher("2223");
-        //返回true,因为\d+匹配到了整个字符串
-        System.out.println(m2.matches());
+        System.out.println(pattern2.matcher("578test.csv").matches());
     }
 
     /**

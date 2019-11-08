@@ -9,7 +9,7 @@ import java.util.Properties;
  * @since 2019-10-14 10:41
  */
 public class PropertiesUtil {
-    public static String getLocalProperty(String key)  {
+    public static String getLocalProperty(String key) {
         String defaultPath = System.getProperty("user.home") + "/jsk.properties";
         String value;
         try {
@@ -17,6 +17,14 @@ public class PropertiesUtil {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+        return value;
+    }
+
+    public static String getLocalProperty(String key, String defaultValue) {
+        String value = getLocalProperty(key);
+        if (value == null) {
+            return defaultValue;
         }
         return value;
     }

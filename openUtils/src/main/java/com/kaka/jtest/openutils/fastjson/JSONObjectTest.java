@@ -236,4 +236,11 @@ public class JSONObjectTest {
         System.out.println(jsonObject.keySet());
     }
 
+    @Test
+    public void methodName(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("key001", "value");
+        jsonObject.put("key002", "value");
+        System.out.println(jsonObject.containsKey("key001"));
+    }
 }

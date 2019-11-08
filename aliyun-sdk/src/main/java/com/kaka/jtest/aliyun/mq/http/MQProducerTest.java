@@ -20,11 +20,12 @@ public class MQProducerTest extends MqBaseTest {
 			// 循环发送4条消息
 			for (int i = 0; i < 4; i++) {
 				TopicMessage pubMsg;
+				String body  = "hello mq!" + i;
 				if (i % 2 == 0) {
 					// 普通消息
 					pubMsg = new TopicMessage(
 							// 消息内容
-							"hello mq!".getBytes(),
+							body.getBytes(),
 							// 消息标签
 							"A"
 					);
@@ -35,7 +36,7 @@ public class MQProducerTest extends MqBaseTest {
 				} else {
 					pubMsg = new TopicMessage(
 							// 消息内容
-							"hello mq!".getBytes(),
+							body.getBytes(),
 							// 消息标签
 							"A"
 					);
@@ -56,7 +57,6 @@ public class MQProducerTest extends MqBaseTest {
 			System.out.println(new Date() + " Send mq message failed. Topic is:" + topic);
 			e.printStackTrace();
 		}
-
 		mqClient.close();
 	}
 }

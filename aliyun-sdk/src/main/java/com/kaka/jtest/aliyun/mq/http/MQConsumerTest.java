@@ -42,7 +42,7 @@ public class MQConsumerTest extends MqBaseTest {
 			// 没有消息
 			if (messages == null || messages.isEmpty()) {
 				System.out.println(Thread.currentThread().getName() + ": no new message, continue!");
-				continue;
+				break;
 			}
 
 			// 处理业务逻辑
@@ -78,5 +78,6 @@ public class MQConsumerTest extends MqBaseTest {
 				}
 			}
 		} while (true);
+		mqClient.close();
 	}
 }

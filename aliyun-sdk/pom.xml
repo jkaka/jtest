@@ -49,11 +49,25 @@
             <version>3.5.0</version>
         </dependency>
 
-        <!--rocketmq-->
+        <!--aliyun mq-->
         <dependency>
             <groupId>com.aliyun.mq</groupId>
             <artifactId>mq-http-sdk</artifactId>
             <version>1.0.1</version>
+        </dependency>
+
+        <!--ots-->
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>tablestore</artifactId>
+            <version>5.3.0</version>
+            <classifier>jar-with-dependencies</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

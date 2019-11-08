@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class LogTest extends SlsBaseTest {
 	String project = "sls-jsk-log";
-	String logstore = "test-log";
+	String logstore = "test-mq";
 
 	/**
 	 * 1. 写入日志
@@ -55,12 +55,7 @@ public class LogTest extends SlsBaseTest {
 		String source = "";
 		List<LogItem> logGroup = new ArrayList<>();
 		// 构造函数的时间，优先级最低
-		LogItem logItem = new LogItem((int) (System.currentTimeMillis() / 1000));
-		logItem.PushBack("key", "jsk_test_time1");
-		// 优先级最高
-//        logItem.SetTime(1570673411);
-        // 第二优先级
-        logItem.PushBack("__time__", "1571792736");
+		LogItem logItem = new LogItem();
 		logGroup.add(logItem);
 		PutLogsRequest req2 = new PutLogsRequest(project, logstore, topic, source, logGroup);
         PutLogsResponse putLogsResponse = client.PutLogs(req2);
@@ -157,7 +152,7 @@ public class LogTest extends SlsBaseTest {
 			GetLogsResponse res4 = null;
 			// 对于每个 log offset,一次读取 10 行 log，如果读取失败，最多重复读取 3 次。
 			for (int retryTime = 0; retryTime < 3; retryTime++) {
-				GetLogsRequest req4 = new GetLogsRequest(project, "test-oss-logstore", from, to, topic, query, logOffset,
+				GetLogsRequest req4 = new GetLogsRequest(project, logstore, from, to, topic, query, logOffset,
 						logLine, false);
 				res4 = innerClient.GetLogs(req4);
 				if (res4 != null && res4.IsCompleted()) {

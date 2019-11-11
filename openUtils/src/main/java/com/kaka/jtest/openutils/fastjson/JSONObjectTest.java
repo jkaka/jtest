@@ -237,10 +237,26 @@ public class JSONObjectTest {
     }
 
     @Test
-    public void methodName(){
+    public void containsKey(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("key001", "value");
         jsonObject.put("key002", "value");
         System.out.println(jsonObject.containsKey("key001"));
+    }
+
+    @Test
+    public void getInteger(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("key001", "value");
+        int num = jsonObject.getInteger("a");
+        System.out.println(num);
+    }
+
+    @Test
+    public void getIntValue(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("key001", "value");
+        int num = jsonObject.getIntValue("a");
+        System.out.println(num);
     }
 }

@@ -23,4 +23,22 @@ public class JSONObjectTest {
         JSONArray names = jsonObject.names();
         System.out.println(names);
     }
+
+    @Test
+    public void isNullObject(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("key01", "value");
+        JSONObject detail = jsonObject.getJSONObject("123");
+        if (detail == null) {
+            System.out.println("detail   不会为null");
+            detail = new JSONObject();
+        }
+        System.out.println("detail:" + detail);
+        System.out.println(detail.isNullObject());
+
+        // nullObject不能put
+        detail.put("key", "v");
+        System.out.println(detail.isNullObject());
+    }
+
 }

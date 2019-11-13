@@ -15,16 +15,37 @@ import java.time.format.DateTimeFormatter;
  */
 public class LocalDateTimeTest {
 
+    /**
+     * 创建LocalDateTime的两种方式
+     */
     @Test
-    public void toInstant() {
-        Instant instant = LocalDateTime.now().toInstant(ZoneOffset.ofHours(8));
-        System.out.println(instant.toEpochMilli());
+    public void create() {
+        // now创建当前时间
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now);
+
+        // of()创建指定时间
+        LocalDateTime localDateTime = LocalDateTime.of(2019, 10, 26,
+                12, 10, 55);
+        System.out.println(localDateTime);
     }
 
+    /**
+     * 借助instant时间戳，获取秒、毫秒、纳秒
+     * 1秒=1000毫秒
+     * 1毫秒=1000微秒
+     * 1微秒=1000纳秒
+     * 1纳秒=1000皮秒
+     * 1皮秒=1000飞秒
+     */
     @Test
-    public void of() {
-        LocalDateTime localDateTime = LocalDateTime.of(2016, 10, 26, 12, 10, 55);
-        System.out.println(localDateTime);
+    public void toInstant() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Instant instant = localDateTime.toInstant(ZoneOffset.ofHours(8));
+        System.out.println("10位秒数：" + instant.getEpochSecond());
+        System.out.println("13位毫秒数：" + instant.toEpochMilli());
+        // getNano()返回的是纳秒的第二部分，需要与秒数拼接起来，才是完整的纳秒
+        System.out.println(instant.getNano());
     }
 
     /**
@@ -92,5 +113,16 @@ public class LocalDateTimeTest {
         System.out.println(System.currentTimeMillis() / 1000);
         System.out.println(localDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
         System.out.println(System.currentTimeMillis());
+    }
+
+    /**
+     * 加减时间
+     */
+    @Test
+    public void plusOrMinus() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime dateTime = now.minusDays(1);
+        System.out.println(now);
+        System.out.println(dateTime);
     }
 }

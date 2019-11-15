@@ -21,7 +21,7 @@ public class OssBaseTest extends BaseTest {
     protected OSS ossClient;
 	@Before
 	public void initOss() {
-		String endpoint = "oss-cn-shenzStringUtilshen.aliyuncs.com";
+		String endpoint = "oss-cn-shenzhen.aliyuncs.com";
 		ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, secretAccessKey);
 	}
 

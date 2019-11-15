@@ -36,7 +36,7 @@ public class RuntimeTest {
     @Test
     public void memoryTest() {
         // 最大可用内存减去一个Survivor的大小
-        // 最大可用内存:对应-Xmx,默认值为物理内存的1/4;设置不能高于计算机物理内存
+        // 最大可用内存:对应-Xmx,默认值为物理内存的1/4;设置不能高于计算机物理内存   若-Xms与-Xmx不一致，会随着运行变化
         long maxMemory = Runtime.getRuntime().maxMemory();
         System.out.println(maxMemory / (1024 * 1024) + "M");
 

@@ -60,6 +60,7 @@
         <module>common</module>
         <module>aliyun-sdk</module>
         <module>test</module>
+        <module>linux</module>
     </modules>
 
     <build>

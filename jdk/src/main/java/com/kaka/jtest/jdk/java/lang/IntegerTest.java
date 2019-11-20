@@ -96,4 +96,8 @@ public class IntegerTest {
         System.out.println(a);
     }
 
+    @Test
+    public void toHexString(){
+        System.out.println(Integer.toHexString(50));
+    }
 }

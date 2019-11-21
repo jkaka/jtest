@@ -19,7 +19,7 @@ import java.util.Date;
  * @since 2019-10-22 17:29
  */
 public class IngestionTest extends SlsBaseTest {
-	private String project = "sls-jsk-cd";
+	private String project = "sls-jsk-log";
 
 	@Test
 	public void createIngestion() throws LogException {

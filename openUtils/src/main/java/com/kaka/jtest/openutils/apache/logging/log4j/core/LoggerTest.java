@@ -12,7 +12,7 @@ import org.junit.Test;
  * @since 2019-11-18 15:15
  */
 public class LoggerTest {
-    private static Logger logger = LogManager.getLogger(LoggerTest.class.getName());
+    private static Logger logger = LogManager.getLogger("myLogger");
 
     @Test
     public void info() {

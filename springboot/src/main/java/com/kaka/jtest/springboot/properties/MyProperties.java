@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  * @since 2019-11-21 21:22
  */
-@ConfigurationProperties(prefix = "myProperties")
+@ConfigurationProperties(prefix = "my-properties")
 @Component
 @Data
 public class MyProperties {

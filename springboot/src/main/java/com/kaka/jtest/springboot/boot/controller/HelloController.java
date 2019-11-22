@@ -1,17 +1,14 @@
 package com.kaka.jtest.springboot.boot.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kaka.jtest.springboot.biz.dataobject.User;
-import com.kaka.jtest.springboot.biz.mapper.UserDao;
 import com.kaka.jtest.springboot.biz.service.UserService;
+import com.kaka.jtest.springboot.properties.MyProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +19,9 @@ public class HelloController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MyProperties myProperties;
 
     @PostMapping("/testExceptionHandler")
     public String testExceptionHandler(String name) {

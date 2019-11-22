@@ -12,3 +12,6 @@ management:
     myendpoint:
      cache:
       time-to-live: 10s
+
+myProperties:
+  key: 55

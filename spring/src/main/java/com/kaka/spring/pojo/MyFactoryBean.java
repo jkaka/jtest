@@ -24,12 +24,4 @@ public class MyFactoryBean implements FactoryBean<Person> {
 	public Class<?> getObjectType() {
 		return Person.class;
 	}
-
-	public String getPersonInfo() {
-		return personInfo;
-	}
-
-	public void setPersonInfo(String personInfo) {
-		this.personInfo = personInfo;
-	}
 }

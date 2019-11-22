@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <import resource="resource01.xml" />
     <import resource="labelResource.xml" />
+    <import resource="circular.xml" />
 
     <bean id="person" class="com.kaka.spring.pojo.Person">
         <property name="age" value="22"/>

@@ -56,13 +56,13 @@ public class ClassTest {
      * 类型转换
      */
     @Test
-    public void castTest(){
+    public void castTest() {
         Interface anInterface = Interface.class.cast(new RealObject());
         anInterface.doSomething();
     }
 
     @Test
-    public void nameTest(){
+    public void nameTest() {
         System.out.println(ClassTest.class.getName());
         System.out.println(ClassTest.class.getTypeName());
         // 不带包名
@@ -71,6 +71,7 @@ public class ClassTest {
 
     /**
      * 把泛型的Class   转为指定类型的Class
+     *
      * @throws Exception
      */
     @Test
@@ -81,5 +82,19 @@ public class ClassTest {
         // 使用使用asSubclas转换为具体的类型转换为具体的类型
         Class<? extends Father> asSubclass = aClass.asSubclass(Father.class);
         asSubclass.newInstance().fatherOneMethod();
+    }
+
+    /**
+     * 判断是否是该Class下的实例
+     *
+     * @throws ClassNotFoundException
+     */
+    @Test
+    public void isInstance() throws ClassNotFoundException {
+        Class<?> personClass = Class.forName("com.kaka.jtest.jdk.model.Person");
+        Person person = new Person();
+        boolean instance = personClass.isInstance(person);
+        System.out.println(instance);
+
     }
 }

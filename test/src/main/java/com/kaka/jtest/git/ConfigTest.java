@@ -6,7 +6,7 @@ package com.kaka.jtest.git;
  * @since 2019-10-16 16:07
  */
 public class ConfigTest {
-	/**
+	/* *
 	 * 不同操作系统，换行符不一致问题
 	 * 背景：在各操作系统下，文本文件所使用的换行符是不一样的。UNIX/Linux 使用的是 0x0A（LF），早期的 Mac OS 使用的是0x0D（CR），
 	 * 后来的 OS X 在更换内核后与 UNIX 保持一致了。但 DOS/Windows 一直使用 0x0D0A（CRLF）作为换行符。

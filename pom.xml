@@ -159,6 +159,7 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring_boot.version}</version>
                 <type>pom</type>
+                <!--scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency-->
                 <scope>import</scope>
             </dependency>
 

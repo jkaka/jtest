@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="/home"/>
+    <property name="LOG_HOME" value="/Users/jiashuangkai/logs/"/>
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -31,21 +31,16 @@
             <defaultValue>unknown</defaultValue>
         </discriminator>
         <sift>
-            <!--具体的写日志appender，每一个taskId创建一个文件-->
-            <!--<appender name="test" class="ch.qos.logback.core.FileAppender">
-                <file>${LOG_HOME}/${car_model}_login.log</file>
-                <append>true</append>
-                <layout class="ch.qos.logback.classic.PatternLayout">
-                    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-&#45;&#45;%magenta([%thread])-&#45;&#45;%-5level-&#45;&#45;%blue([%c])-&#45;&#45;%green([%L])-&#45;&#45;[traceId:%X{traceId}]-&#45;&#45;[%msg]%n</pattern>
-                </layout>
-            </appender>-->
-            <appender name="jskFile1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!--具体的写日志appender(name无影响)，每一个car_model创建一个文件-->
+            <appender name="siftInnerAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!--新日志都打到这个文件中；如果没有这个节点，新日志会打到当前滚动的日志文件中-->
+                <file>${LOG_HOME}/logback/sift-${car_model}-test.log</file>
                 <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
                     <!--文件路径：默认根目录为当前项目-->
                     <FileNamePattern>${LOG_HOME}/logback/sift-${car_model}-test.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
                     <MaxHistory>5</MaxHistory>
-                    <MaxFileSize>50MB</MaxFileSize>
-                    <TotalSizeCap>250MB</TotalSizeCap>
+                    <MaxFileSize>1MB</MaxFileSize>
+                    <TotalSizeCap>3MB</TotalSizeCap>
                 </rollingPolicy>
                 <encoder>
                     <charset>UTF-8</charset>

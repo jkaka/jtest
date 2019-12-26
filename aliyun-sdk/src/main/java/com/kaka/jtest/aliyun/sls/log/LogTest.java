@@ -215,10 +215,10 @@ public class LogTest extends SlsBaseTest {
         int from = (int) (System.currentTimeMillis() / 1000 - 500);
         int to = (int) (System.currentTimeMillis() / 1000);
         //使用分析功能
-        GetLogsRequest req4 = new GetLogsRequest(project, logstore, from, to, "", " index0:value | select avg(index1) as v1,sum(index2) as v2, index0 group by index0");
-        GetLogsResponse res4 = client.GetLogs(req4);
-        if (res4 != null && res4.IsCompleted()) {
-            for (QueriedLog log : res4.GetLogs()) {
+        GetLogsRequest logsRequest = new GetLogsRequest(project, logstore, from, to, "", " index0:value | select avg(index1) as v1,sum(index2) as v2, index0 group by index0");
+        GetLogsResponse logsResponse = client.GetLogs(logsRequest);
+        if (logsResponse != null && logsResponse.IsCompleted()) {
+            for (QueriedLog log : logsResponse.GetLogs()) {
                 LogItem item = log.GetLogItem();
                 for (LogContent content : item.GetLogContents()) {
                     System.out.print(content.GetKey() + ":" + content.GetValue());

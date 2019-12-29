@@ -17,6 +17,8 @@ public class LoggerTest {
 
     @Test
     public void testParentLogger(){
+        logger.info("日志000");
+
         MDC.put("car_model", "kc-2");
         logger.info("日志001");
         logger.info("日志002");

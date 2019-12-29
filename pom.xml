@@ -99,6 +99,18 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <!--使用jdk1.8编译代码-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 
@@ -147,6 +159,7 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring_boot.version}</version>
                 <type>pom</type>
+                <!--scope=import只能用在dependencyManagement里面,且仅用于type=pom的dependency-->
                 <scope>import</scope>
             </dependency>
 

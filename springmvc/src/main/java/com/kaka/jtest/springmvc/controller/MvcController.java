@@ -1,6 +1,7 @@
 package com.kaka.jtest.springmvc.controller;
 
 import com.alibaba.fastjson.JSONObject;
+
 import com.kaka.jtest.springmvc.dataobject.Order;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ public class MvcController {
 
     /**
      * fastjson的JSONObject对象可以接收键值对，并且可以把值转换为需要的类型
+     * name接收的是URI上的参数
      *
      * @param name
      * @param jsonObject
@@ -20,10 +22,10 @@ public class MvcController {
      */
     @RequestMapping("/testJSONObject")
     public String testJSONObject(String name, @RequestBody JSONObject jsonObject) {
-        System.out.println(name);
+        System.out.println("name:" + name);
         System.out.println(jsonObject);
         Integer age = jsonObject.getInteger("age");
-        System.out.println(age);
+        System.out.println("age" + age);
         return "testJSONObject";
     }
 

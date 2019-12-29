@@ -1,5 +1,6 @@
 package com.kaka.jtest.jdk.java.util;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -52,5 +53,13 @@ public class DateTest {
     public void constructTest(){
         Date date = new Date(1566885312164L);
         System.out.println(date);
+    }
+
+    @Test
+    public void afterTest() throws InterruptedException {
+        Date date1 = new Date();
+        TimeUnit.SECONDS.sleep(1);
+        Date date2 = new Date();
+        Assert.assertFalse("Date的after方法执行有误！", date1.after(date2));
     }
 }

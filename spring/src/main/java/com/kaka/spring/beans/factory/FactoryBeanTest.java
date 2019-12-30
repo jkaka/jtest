@@ -3,6 +3,7 @@ package com.kaka.spring.beans.factory;
 import com.kaka.spring.SpringBaseTest;
 import com.kaka.spring.pojo.MyFactoryBean;
 import com.kaka.spring.pojo.Person;
+import com.kaka.spring.pojo.circular.TestA;
 import org.junit.Test;
 
 /**
@@ -30,5 +31,14 @@ public class FactoryBeanTest extends SpringBaseTest {
 	public void getFactoryBean(){
 		MyFactoryBean bean = xmlBeanFactory.getBean("&myPerson", MyFactoryBean.class);
 		System.out.println(bean);
+	}
+
+	/**
+	 * 循环依赖
+	 */
+	@Test
+	public void circular(){
+		TestA testA = xmlBeanFactory.getBean("testA", TestA.class);
+		System.out.println(testA);
 	}
 }

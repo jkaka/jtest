@@ -1,0 +1,28 @@
+1. 类注释(file and code templates)
+/**
+ * 类功能描述
+ *
+ * @author ${USER}
+ * @since ${YEAR}/${MONTH}/${DAY} ${HOUR}:${MINUTE}:${SECOND}
+ * @version 1.0.0
+ */
+
+2. 方法注释(live templates)
+ **
+  * 方法功能描述
+  *
+ $param$
+  * @return $return$
+  * @author jsk
+  * @since $date$ $time$
+  */
+四个参数如下：
+groovyScript("def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {result+=' * @param ' + params[i] + ((i < params.size() - 1) ? '\\n':'')}; return result", methodParameters()) 1
+methodReturnType()
+date()
+time()
+
+3. 测试方法快捷键(live templates)
+  @Test
+  public void $methodName$(){
+  }

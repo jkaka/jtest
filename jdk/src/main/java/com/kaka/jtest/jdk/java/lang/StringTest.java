@@ -40,9 +40,11 @@ public class StringTest {
     public void equals() {
         String str1 = "aBcd";
         String str2 = "abcd";
+        String str3 = "abcd";
         System.out.println(str1.equalsIgnoreCase(str2));
 
-        System.out.println(str1.equals(null));
+        System.out.println(str2 == str3);
+        str1.intern();
     }
 
     /**

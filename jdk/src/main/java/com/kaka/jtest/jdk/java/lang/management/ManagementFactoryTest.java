@@ -36,7 +36,7 @@ public class ManagementFactoryTest {
      * @param s
      * @return
      */
-    static String B2M(long s) {
+    public static String B2M(long s) {
         return String.format("%d (%.2f M)", s, (double) s / (1024 * 1024));
     }
 }

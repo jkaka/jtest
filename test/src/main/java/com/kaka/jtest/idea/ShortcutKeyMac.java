@@ -8,6 +8,9 @@ package com.kaka.jtest.idea;
 public class ShortcutKeyMac {
 
     /**
+     * debug
      * f7 f8等功能键失效问题解决：系统偏好设置》键盘》键盘tab页  勾选"将F1 F2等键用作标准功能键"
+     *
+     * 清理未使用到的类: ctrl+alt+O
      */
 }

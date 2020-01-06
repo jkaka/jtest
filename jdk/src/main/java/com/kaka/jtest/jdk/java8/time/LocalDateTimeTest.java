@@ -109,14 +109,14 @@ public class LocalDateTimeTest {
         System.out.println(localDateTime.getHour());
         System.out.println(localDateTime.getMinute());
         System.out.println(localDateTime.getSecond());
-        System.out.println(localDateTime.toEpochSecond(ZoneOffset.ofHours(8)));
-        System.out.println(System.currentTimeMillis() / 1000);
-        System.out.println(localDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
-        System.out.println(System.currentTimeMillis());
+        System.out.println("秒:" + localDateTime.toEpochSecond(ZoneOffset.ofHours(8)));
+        System.out.println("秒:" + System.currentTimeMillis() / 1000);
+        System.out.println("毫秒(先toInstant):" + localDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
+        System.out.println("毫秒:" + System.currentTimeMillis());
     }
 
     /**
-     * 加减时间
+     * 加减时间(原时间不变)
      */
     @Test
     public void plusOrMinus() {

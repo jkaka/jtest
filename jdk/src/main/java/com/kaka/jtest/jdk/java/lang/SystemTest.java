@@ -6,6 +6,15 @@ import org.junit.Test;
  * @author shuangkaijia
  */
 public class SystemTest {
+
+    @Test
+    public void arrayCopy(){
+        Object[] objects = new Object[]{"aa"};
+        String[] strings = new String[2];
+        System.arraycopy(objects, 0, strings, 0, 1);
+        System.out.println(strings);
+    }
+
     /**
      * 获取当前时间的毫秒数
      *

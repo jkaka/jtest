@@ -36,5 +36,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.17</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <!--外部引用项目，是否强制依赖该jar-->
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 </project>

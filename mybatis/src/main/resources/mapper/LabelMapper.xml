@@ -14,6 +14,7 @@
     <update id="ifLabelTest" parameterType="com.kaka.jtest.mybatis.entities.User">
         update users
         <set>
+            -- test表达式中无需使用#{}
             <if test="name != null &amp;&amp; name!=''">name = #{name},</if>
         </set>
         where id = #{id}

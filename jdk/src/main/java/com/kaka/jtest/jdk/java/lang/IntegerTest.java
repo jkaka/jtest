@@ -36,7 +36,6 @@ public class IntegerTest {
         System.out.println(time3);
     }
 
-
     /**
      * final int value;  value字段不可改变，如果改变就是新的integer对象
      */
@@ -67,7 +66,7 @@ public class IntegerTest {
         // 自动改拆箱,会有空指针异常
         System.out.println(a == 0);
         System.out.println(c == 0);
-//        System.out.println(a == b);
+        //        System.out.println(a == b);
 
         int d = 5;
         long f = 5L;
@@ -97,7 +96,20 @@ public class IntegerTest {
     }
 
     @Test
-    public void toHexString(){
+    public void toHexString() {
         System.out.println(Integer.toHexString(50));
+    }
+
+    /**
+     * 数值溢出
+     */
+    @Test
+    public void overflowTest() {
+        int a = Integer.MAX_VALUE - 8;
+        // 数值月结
+        System.out.println(2 * a);
+        System.out.println(2 * a - a);
+        // 有符号数字比较，负数小
+        System.out.println(2 * a > a);
     }
 }

@@ -9,23 +9,25 @@ import org.junit.Test;
 public class StringBuilderTest {
 
     @Test
-    public void appendTest(){
+    public void appendTest() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("test");
         System.out.println(stringBuilder);
     }
 
-
+    /**
+     * 返回值为this，无需接收
+     */
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("test");
-        stringBuilder.delete(0, stringBuilder.length());
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         System.out.println(stringBuilder);
     }
 
     @Test
-    public void lengthTest(){
+    public void lengthTest() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("test");
         stringBuilder.setLength(0);

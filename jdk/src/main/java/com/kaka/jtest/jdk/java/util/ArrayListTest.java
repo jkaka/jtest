@@ -51,6 +51,7 @@ public class ArrayListTest {
 
     /**
      * 声明返回值为Object[]  实际返回String[]
+     *
      * @return
      */
     private Object[] returnTest() {
@@ -61,7 +62,7 @@ public class ArrayListTest {
      * toArray方法可能返回String[]
      */
     @Test
-    public void constructCodeToArrayTest(){
+    public void constructCodeToArrayTest() {
         List<String> asList = Arrays.asList("asList", "aa");
         Object[] asListArray = asList.toArray();
         System.out.println(asListArray.getClass());
@@ -197,5 +198,18 @@ public class ArrayListTest {
 
         personList.sort((p1, p2) -> p1.getAge() > p2.getAge() ? 1 : -1);
         System.out.println(personList);
+    }
+
+    /**
+     * 子列表包含fromIndex不包含toIndex
+     */
+    @Test
+    public void subList() {
+        List<Person> personList = Arrays.asList(
+            new Person(1, "AA", 2),
+            new Person(3, "BB", 1),
+            new Person(2, "BB", 3));
+        System.out.println(personList.subList(0, 2));
+        System.out.println(personList.subList(0, 0));
     }
 }

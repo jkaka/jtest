@@ -27,5 +27,9 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.kaka</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
     </dependencies>
 </project>

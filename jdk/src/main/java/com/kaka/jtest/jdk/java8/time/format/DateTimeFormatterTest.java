@@ -2,6 +2,7 @@ package com.kaka.jtest.jdk.java8.time.format;
 
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -20,6 +21,17 @@ public class DateTimeFormatterTest {
         TemporalAccessor temporalAccessor = format.parse("2019-09-09 21:22:26");
     }
 
+    /**
+     * 指定返回类型
+     */
+    @Test
+    public void parseReturn(){
+        String patter = "yyyyMMdd";
+        DateTimeFormatter format = DateTimeFormatter.ofPattern(patter);
+        LocalDate localDate = format.parse("20190909", LocalDate::from);
+        System.out.println(localDate);
+    }
+
     @Test
     public void format(){
         String patter = "yyyy-MM-dd HH:mm:ss";
@@ -27,4 +39,5 @@ public class DateTimeFormatterTest {
         String format = formatter.format(LocalDateTime.now());
         System.out.println(format);
     }
+
 }

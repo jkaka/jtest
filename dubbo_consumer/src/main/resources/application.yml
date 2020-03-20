@@ -10,10 +10,10 @@ spring:
    port: 20884
   registry:
    protocol: zookeeper
-   address: dev.cdh.ecarx.local:2181
+   address: dev.cdh.jsk.local:2181
   monitor:
    protocol: registry
-   address: dev.cdh.ecarx.local:2181
+   address: dev.cdh.jsk.local:2181
 #  scan: com.kaka.jtest.consumer.boot.controller
 
 management:

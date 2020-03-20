@@ -10,15 +10,15 @@ spring:
    port: 20882
   registry:
    protocol: zookeeper
-   address: dev.cdh.ecarx.local:2181
+   address: dev.cdh.jsk.local:2181
   monitor:
    protocol: registry
-   address: dev.cdh.ecarx.local:2181
+   address: dev.cdh.jsk.local:2181
   ##scan: com.kaka.jtest.provider.biz.service
 
 # config.center与健康检查有冲突
 #dubbo:
-# configcenter: zookeeper://dev.cdh.ecarx.local:2181
+# configcenter: zookeeper://dev.cdh.jsk.local:2181
 
 management:
   endpoints:

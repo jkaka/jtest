@@ -7,7 +7,7 @@ logging:
 
 job:
   zkConfig:
-    zkConnectString: dev.cdh.ecarx.local:2181
+    zkConnectString: dev.cdh.jsk.local:2181
     rootPath: /tb-schedule/test-task
     zkSessionTimeout: 60000
     userName: jsk

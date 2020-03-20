@@ -18,9 +18,9 @@ public class FactoryBeanTest extends SpringBaseTest {
 	 */
 	@Test
 	public void getBean(){
-		Person myPerson = xmlBeanFactory.getBean("myPerson", Person.class);
+		Person myPerson = xmlBeanFactory.getBean("myPersonFactoryBean", Person.class);
 		System.out.println(myPerson);
-		myPerson = xmlBeanFactory.getBean("myPerson", Person.class);
+		myPerson = xmlBeanFactory.getBean("myPersonFactoryBean", Person.class);
 		System.out.println(myPerson);
 	}
 

@@ -447,11 +447,18 @@
                 <version>1.16.22</version>
             </dependency>
 
+            <!--google 开始-->
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
                 <version>3.6.1</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>20.0</version>
+            </dependency>
+            <!--Google   结束-->
         </dependencies>
     </dependencyManagement>
 </project>

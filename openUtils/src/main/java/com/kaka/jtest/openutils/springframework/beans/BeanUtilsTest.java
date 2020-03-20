@@ -1,20 +1,21 @@
-package com.kaka.jtest.openutils.spring.beans;
+package com.kaka.jtest.openutils.springframework.beans;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.Date;
 
 import com.kaka.jtest.openutils.beans.CommonClass;
 import com.kaka.jtest.openutils.beans.Person;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Date;
-
 /**
- * @author jsk
- * @Date 2018/10/23 19:48
+ * @author jiashuangkai
+ * @version 1.0.0
+ * @since 2020/03/14 10:43:04
  */
 public class BeanUtilsTest {
-
     @Test
     public void copyProperties() {
         Person person = new Person(1, "AA");
@@ -26,6 +27,7 @@ public class BeanUtilsTest {
         commonClass.setName("AA");
         commonClass.setPerson(person);
         commonClass.setArray(array);
+        commonClass.setStringList(Arrays.asList("AA", "BB"));
 
         CommonClass commonClass2 = new CommonClass();
         BeanUtils.copyProperties(commonClass, commonClass2);
@@ -45,7 +47,8 @@ public class BeanUtilsTest {
             set();
         }
         Instant instant3 = Instant.now();
-        System.out.println("beanUtils copy " + number + "次,耗时：" + Duration.between(instant1, instant2).toMillis() + "ms");
+        System.out.println(
+            "beanUtils copy " + number + "次,耗时：" + Duration.between(instant1, instant2).toMillis() + "ms");
         System.out.println("原生set方法" + number + "次,耗时：" + Duration.between(instant2, instant3).toMillis() + "ms");
     }
 
@@ -64,5 +67,4 @@ public class BeanUtilsTest {
         person2.setId(person1.getId());
         person2.setName(person2.getName());
     }
-
 }

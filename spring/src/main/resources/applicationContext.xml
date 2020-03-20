@@ -12,7 +12,7 @@
         <property name="age" value="22"/>
     </bean>
 
-    <bean id="myPerson" class="com.kaka.spring.pojo.MyFactoryBean">
+    <bean id="myPersonFactoryBean" class="com.kaka.spring.pojo.MyFactoryBean">
         <property name="personInfo" value="test factory bean"/>
     </bean>
 
@@ -29,6 +29,7 @@
     <bean id="cat" class="com.kaka.spring.pojo.Cat"/>
 
     <bean id="abstractMethodBean" class="com.kaka.spring.pojo.AbstractMethodBean">
+        <!--抽象方法-->
         <lookup-method name="getAnimalBean" bean="cat"/>
     </bean>
 

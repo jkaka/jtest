@@ -35,12 +35,18 @@ public class BeanDefinitionTest {
         System.out.println(myMeta);
     }
 
+    /**
+     * 抽象方法的返回值交由spring管理
+     */
     @Test
     public void lookupMethodTest(){
         AbstractMethodBean abstractMethodBean = xmlBeanFactory.getBean("abstractMethodBean", AbstractMethodBean.class);
         abstractMethodBean.printSay();
     }
 
+    /**
+     * 替换指定方法代码
+     */
     @Test
     public void replaceMethodTest(){
         Dog dog = xmlBeanFactory.getBean("dog", Dog.class);

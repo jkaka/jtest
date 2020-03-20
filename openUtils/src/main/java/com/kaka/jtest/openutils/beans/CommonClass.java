@@ -3,6 +3,7 @@ package com.kaka.jtest.openutils.beans;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author jsk
@@ -15,4 +16,5 @@ public class CommonClass {
     private Date birthday;
     private int[] array;
     private Person person;
+    private List<String> stringList;
 }

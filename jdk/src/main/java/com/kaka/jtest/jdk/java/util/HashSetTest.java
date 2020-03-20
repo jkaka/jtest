@@ -23,4 +23,15 @@ public class HashSetTest {
         System.out.println(stringSet.add("a"));
         System.out.println(stringSet);
     }
+
+    /**
+     * 如果要移除的对象不存在，则返回false
+     */
+    @Test
+    public void removeTest() {
+        Set<String> stringSet = new HashSet<>(4);
+        stringSet.add("a");
+        System.out.println(stringSet.remove("a"));
+        System.out.println(stringSet.remove("a"));
+    }
 }

@@ -23,7 +23,7 @@ public class CuratorFrameworkTest {
         // 重试策略
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         client = CuratorFrameworkFactory.builder()
-                .connectString("dev.cdh.ecarx.local:2181")
+                .connectString("dev.cdh.jsk.local:2181")
                 .sessionTimeoutMs(5000)
                 .connectionTimeoutMs(5000)
                 .retryPolicy(retryPolicy)

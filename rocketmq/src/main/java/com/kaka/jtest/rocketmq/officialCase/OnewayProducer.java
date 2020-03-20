@@ -21,7 +21,7 @@ public class OnewayProducer {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("test01_group_name");
         // Specify name server addresses.
-        producer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
+        producer.setNamesrvAddr("dev.cdh.jsk.local:9876");
         //Launch the instance.
         producer.start();
         for (int i = 0; i < 1; i++) {

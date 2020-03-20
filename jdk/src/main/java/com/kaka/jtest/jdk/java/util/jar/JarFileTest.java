@@ -16,7 +16,7 @@ public class JarFileTest {
 
     @Test
     public void entries() throws Exception {
-        String path = "D:\\localRepository\\com\\ecarx\\spring\\boot\\ecarx-spring-boot-autoconfigure\\1.0.4-SNAPSHOT\\ecarx-spring-boot-autoconfigure-1.0.4-SNAPSHOT.jar";
+        String path = "D:\\localRepository\\com\\jsk\\spring\\boot\\jsk-spring-boot-autoconfigure\\1.0.4-SNAPSHOT\\jsk-spring-boot-autoconfigure-1.0.4-SNAPSHOT.jar";
         JarFile localJarFile = new JarFile(new File(path));
 
         Enumeration<JarEntry> entries = localJarFile.entries();

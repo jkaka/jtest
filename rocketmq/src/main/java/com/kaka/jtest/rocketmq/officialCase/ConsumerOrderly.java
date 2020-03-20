@@ -23,8 +23,8 @@ public class ConsumerOrderly {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("jsk_group");
 
         // Specify name server addresses.
-//        consumer.setNamesrvAddr("test01.cdh.ecarx.local:9876;test02.cdh.ecarx.local:9876");
-        consumer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
+//        consumer.setNamesrvAddr("test01.cdh.jsk.local:9876;test02.cdh.jsk.local:9876");
+        consumer.setNamesrvAddr("dev.cdh.jsk.local:9876");
 
 //         Subscribe one more more topics to consume.
         consumer.subscribe(TOPIC, "OWNERDRIVER");

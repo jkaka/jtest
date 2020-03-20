@@ -35,8 +35,8 @@ public class Consumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("jsk_group0036");
 
         // Specify name server addresses.
-//        consumer.setNamesrvAddr("test01.cdh.ecarx.local:9876;test02.cdh.ecarx.local:9876");
-        consumer.setNamesrvAddr("dev.cdh.ecarx.local:9876");
+//        consumer.setNamesrvAddr("test01.cdh.jsk.local:9876;test02.cdh.jsk.local:9876");
+        consumer.setNamesrvAddr("dev.cdh.jsk.local:9876");
         /**
          * 设置消费位置
          * CONSUME_FROM_LAST_OFFSET(默认)

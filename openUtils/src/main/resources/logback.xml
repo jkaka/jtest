@@ -46,9 +46,26 @@
                     <charset>UTF-8</charset>
                     <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}---%magenta([%thread])---%-5level---%blue([%c])---%green([%L])---[traceId:%X{traceId}]---[%msg]%n</pattern>
                 </encoder>
-            </appender>
+            </appender>A
         </sift>
     </appender>
+
+    <!--异步Appender-->
+    <appender name="rollingFileAsync"
+              class="ch.qos.logback.classic.AsyncAppender">
+        <!--队列深度-->
+        <queueSize>2048</queueSize>
+        <!--队列满了是否阻塞-->
+        <neverBlock>true</neverBlock>
+        <!--队列Info阈值-->
+        <discardingThreshold>20</discardingThreshold>
+        <!--具体输出策略-->
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <logger name="asyncLog" level="INFO" additivity="false">
+        <appender-ref ref="rollingFileAsync"/>
+    </logger>
 
     <logger name="jsk" level="INFO" additivity="false">
         <appender-ref ref="siftTest"/>

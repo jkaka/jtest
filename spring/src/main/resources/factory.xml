@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans.dtd">-->
+<!-- -Dspring.profiles.active=test -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="myFactory" class="com.kaka.spring.pojo.factory.MyFactory"/>
+    <!--工厂方法为实例方法时，需要创建工厂实例-->
+    <bean id="personByFactory" factory-bean="myFactory" factory-method="factoryMethod">
+        <constructor-arg index="0" value="personByFactory"/>
+        <constructor-arg index="1" value="22"/>
+    </bean>
+
+    <!--工厂方法为静态方法时，class指定为工厂类，直接使用静态方法即可-->
+    <bean id="staticPerson" class="com.kaka.spring.pojo.factory.MyFactory" factory-method="staticMethod">
+        <constructor-arg name="name">
+            <value type="java.lang.String">staticPerson</value>
+        </constructor-arg>
+        <constructor-arg name="age" value="9"/>
+    </bean>
+</beans>

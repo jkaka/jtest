@@ -1,5 +1,6 @@
-package com.kaka.spring.pojo;
+package com.kaka.spring.pojo.factorybean;
 
+import com.kaka.spring.pojo.Person;
 import lombok.Data;
 import org.springframework.beans.factory.FactoryBean;
 

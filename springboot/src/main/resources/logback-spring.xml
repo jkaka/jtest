@@ -79,6 +79,8 @@
     <appender name="rollingFileAsync" class="ch.qos.logback.classic.AsyncAppender">
         <!--队列深度-->
         <queueSize>2048</queueSize>
+        <neverBlock>true</neverBlock>
+        <discardingThreshold>20</discardingThreshold>
         <appender-ref ref="rollingFile"/>
     </appender>
 

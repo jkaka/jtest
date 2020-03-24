@@ -1,7 +1,7 @@
 package com.kaka.spring.beans.factory.support;
 
 import com.kaka.spring.SpringBaseTest;
-import com.kaka.spring.pojo.MyFactoryBean;
+import com.kaka.spring.pojo.factorybean.MyFactoryBean;
 import com.kaka.spring.pojo.Person;
 import org.junit.Test;
 

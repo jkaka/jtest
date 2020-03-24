@@ -1,7 +1,7 @@
 package com.kaka.spring.beans.factory;
 
 import com.kaka.spring.SpringBaseTest;
-import com.kaka.spring.pojo.MyFactoryBean;
+import com.kaka.spring.pojo.factorybean.MyFactoryBean;
 import com.kaka.spring.pojo.Person;
 import com.kaka.spring.pojo.circular.TestA;
 import org.junit.Test;
@@ -40,5 +40,18 @@ public class FactoryBeanTest extends SpringBaseTest {
 	public void circular(){
 		TestA testA = xmlBeanFactory.getBean("testA", TestA.class);
 		System.out.println(testA);
+	}
+
+	/**
+	 * 工厂方法创建bean
+	 */
+	@Test
+	public void factoryMethod(){
+		Person personByFactory = xmlBeanFactory.getBean("personByFactory", Person.class);
+		System.out.println(personByFactory);
+
+		Person staticPerson = xmlBeanFactory.getBean("staticPerson", Person.class);
+		System.out.println(staticPerson);
+
 	}
 }

@@ -24,6 +24,10 @@ public class DateTest {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = dateFormat.parse("1970-01-01 08:00:01");
         System.out.println(date.getTime());
+
+        date = dateFormat.parse("2020-03-28 00:00:00");
+        System.out.println(date.getTime());
+
     }
 
     /**
@@ -54,7 +58,7 @@ public class DateTest {
 
     @Test
     public void constructTest(){
-        Date date = new Date(1566885312164L);
+        Date date = new Date(1585412241272L);
         System.out.println(date);
     }
 

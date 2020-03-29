@@ -194,4 +194,13 @@ public class StringTest {
         System.out.println(Math.abs("change_ihu_upgrade_status".hashCode() % 3));
     }
 
+    /**
+     * 转义字符
+     */
+    @Test
+    public void transferredTest(){
+        String string  = "aaa\nbbb\nccc";
+        System.out.println(string);
+    }
+
 }

@@ -18,29 +18,46 @@ import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 
 /**
+ * 1. 开启流
+ *      常见方法：collection.stream   parallelStream  实例方法 转换
+ *      Arrays.stream(Object[]) 静态方法 转换
+ *      Stream类的静态工厂方法
+ *          Stream.of(Object[]), IntStream.range(int, int)，
+ *          Stream.iterate(Object, UnaryOperator)   Stream.generate
+ *      BufferedReader.lines(); 文件行
+ *      Files类的获取文件路径列表： find(), lines(), list(), walk();
+ *      Random.ints()  随机数流
+ *      JDK中的许多其他流载方法，包括BitSet.stream(), Pattern.splitAsStream(java.lang.CharSequence), and JarFile.stream().
+ *
+ * 2. 中间操作(惰性)
+ *      并不会立即执行任何过滤操作，而是创建了一个新流，当遍历时，它包含与给定谓词相匹配的初始流的元素。
+ *      直到管道的终端操作被执行，管道源的遍历才会开始
+ *      如：filter() flatMap() limit() map()  concat() distinct() peek() skip() sorted() parallel() sequential()
+ *          unordered() flatMapTo[Double | Int | Long]  mapTo[ Double | Int | Long ]
+ *
+ * 3. 终端操作(产生结果)
+ *      在执行终端操作之后，流管道被认为是被消耗掉的，并且不能再被使用;
+ *      如果您需要再次遍历相同的数据源，您必须返回到数据源以获得一条新的stream。
+ *      如：allMatch() anyMatch() collect() count() findAny() findFirst() forEach() forEachOrdered()
+ *          max() min() noneMatch() reduce() toArray()
+ *
  * @author shuangkaijia
  * @since 1.8
  */
 public class StreamTest {
 
     /**
-     * 计算集合总数(属于内部迭代：在集合中过滤完成后，再把结果返回)
-     * 及早求值方法：最终会从Stream产生值
+     * of()使用一组初始值生成新的 Stream。
      */
     @Test
-    public void count() {
-        List<Person> personList = new ArrayList<>();
-        personList.add(new Person(1, "AA"));
-        personList.add(new Person(2, "BB"));
-        personList.add(new Person(3, "CC"));
-        personList.add(new Person(4, "AB"));
-
-        long count = personList.stream()
-                .filter(person -> person.getName().contains("A"))
-                .count();
-        System.out.println("person的name中含有A的个数：" + count);
+    public void of() {
+        // collect(toList())方法由 Stream里的值生成一个列表，是一个及早求值操作
+        List<String> collected = Stream.of("a", "b", "c")
+            .collect(toList());
+        assertEquals(asList("a", "b", "c"), collected);
     }
 
+//----------------------------------中间操作-----------------------------
     /**
      * filter 过滤集合中的数据
      * 惰性求值方法(sluggishness)：filter只描述Stream，不产生新集合
@@ -64,6 +81,43 @@ public class StreamTest {
     }
 
     /**
+     * map():将一种类型的值转换成另外一种类型
+     */
+    @Test
+    public void map() {
+        Person person1 = new Person(1, "AA");
+        Person person2 = new Person(2, "BB");
+
+        List<String> collected = Stream.of(person1, person2)
+            .map(person -> {
+                person.setName("BB2");
+                return person.getName();
+            })
+            .collect(toList());
+        collected.stream().forEach(person -> System.out.println(person));
+    }
+
+
+    // ----------------------------------终止操作-------------------------------------------
+    /**
+     * 计算集合总数(属于内部迭代：在集合中过滤完成后，再把结果返回)
+     * 及早求值方法：最终会从Stream产生值
+     */
+    @Test
+    public void count() {
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(1, "AA"));
+        personList.add(new Person(2, "BB"));
+        personList.add(new Person(3, "CC"));
+        personList.add(new Person(4, "AB"));
+
+        long count = personList.stream()
+            .filter(person -> person.getName().contains("A"))
+            .count();
+        System.out.println("person的name中含有A的个数：" + count);
+    }
+
+    /**
      * 使用count方法终止流
      */
     @Test
@@ -79,34 +133,6 @@ public class StreamTest {
                     return person.getName().contains("A");
                 })
                 .count();
-    }
-
-    /**
-     * of()使用一组初始值生成新的 Stream。
-     */
-    @Test
-    public void of() {
-        // collect(toList())方法由 Stream里的值生成一个列表，是一个及早求值操作
-        List<String> collected = Stream.of("a", "b", "c")
-                .collect(toList());
-        assertEquals(asList("a", "b", "c"), collected);
-    }
-
-    /**
-     * map():将一种类型的值转换成另外一种类型
-     */
-    @Test
-    public void map() {
-        Person person1 = new Person(1, "AA");
-        Person person2 = new Person(2, "BB");
-
-        List<String> collected = Stream.of(person1, person2)
-                .map(person -> {
-                    person.setName("BB2");
-                    return person.getName();
-                })
-                .collect(toList());
-        collected.stream().forEach(person -> System.out.println(person));
     }
 
     /**
@@ -153,6 +179,20 @@ public class StreamTest {
         System.out.println(lowStudent);
     }
 
+    /**
+     * 终端操作：sum
+     */
+    @Test
+    public void sum(){
+        List<Student> students = asList(new Student("张三", 524),
+            new Student("李四", 378),
+            new Student("王五", 451));
+
+        int sum = students.stream()
+            .mapToInt(Student::getScore)
+            .sum();
+        System.out.println(sum);
+    }
     /**
      * reduce中：10为初始值；acc是累加器；element是当前元素
      * reduce的返回类型为BinaryOperator

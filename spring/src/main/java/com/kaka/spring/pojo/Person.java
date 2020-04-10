@@ -22,6 +22,8 @@ public class Person {
     @Value("${person.nickName}")
     private String nickName;
 
+    private Department department;
+
     public Person() {
     }
 
@@ -29,5 +31,9 @@ public class Person {
         super();
         this.name = name;
         this.age = age;
+    }
+
+    public Person(Department department) {
+        this.department = department;
     }
 }

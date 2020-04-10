@@ -1,5 +1,10 @@
 package com.kaka.jtest.jdk.java.lang;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Test;
 
 /**
@@ -42,7 +47,6 @@ public class MathTest {
         double b = 33.50;
         long a = Math.round(b);
         System.out.println(a);
-
         System.out.println(Math.round(-1.4));
     }
 
@@ -50,5 +54,37 @@ public class MathTest {
     public void test() {
         // 左移30位：2的30次方
         System.out.println(1 << 30);
+    }
+
+    @Test
+    public void lottery() {
+        List<Integer> list = new ArrayList<>();
+        List<Integer> integers = Arrays.asList(1, 6, 7, 9, 10, 2, 11);
+        int count = 1;
+        System.out.println(new Date());
+        while (true) {
+            list.clear();
+            count ++;
+            for (int i = 0; i < 7; i++) {
+                if (i < 5) {
+                    int num = new Double(Math.random() * 35 + 1).intValue();
+                    list.add(num);
+                } else {
+                    list.add(new Double(Math.random() * 12 + 1).intValue());
+                }
+            }
+
+            for (int i = 0; i < list.size(); i++) {
+                if (!list.get(i).equals(integers.get(i))) {
+                    break;
+                }
+                if (i == 6) {
+                    System.out.println(list);
+                    System.out.println(new Date());
+                    System.out.println(count);
+                    return;
+                }
+            }
+        }
     }
 }

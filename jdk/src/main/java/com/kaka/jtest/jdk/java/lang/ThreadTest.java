@@ -21,7 +21,7 @@ public class ThreadTest {
         });
         thread.start();
         thread.interrupt();
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(115);
 //        thread.start();
     }
 }

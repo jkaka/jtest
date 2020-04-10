@@ -132,4 +132,9 @@ public class MessageDigestTest {
         System.out.println(baseToken);
     }
 
+
+    @Test
+    public void md5Hash(){
+        System.out.println(Md5Util.md5Encode("LP00170209246395"));
+    }
 }

@@ -8,10 +8,7 @@
     <import resource="labelResource.xml" />
     <import resource="circular.xml" />
     <import resource="factory.xml" />
-
-    <bean id="person" class="com.kaka.spring.pojo.Person">
-        <property name="age" value="22"/>
-    </bean>
+    <import resource="propertyTest.xml" />
 
     <bean id="myPersonFactoryBean" class="com.kaka.spring.pojo.factorybean.MyFactoryBean">
         <property name="personInfo" value="test factory bean"/>

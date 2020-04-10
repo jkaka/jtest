@@ -61,6 +61,7 @@
         <module>aliyun-sdk</module>
         <module>test</module>
         <module>linux</module>
+        <module>bigdata-flink</module>
     </modules>
 
     <build>

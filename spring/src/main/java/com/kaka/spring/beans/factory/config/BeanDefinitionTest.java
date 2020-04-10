@@ -1,6 +1,7 @@
 package com.kaka.spring.beans.factory.config;
 
 
+import com.kaka.spring.SpringBaseTest;
 import com.kaka.spring.pojo.AbstractMethodBean;
 import com.kaka.spring.pojo.ConstructorBean;
 import com.kaka.spring.pojo.Dog;
@@ -18,15 +19,7 @@ import org.springframework.core.io.Resource;
  * @author: jsk
  * @date: 2019/9/15 16:16
  */
-public class BeanDefinitionTest {
-
-    private BeanFactory xmlBeanFactory;
-
-    @Before
-    public void initFactory(){
-        Resource classPathResource = new ClassPathResource("applicationContext.xml");
-        xmlBeanFactory = new XmlBeanFactory(classPathResource);
-    }
+public class BeanDefinitionTest extends SpringBaseTest {
 
     @Test
     public void metaDataTest(){
@@ -61,9 +54,5 @@ public class BeanDefinitionTest {
         System.out.println(constructorBean1);
         ConstructorBean constructorBean2 = xmlBeanFactory.getBean("constructorBean2", ConstructorBean.class);
         System.out.println(constructorBean2);
-    }
-
-    @After
-    public void destroyFactory(){
     }
 }

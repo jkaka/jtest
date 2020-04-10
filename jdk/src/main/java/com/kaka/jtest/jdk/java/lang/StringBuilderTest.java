@@ -21,9 +21,11 @@ public class StringBuilderTest {
     @Test
     public void deleteTest() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("test");
+        stringBuilder.append("test,1");
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         System.out.println(stringBuilder);
+        // 删除指定位置的字符
+        System.out.println(stringBuilder.deleteCharAt(1));
     }
 
     @Test

@@ -5,6 +5,7 @@
 
     <!--循环依赖-->
     <bean id="testA" class="com.kaka.spring.pojo.circular.TestA" >
+        <!--setter方式注入-->
         <property name="testB" ref="testB"/>
     </bean>
 

@@ -169,12 +169,18 @@ public class ArrayListTest {
         System.out.println(one.get(0));
     }
 
+    /**
+     * 可以添加null数据
+     * 把数据添加到指定位置：add(index, obj)
+     */
     @Test
     public void addNull() {
         List<String> strings = new ArrayList<>();
         strings.add(null);
         strings.add(null);
+        strings.add(1, "A");
         System.out.println(strings.size());
+        System.out.println(strings);
     }
 
     /**

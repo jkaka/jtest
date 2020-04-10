@@ -14,22 +14,25 @@ import org.junit.Test;
 public class FactoryBeanTest extends SpringBaseTest {
 
 	/**
-	 * 获取工厂bean的getObject()方法返回的实例
+	 * 普通bean
 	 */
 	@Test
 	public void getBean(){
-		Person myPerson = xmlBeanFactory.getBean("myPersonFactoryBean", Person.class);
-		System.out.println(myPerson);
-		myPerson = xmlBeanFactory.getBean("myPersonFactoryBean", Person.class);
+		Person myPerson = xmlBeanFactory.getBean("person", Person.class);
 		System.out.println(myPerson);
 	}
 
 	/**
-	 * 获取工厂bean本身
+	 * 工厂bean
 	 */
 	@Test
-	public void getFactoryBean(){
-		MyFactoryBean bean = xmlBeanFactory.getBean("&myPerson", MyFactoryBean.class);
+	public void factoryBeanTest(){
+		// 获取工厂bean的getObject()方法返回的实例
+		Person myPerson = xmlBeanFactory.getBean("myPersonFactoryBean", Person.class);
+		System.out.println(myPerson);
+
+		// 获取工厂bean本身
+		MyFactoryBean bean = xmlBeanFactory.getBean("&myPersonFactoryBean", MyFactoryBean.class);
 		System.out.println(bean);
 	}
 

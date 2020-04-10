@@ -10,10 +10,14 @@ public class SwitchTest {
      */
     @Test
     public void switchTest() {
-        String requestType = "serviceRequest";
+        String requestType = "ack";
         returnTest(requestType);
     }
 
+    /**
+     * 如果某个case中没有break或者return，会进入下一个case
+     * @param requestType
+     */
     private void returnTest(String requestType) {
         switch (requestType) {
             case "ack":

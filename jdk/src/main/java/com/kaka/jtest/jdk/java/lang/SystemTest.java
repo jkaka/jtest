@@ -8,8 +8,8 @@ import org.junit.Test;
 public class SystemTest {
 
     @Test
-    public void arrayCopy(){
-        Object[] objects = new Object[]{"aa"};
+    public void arrayCopy() {
+        Object[] objects = new Object[] {"aa"};
         String[] strings = new String[2];
         System.arraycopy(objects, 0, strings, 0, 1);
         System.out.println(strings);
@@ -26,6 +26,7 @@ public class SystemTest {
         Thread.sleep(100L);
         System.out.println(System.currentTimeMillis());
         System.out.println(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis() - 24 * 3600);
     }
 
     /**

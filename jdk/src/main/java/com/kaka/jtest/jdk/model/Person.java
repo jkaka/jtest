@@ -1,5 +1,7 @@
 package com.kaka.jtest.jdk.model;
 
+import java.util.Date;
+
 /**
  * @author shuangkai.jia
  */
@@ -7,6 +9,7 @@ public class Person {
     private Integer id;
     private String name;
     private int age;
+    private Date birthDay;
 
     public Person() {
         System.out.println("创建了一个Person...");
@@ -67,5 +70,13 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
     }
 }

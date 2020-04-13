@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans.dtd">-->
+<!-- -Dspring.profiles.active=test -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!--导入其他配置文件 (开始)-->
+    <import resource="resource01.xml" />
+    <import resource="labelResource.xml" />
+    <import resource="circular.xml" />
+    <import resource="factory.xml" />
+    <import resource="propertyTest.xml" />
+    <!--导入其他配置文件 (结束)-->
+
+    <!--指定扫描包路径 (开始)-->
+    <context:component-scan base-package="com.kaka.spring.beans.factory.config" />
+    <!--<context:component-scan base-package="com.project.*" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>-->
+    <!--指定扫描包路径 (结束)-->
+
+    <bean id="myPersonFactoryBean" class="com.kaka.spring.pojo.factorybean.MyFactoryBean">
+        <property name="personInfo" value="test factory bean"/>
+    </bean>
+
+    <bean id="person1" class="com.kaka.spring.pojo.Person"/>
+    <!--<tx:annotation-driven/>-->
+
+    <!--meta 子元素-->
+    <bean id="metaPerson" class="com.kaka.spring.pojo.Person">
+        <property name="age" value="22"/>
+        <meta key="myMeta" value="元数据"/>
+    </bean>
+
+    <!--lookup-method 子元素-->
+    <bean id="cat" class="com.kaka.spring.pojo.Cat"/>
+
+    <bean id="abstractMethodBean" class="com.kaka.spring.pojo.AbstractMethodBean">
+        <!--抽象方法-->
+        <lookup-method name="getAnimalBean" bean="cat"/>
+    </bean>
+
+    <!--replace-method 子元素-->
+    <bean id="replaceMethodBean" class="com.kaka.spring.pojo.ReplaceMethodBean"/>
+
+    <bean id="dog" class="com.kaka.spring.pojo.Dog">
+        <replaced-method name="say" replacer="replaceMethodBean"/>
+    </bean>
+
+
+    <!--qualifier子元素-->
+    <bean id="q1" class="com.kaka.spring.pojo.QualifierBean">
+        <qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="q002">
+            <attribute key="myQualifierAttr" value="abc"/>
+        </qualifier>
+    </bean>
+    <bean id="q2" class="com.kaka.spring.pojo.QualifierBean">
+        <qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="q002"/>
+    </bean>
+
+    <!--constructor-arg子元素-->
+    <bean id="constructorBean" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg name="a" value="a001"/>
+        <constructor-arg name="b" value="a001"/>
+    </bean>
+
+    <bean id="constructorBean1" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg index="0" value="a002" />
+        <constructor-arg index="1" value="a002" />
+    </bean>
+
+    <bean id="constructorBean2" class="com.kaka.spring.pojo.ConstructorBean">
+        <constructor-arg name="a">
+            <value type="java.lang.String">a003</value>
+        </constructor-arg>
+        <constructor-arg name="b">
+            <null/>
+        </constructor-arg>
+    </bean>
+</beans>

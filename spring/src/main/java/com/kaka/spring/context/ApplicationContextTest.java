@@ -1,6 +1,6 @@
 package com.kaka.spring.context;
 
-import com.kaka.spring.pojo.Person;
+import com.kaka.spring.pojo.Department;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -9,8 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class ApplicationContextTest {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Person bean = classPathXmlApplicationContext.getBean(Person.class);
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext(
+            "applicationContext.xml");
+        Department bean = classPathXmlApplicationContext.getBean("testA", Department.class);
         System.out.println(bean);
     }
 }

@@ -25,6 +25,7 @@ public class Person {
     private Department department;
 
     public Person() {
+        System.out.println("person构造方法...");
     }
 
     public Person(String name, Integer age) {
@@ -36,4 +37,5 @@ public class Person {
     public Person(Department department) {
         this.department = department;
     }
+
 }

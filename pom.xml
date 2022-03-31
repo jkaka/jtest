@@ -15,7 +15,7 @@
 
         <!--spring-->
         <spring_boot.version>2.0.3.RELEASE</spring_boot.version>
-        <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
 
         <!--阿里巴巴-->
         <dubbo-version>2.7.3</dubbo-version>

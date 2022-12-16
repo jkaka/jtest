@@ -13,7 +13,7 @@
 
     <properties>
         <!-- 统一管理Spring版本号 -->
-        <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
     </properties>
     <dependencies>
 
